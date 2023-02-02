@@ -1,1 +1,1 @@
-export default s3Client from "./s3client.js";
+export { s3Client } from "./s3client";
