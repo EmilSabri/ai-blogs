@@ -1,3 +1,4 @@
+/* eslint-disable prefer-const */
 import { S3_ACCESS_KEY, S3_SECERET_KEY, S3_REGION, S3_BUCKET_ARTICLES } from "$env/static/private";
 import { S3Client, GetObjectCommand, PutObjectCommand, ListObjectsV2Command } from "@aws-sdk/client-s3";
 
@@ -36,14 +37,14 @@ function getObject(Bucket: string, Key: string) {
 
             // Store all of data chunks returned from the response data stream 
             // into an array then use Array#join() to use the returned contents as a String
-            let responseDataChunks = []
+            let responseDataChunks: any[] = []
 
             // Handle an error while streaming the response body
-            response.Body.once('error', err => reject(err))
+            response.Body.once('error', (err: any) => reject(err))
 
             // Attach a 'data' listener to add the chunks of data to our array
             // Each chunk is a Buffer instance
-            response.Body.on('data', chunk => responseDataChunks.push(chunk))
+            response.Body.on('data', (chunk: any) => responseDataChunks.push(chunk))
 
             // Once the stream has no more data, join the chunks into a string and return the string
             response.Body.once('end', () => resolve(responseDataChunks.join('')))
@@ -55,7 +56,7 @@ function getObject(Bucket: string, Key: string) {
 }
 
 // List objects in s3 bucket
-function listObjects() {
+function listObjects(getMetaData = false) {
     // eslint-disable-next-line no-async-promise-executor
     return new Promise(async (resolve, reject) => {
         const bucketParams = { Bucket: S3_BUCKET_ARTICLES, MaxKeys: 50, Delimiter: "/" }
@@ -64,20 +65,22 @@ function listObjects() {
         try {
             const data = await client.send(listObjectsCommand)
 
-            let articles = []
-            if (data.CommonPrefixes) {
-                articles = data.CommonPrefixes.map((prefix) => prefix.Prefix.slice(0, -1))
-            }
+            let articles = data?.CommonPrefixes.map((prefix) => prefix.Prefix.slice(0, -1)) || []
 
             let answer = []
-            for (let i = 0; i < articles.length; i++) {
-                const key = `${articles[i]}/metadata.json`
-                const file = await getObject(S3_BUCKET_ARTICLES, key)
-                answer.push(JSON.parse(file))
+            if (getMetaData) {
+                for (let i = 0; i < articles.length; i++) {
+                    const key = `${articles[i]}/metadata.json`
+                    const file = await getObject(S3_BUCKET_ARTICLES, key)
+                    answer.push(JSON.parse(file))
+                }
+                resolve(answer)
+            } else {
+                resolve(articles)
             }
 
 
-            resolve(answer)
+
         } catch (err) {
             // Handle the error or throw
             return reject(err)
@@ -104,7 +107,6 @@ function uploadObject(Bucket: string, Key: string, Body: any, ContentType: strin
             console.log("s3client.uploadObject()", err)
             return reject(err)
         }
-
     })
 }
 

@@ -10,7 +10,7 @@ import { Readable } from "stream";
 
 // List the objects in the bucket
 export async function GET() {
-    const articles = await s3Client.listObjects()
+    const articles = await s3Client.listObjects(true)
 
     const body = { body: articles };
     console.log( body)
