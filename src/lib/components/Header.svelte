@@ -6,7 +6,6 @@
 	export let displayMenu = false;
 	let headerHeight;
 
-	console.log(headerHeight);
 	let links = ['Brain Fog', 'Supplements', 'Lifestyle Factors', 'User Stories', 'Causes'];
 
 	let searchInput;
@@ -23,7 +22,6 @@
 		class=""
 		on:click={() => {
 			displayMenu = !displayMenu;
-			console.log(displayMenu);
 		}}
 	>
 		<img
