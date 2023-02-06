@@ -79,7 +79,7 @@
 
 	h2 {
 		font-family: Arial, Helvetica, sans-serif;
-		font-size: 1.5rem;
+		font-size: 1.75rem;
 		font-weight: 600;
 		line-height: 1.15;
 
@@ -101,7 +101,7 @@
 	p {
 		font-size: 1rem;
 		font-weight: 400;
-		line-height: 1.75;
+		line-height: 1.5625;
 
 		margin: 1em 0px;
 		padding: 0px;
