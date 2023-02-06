@@ -1,5 +1,6 @@
 <script>
 	import { Breadcrumbs, Header, Footer } from '$lib/components/index';
+	let disableScroll = false;
 </script>
 
 <svelte:head>
@@ -11,8 +12,8 @@
 	<!-- Todo - Pinterest Pins -->
 </svelte:head>
 
-<div class="body-container">
-	<Header />
+<div class="body-container" class:disableScroll>
+	<Header bind:displayMenu={disableScroll} />
 	<div class="slot-container">
 		<slot />
 	</div>
@@ -26,7 +27,21 @@
 		font-size: 1rem;
 		font-weight: 400;
 		line-height: 1.5;
+
+		/* overflow: auto; */
+		/* overflow: hidden; */
+
+		/* display: flex;
+		flex-direction: column; */
+		/* justify-content: space-between;
+		overflow: auto; */
+		height: 100vh;
 	}
+
+	.disableScroll {
+		overflow: hidden;
+	}
+
 	.slot-container {
 		font-family: 'Merriweather Sans', 'sans-serif';
 		font-size: 1rem;
