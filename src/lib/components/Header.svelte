@@ -1,10 +1,20 @@
 <script>
+	import { tick } from 'svelte';
+
 	// @ts-nocheck
 
 	export let displayMenu = false;
 	let headerHeight;
 
 	console.log(headerHeight);
+	let links = ['Brain Fog', 'Supplements', 'Lifestyle Factors', 'User Stories', 'Causes'];
+
+	let searchInput;
+
+	async function tickTock() {
+		await tick();
+		searchInput.focus();
+	}
 </script>
 
 <div id="header" class="header-container" bind:clientHeight={headerHeight}>
@@ -16,7 +26,12 @@
 			console.log(displayMenu);
 		}}
 	>
-		<img src="/svg/menu-icon.svg" width="25px" alt="Navigation menu icon" />
+		<img
+			class="nav-bar-search-icon"
+			src="/svg/menu-icon.svg"
+			width="25px"
+			alt="Navigation menu icon"
+		/>
 	</div>
 	<!-- Logo of Website (head with clouds surrounding it) -->
 
@@ -24,17 +39,50 @@
 	<div>BrianFog</div>
 
 	<!-- Search -->
-	<img src="/svg/search-icon.svg" width="25px" alt="Search www.BrianFog.com icon" />
+	<img
+		class="search-icon {displayMenu ? 'disableSearch' : ''}"
+		src="/svg/search-icon.svg"
+		width="25px"
+		alt="Search www.BrianFog.com icon"
+		on:click={() => {
+			displayMenu = !displayMenu;
+			tickTock();
+		}}
+	/>
 </div>
 
 <!-- Menu (click === true) -->
-<div class="nav-menu" style="" class:displayMenu>
-	<div>asdf</div>
-	<div>Home</div>
-	<div>Articles</div>
+<div class="nav-menu" class:displayMenu>
+	<div class="search-input-container">
+		<img
+			class="search-input-icon"
+			src="/svg/search-icon.svg"
+			width="20px"
+			alt="Search www.BrainFog.com icon"
+		/>
+		<input class="search-input" type="text" placeholder="Search" bind:this={searchInput} />
+	</div>
+	<ul class="nav-links">
+		{#each links as link}
+			<li class="nav-link">
+				<a href="/{link.replace(' ', '-')}">{link}</a>
+			</li>
+		{/each}
+	</ul>
+
+	<!-- Todo - Add socials -->
 </div>
 
 <style>
+	input {
+		border: none;
+	}
+	ul,
+	li {
+		list-style-type: none;
+		padding: 0;
+	}
+
 	@import url('https://fonts.googleapis.com/css?family=Merriweather+Sans');
 	.header-container {
 		font-family: 'Merriweather Sans', 'sans-serif';
@@ -67,5 +115,76 @@
 		display: block;
 		visibility: visible !important;
 		opacity: 1;
+
+		display: flex;
+		flex-direction: column;
+		/* justify-content: center; */
+		align-items: left;
+
+		padding: 2em;
+	}
+
+	.disableSearch {
+		visibility: hidden;
+	}
+
+	.search-icon {
+		/* visibility: hidden; */
+	}
+
+	.search-input-container {
+		/* display: flex;
+		flex-direction: row;
+		justify-content: center;
+		align-items: center; */
+		border: 1px solid #212121;
+		border-radius: 1em;
+		width: 80%;
+		/* padding: 0.5em; */
+		padding-top: 0.7em;
+		padding-left: 1em;
+		/* padding-bottom; */
+	}
+
+	.search-input-icon {
+	}
+
+	.search-input {
+		font-size: 1rem;
+		font-family: 'Merriweather Sans', 'sans-serif';
+		padding: 0.5em;
+
+		/* padding: 0.5em; */
+		padding-left: 1em;
+		padding-bottom: 0.5em;
+		/* margin-top: 2em */
+	}
+
+	.search-input:focus {
+		outline: none;
+		/* font-size: 1rem; */
+	}
+
+	.search-input::placeholder {
+		/* text-align: center; */
+	}
+
+	.nav-links {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: left;
+	}
+
+	.nav-link {
+		padding: 1em 0;
+	}
+
+	.nav-link > a {
+		text-decoration: none;
+		color: inherit;
+
+		font-size: 1.5rem;
+		font-weight: 600;
 	}
 </style>
