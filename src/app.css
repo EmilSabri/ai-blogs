@@ -1,0 +1,12 @@
+/* Todo - Get a global css file working */
+/* Todo - Implement a CSS reset https://www.reddit.com/r/sveltejs/comments/rknmau/cant_seem_to_get_the_full_width_of_the_page/ */
+
+@import url('https://fonts.googleapis.com/css?family=Merriweather+Sans');
+.body { 
+    font-family: 'Merriweather Sans', 'sans-serif';   
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    margin: 0;
+    padding: 0;
+}

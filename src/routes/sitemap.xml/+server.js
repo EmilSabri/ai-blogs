@@ -6,7 +6,7 @@ import { s3Client } from "$lib/server/s3client"
 
 function tempXML(url) {
     return `<url>
-    <loc>https://www.${DOMAIN}/${url}</loc>
+    <loc>https://www.${DOMAIN}/articles/${url}</loc>
     <lastmod>2023-24-23T23:58:19-07:00</lastmod>
     </url>`
    }
