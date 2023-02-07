@@ -13,7 +13,6 @@ export async function GET() {
     const articles = await s3Client.listObjects(true)
 
     const body = { body: articles };
-    console.log( body)
     return new Response(JSON.stringify(body))
 }
 

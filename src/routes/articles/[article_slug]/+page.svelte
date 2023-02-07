@@ -1,33 +1,54 @@
 <script>
 	import Header from '$lib/components/Header.svelte';
 
+	import { unified } from 'unified';
+	import remarkParse from 'remark-parse';
+	import remarkFrontmatter from 'remark-frontmatter';
+	import remarkRehype from 'remark-rehype';
+	import rehypeStringify from 'rehype-stringify';
+
 	export let data;
 	let markdown = data.markdown;
-	// let articleData = data.metadata;
+	let articleData = data.metadata;
 
-	let articleData = {
-		title: 'The Manhattan high-rise that shrunk itself down',
-		description:
-			'In 1986, a New York zoning activist made a startling discovery: A newly constructed building was over a dozen floors too high. What followed was one of the strangest outcomes in the history of big-city housing.',
-		image: {
-			url: 'https://cdn.pixabay.com/photo/2013/07/12/17/47/test-pattern-152459__340.png',
-			alt: 'Test Image'
-		},
-		author: 'Brian Foggy',
-		date: 'February 5, 2023',
-		tags: ['BigBootyBitches', 'Ice Cold', 'Buziness'],
-		contentLink: 'Markdown-Result-Component'
-	};
+	// let articleData = data.metaData || {
+	// 	title: 'The Manhattan high-rise that shrunk itself down',
+	// 	description:
+	// 		'In 1986, a New York zoning activist made a startling discovery: A newly constructed building was over a dozen floors too high. What followed was one of the strangest outcomes in the history of big-city housing.',
+	// 	image: {
+	// 		url: 'https://cdn.pixabay.com/photo/2013/07/12/17/47/test-pattern-152459__340.png',
+	// 		alt: 'Test Image'
+	// 	},
+	// 	author: 'Brian Foggy',
+	// 	date: 'February 5, 2023',
+	// 	tags: ['BigBootyBitches', 'Ice Cold', 'Buziness'],
+	// 	contentLink: 'Markdown-Result-Component'
+	// };
+
+	let articleHtml = unified()
+		.use(remarkParse)
+		.use(remarkFrontmatter, ['yaml']) // Parse frontmatter
+		.use(remarkRehype)
+		.use(rehypeStringify)
+		.process(markdown);
+
+	let isEditing = false;
+	function editArticle() {
+		console.log('Edit Article');
+		isEditing = !isEditing;
+	}
 </script>
+
+<svelte:head>
+	<title>{articleData.title}</title>
+	<meta name="description" content={articleData.description} />
+</svelte:head>
 
 <div class="article-container">
 	<div class="article-titles">
 		<h1>{articleData.title}</h1>
 		<p class="description">{articleData.description}</p>
-		<img
-			src="https://thehustle.co/wp-content/uploads/2023/02/header.gif"
-			alt={articleData.image.alt}
-		/>
+		<img src={articleData.image.url} alt={articleData.image.alt} />
 		<div class="article-meta">
 			<a href="/author/{articleData.author}">{articleData.author}</a>
 			<span class="I-seperator">|</span>
@@ -36,27 +57,11 @@
 	</div>
 
 	<!-- Todo - Table of Contents based on the headers within the body -->
-
-	<h2>Sub title 1</h2>
-	<p>
-		In the fall of 1992, residents of the Upper East Side of Manhattan could not escape the sense
-		that they were witnessing history.
-	</p>
-
-	<h2>Sub title 2</h2>
-	<p>This is the second body of the article. Here I'll put some more lines</p>
-	<p>
-		In the fall of 1992, residents of the Upper East Side of Manhattan could not escape the sense
-		that they were witnessing history. In the fall of 1992, residents of the Upper East Side of
-		Manhattan could not escape the sense that they were witnessing history.
-	</p>
-
-	<h2>Sub title 2</h2>
-	<p>This is the second body of the article. Here I'll put some more lines</p>
-	<p>
-		After a five-year legal battle, in which Algin Management begged the city, including then-Mayor
-		Ed Koch, for forgiveness, New York imposed the maximum penalty: Ginsberg was going to need to.
-	</p>
+	{#await articleHtml then value}
+		<div class="articleContent">
+			{@html value}
+		</div>
+	{/await}
 </div>
 
 <style>

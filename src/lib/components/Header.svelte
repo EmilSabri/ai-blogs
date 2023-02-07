@@ -82,6 +82,7 @@
 </div>
 
 <style>
+	@import url('https://fonts.googleapis.com/css?family=Merriweather+Sans');
 	input {
 		border: none;
 	}
@@ -91,7 +92,6 @@
 		padding: 0;
 	}
 
-	@import url('https://fonts.googleapis.com/css?family=Merriweather+Sans');
 	.header-container {
 		font-family: 'Merriweather Sans', 'sans-serif';
 		font-size: 1.5rem;

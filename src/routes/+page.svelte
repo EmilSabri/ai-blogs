@@ -1,7 +1,10 @@
 <script>
 	// @ts-nocheck
+	import { ArticleCard } from '$lib/components/index';
 
-	// call fetch to POST to api/articles
+	export let data;
+
+	// call fetch to POST an article to api/articles
 	function postArticles(contentType, key, body) {
 		return fetch('/api/articles', {
 			method: 'POST',
@@ -48,7 +51,39 @@
 	};
 </script>
 
-<div />
+<div class="homepage">
+	<!-- Latest Article Section -->
+	<div class="">
+		<h3 class="sectionTitle">The Juiciest</h3>
+		<div class="articleGrid articleGridOuter">
+			{#each data.articles as article}
+				<ArticleCard {article} />
+			{/each}
+		</div>
+	</div>
+</div>
 
 <style>
+	.homepage {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.sectionTitle {
+		margin-bottom: 1.1429em;
+		padding-bottom: 0.2858em;
+
+		font-size: 0.875rem;
+		line-height: 1.7143;
+		font-weight: 700;
+		letter-spacing: 0.02em;
+
+		border-bottom: 1px solid;
+	}
+
+	.articleGrid {
+		display: grid;
+		grid-template-columns: 1fr;
+		/* gap: 1em 1.25em; */
+	}
 </style>
