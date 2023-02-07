@@ -22,6 +22,13 @@
 
 <style>
 	@import url('https://fonts.googleapis.com/css?family=Merriweather+Sans');
+
+	*,
+	*::before,
+	*::after {
+		box-sizing: border-box;
+	}
+
 	.body-container {
 		font-family: 'Merriweather Sans', 'sans-serif';
 		font-size: 1rem;

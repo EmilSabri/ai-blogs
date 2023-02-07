@@ -20,17 +20,19 @@
 	};
 </script>
 
-<div>
-	<h1>{articleData.title}</h1>
-	<p class="description">{articleData.description}</p>
-	<img
-		src="https://thehustle.co/wp-content/uploads/2023/02/header.gif"
-		alt={articleData.image.alt}
-	/>
-	<div class="article-meta">
-		<a href="/author/{articleData.author}">{articleData.author}</a>
-		<span class="I-seperator">|</span>
-		<div>Updated on {articleData.date}</div>
+<div class="article-container">
+	<div class="article-titles">
+		<h1>{articleData.title}</h1>
+		<p class="description">{articleData.description}</p>
+		<img
+			src="https://thehustle.co/wp-content/uploads/2023/02/header.gif"
+			alt={articleData.image.alt}
+		/>
+		<div class="article-meta">
+			<a href="/author/{articleData.author}">{articleData.author}</a>
+			<span class="I-seperator">|</span>
+			<div>Updated on {articleData.date}</div>
+		</div>
 	</div>
 
 	<!-- Todo - Table of Contents based on the headers within the body -->
@@ -60,6 +62,12 @@
 <style>
 	/* Todo - Pick font family for title and headers */
 	/* Todo - Pick font family that allows modifying the weights */
+
+	*,
+	*::before,
+	*::after {
+		box-sizing: border-box;
+	}
 	a {
 		outline: none;
 		text-decoration: underline;
@@ -92,7 +100,8 @@
 
 	img {
 		aspect-ratio: 600 / 450;
-		width: 100%;
+		/* width: 100%; */
+		max-width: 100%;
 
 		margin: 0px;
 		padding: 0px;
@@ -109,6 +118,14 @@
 		color: #212121;
 	}
 
+	.article-container {
+	}
+
+	.article-titles {
+		/* display: flex;
+		flex-direction: column; */
+	}
+
 	/* author, last date edited, and tags */
 	.article-meta {
 		font-size: 0.875rem;
@@ -117,7 +134,7 @@
 
 		margin: 0px;
 		margin-bottom: 2em;
-		padding: 1em 0px;
+		padding: 1em 0;
 
 		display: flex;
 		flex-direction: row;

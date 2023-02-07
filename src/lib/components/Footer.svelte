@@ -13,14 +13,18 @@
 
 <div class="footer-container">
 	<!-- Icon -->
-	<div class="footer-icon">Footer? I hardly even know her! (Put Icon + Website name here)</div>
+	<div class="footer-icon">BrianFog</div>
 
 	<!-- Email Capture -->
+	<!-- Todo - Capture emails into a list -->
 	<div class="email-form">
-		<div>
-			Join 100,000+ other like minded healthy individuals getting the weekly mind health update!
+		<div class="email-form__text">
+			Join 1,000 other mind conscious people getting the latest updates
 		</div>
-		<input type="text" placeholder="Your email address" />
+		<div class="email-form__wrapper">
+			<input class="email-form__input" type="text" placeholder="Your email address" />
+			<div class="email-form__btn">SIGN UP</div>
+		</div>
 	</div>
 
 	<!-- Nav Links -->
@@ -28,7 +32,7 @@
 		<ul class="footerMenu">
 			{#each navLinks as link}
 				<li class="footerMenuItem">
-					<a href={link.replace(' ', '-')}>{link}</a>
+					<a href={'/' + link.replace(' ', '-')}>{link}</a>
 				</li>
 			{/each}
 		</ul>
@@ -37,7 +41,7 @@
 	<!-- Socials -->
 	<div class="footerCol">
 		<div>
-			<div>Follow Us</div>
+			<div class="footerSocials-text">Follow Us</div>
 			<ul class="footerSocials">
 				{#each socialLinks as socialLink}
 					<li class="footerSocialsItem">
@@ -52,11 +56,22 @@
 
 	<!-- Privacy Policy -->
 	<div class="footerCol">
-		<a class="footerPP" href="/privacy-policy">Privacy Policy</a>
+		<div class="footerPP">
+			<a class="footerPP__item" href="/about">About Us</a>
+			<a class="footerPP__item" href="/contact">Contact Us</a>
+			<a class="footerPP__item" href="/privacy-policy">Privacy Policy</a>
+			<a class="footerPP__item" href="/terms-of-use">Terms of Use</a>
+		</div>
 	</div>
 </div>
 
 <style>
+	*,
+	*::before,
+	*::after {
+		box-sizing: border-box;
+	}
+
 	.ul,
 	li {
 		list-style: none;
@@ -83,13 +98,59 @@
 	}
 
 	.footer-icon {
+		font-size: 1.3rem;
+		font-weight: 600;
+
 		padding: 1em 0;
-		border-bottom: 1px solid #ccc;
+		border-bottom: 1px solid gray;
 	}
 
 	.email-form {
+		/* width: 100%; */
 		padding: 1em 0;
-		border-bottom: 1px solid #ccc;
+		border-bottom: 1px solid gray;
+	}
+
+	.email-form__text {
+		font-size: 1.3rem;
+	}
+
+	.email-form__wrapper {
+		display: flex;
+		flex-direction: row;
+		/* 
+		font-size: 1rem; */
+
+		margin-top: 0.2em;
+		border-radius: 1em;
+	}
+
+	.email-form__input {
+		display: inline-block;
+		flex: 1 1 0%;
+		font-size: 1rem;
+		padding: 0.8em;
+		border-top-left-radius: 9px;
+		border: 1px solid transparent;
+		border-width: 0px;
+	}
+
+	.email-form__input::placeholder {
+		font-size: 1rem;
+	}
+
+	.email-form__btn {
+		display: inline-block;
+
+		padding: 0.8em;
+
+		color: #fff;
+		background-color: rgb(211, 59, 82);
+		border-top-right-radius: 0.5em;
+		border-bottom-right-radius: 0.5em;
+		border: 1px solid transparent;
+		border-width: 0px;
+		line-height: 1.15;
 	}
 
 	.footerCol {
@@ -99,6 +160,9 @@
 		display: flex;
 		flex-direction: row;
 		justify-content: left;
+
+		padding-bottom: 1em;
+		border-bottom: 1px solid gray;
 	}
 
 	.footerMenu {
@@ -109,10 +173,17 @@
 	}
 
 	.footerMenuItem {
+		font-weight: 600;
 		padding: 0.5em;
 
 		display: flex;
 		flex-direction: row;
+	}
+
+	.footerSocials-text {
+		font-size: 1.2rem;
+		font-weight: 600;
+		padding: 0.5em 0;
 	}
 
 	.footerSocials {
@@ -129,6 +200,20 @@
 
 	.footerPP {
 		/*  */
+		font-size: 0.8rem;
+		/* font-weight: 600; */
 		margin-bottom: 2em;
+
+		display: flex;
+		flex-direction: row;
+	}
+
+	.footerPP__item {
+		border-right: 1px solid gray;
+		padding: 0 0.5em;
+	}
+
+	.footerPP__item:last-child {
+		border-right: none;
 	}
 </style>

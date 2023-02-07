@@ -1,7 +1,7 @@
 <script>
-	import { tick } from 'svelte';
-
 	// @ts-nocheck
+
+	import { tick } from 'svelte';
 
 	export let displayMenu = false;
 	let headerHeight;
@@ -18,6 +18,7 @@
 
 <div id="header" class="header-container" bind:clientHeight={headerHeight}>
 	<!-- Hamburger menu -->
+	<!-- svelte-ignore a11y-click-events-have-key-events -->
 	<div
 		class=""
 		on:click={() => {
@@ -34,7 +35,16 @@
 	<!-- Logo of Website (head with clouds surrounding it) -->
 
 	<!-- Name of Website  -->
-	<div>BrianFog</div>
+	<div class="header__web-icon">
+		<a
+			href="/"
+			on:click={() => {
+				if (displayMenu) {
+					displayMenu = !displayMenu;
+				}
+			}}>BrianFog</a
+		>
+	</div>
 
 	<!-- Search -->
 	<img
@@ -124,6 +134,11 @@
 
 	.disableSearch {
 		visibility: hidden;
+	}
+
+	.header__web-icon a {
+		text-decoration: none;
+		color: black;
 	}
 
 	.search-icon {
