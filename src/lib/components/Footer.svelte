@@ -1,5 +1,5 @@
 <script>
-	let navLinks = ['Brain Fog', 'Supplements', 'Lifestyle Factors', 'User Stories', 'Causes'];
+	import { siteLinks } from '$lib/data';
 	const socialLinks = [
 		{ link: 'https://www.facebook.com', icon: '/facebook.svg', name: 'Facebook' },
 		{ link: 'https://www.instagram.com', icon: '/instagram.svg', name: 'Instagram' },
@@ -30,9 +30,9 @@
 	<!-- Nav Links -->
 	<div class="footerCol">
 		<ul class="footerMenu">
-			{#each navLinks as link}
+			{#each siteLinks.nav as link}
 				<li class="footerMenuItem">
-					<a href={'/' + link.replace(' ', '-')}>{link}</a>
+					<a href={'/' + link.link}>{link.text}</a>
 				</li>
 			{/each}
 		</ul>
@@ -57,10 +57,9 @@
 	<!-- Privacy Policy -->
 	<div class="footerCol">
 		<div class="footerPP">
-			<a class="footerPP__item" href="/about">About Us</a>
-			<a class="footerPP__item" href="/contact">Contact Us</a>
-			<a class="footerPP__item" href="/privacy-policy">Privacy Policy</a>
-			<a class="footerPP__item" href="/terms-of-use">Terms of Use</a>
+			{#each siteLinks.footer as links}
+				<a class="footerPP__item" href={links.link}>{links.text}</a>
+			{/each}
 		</div>
 	</div>
 </div>

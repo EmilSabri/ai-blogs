@@ -80,7 +80,7 @@
 </script>
 
 <div class="homepage">
-	<button class="btn" on:click={generateArticle}>Generate OpenAI Article</button>
+	<!-- <button class="btn" on:click={generateArticle}>Generate OpenAI Article</button> -->
 	<!-- Latest Article Section -->
 	<div class="">
 		<h3 class="sectionTitle">The Juiciest</h3>

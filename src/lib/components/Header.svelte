@@ -1,12 +1,12 @@
 <script>
 	// @ts-nocheck
-
+	import { siteLinks } from '$lib/data';
 	import { tick } from 'svelte';
 
 	export let displayMenu = false;
 	let headerHeight;
 
-	let links = ['Brain Fog', 'Supplements', 'Lifestyle Factors', 'User Stories', 'Causes'];
+	let links = siteLinks.nav;
 
 	let searchInput;
 
@@ -14,39 +14,35 @@
 		await tick();
 		searchInput.focus();
 	}
+
+	function linkClick() {
+		displayMenu = !displayMenu;
+	}
 </script>
 
 <div id="header" class="header-container" bind:clientHeight={headerHeight}>
 	<!-- Hamburger menu -->
 	<!-- svelte-ignore a11y-click-events-have-key-events -->
-	<div
-		class=""
-		on:click={() => {
-			displayMenu = !displayMenu;
-		}}
-	>
+	<div class="">
 		<img
 			class="nav-bar-search-icon"
 			src="/svg/menu-icon.svg"
 			width="25px"
 			alt="Navigation menu icon"
+			on:click={() => {
+				displayMenu = !displayMenu;
+			}}
 		/>
 	</div>
 	<!-- Logo of Website (head with clouds surrounding it) -->
 
 	<!-- Name of Website  -->
 	<div class="header__web-icon">
-		<a
-			href="/"
-			on:click={() => {
-				if (displayMenu) {
-					displayMenu = !displayMenu;
-				}
-			}}>BrianFog</a
-		>
+		<a href="/" on:click={linkClick}>BrianFog</a>
 	</div>
 
 	<!-- Search -->
+	<!-- svelte-ignore a11y-click-events-have-key-events -->
 	<img
 		class="search-icon {displayMenu ? 'disableSearch' : ''}"
 		src="/svg/search-icon.svg"
@@ -73,7 +69,7 @@
 	<ul class="nav-links">
 		{#each links as link}
 			<li class="nav-link">
-				<a href="/{link.replace(' ', '-')}">{link}</a>
+				<a href="/{link.link}" on:click={linkClick}>{link.text}</a>
 			</li>
 		{/each}
 	</ul>
