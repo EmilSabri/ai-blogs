@@ -6,7 +6,7 @@
 
 <div class="articleCard">
 	<a href={'/articles/' + article.contentLink}>
-		<img class="test-img" src={article.image.url} alt={article.image.alt} />
+		<img class="test-img" src={article.image?.url} alt={article.image.alt} />
 		<h2 class="articleTitle">
 			{article.title}
 		</h2>

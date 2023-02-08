@@ -46,7 +46,7 @@ const csvHeaders = {
 export function getKeywords(someFunc) {
     const results = [];
 
-    fs.createReadStream('./src/lib/server/keywords/semaglutide.csv', { encoding: 'ucs-2' })
+    fs.createReadStream('./src/lib/server/keywords/brainfog.csv', { encoding: 'ucs-2' })
         .pipe(csv())
         .on('data', (data) => {
             // console.log(Object.keys(data)[0])
@@ -57,7 +57,6 @@ export function getKeywords(someFunc) {
             results.push(data)
         })
         .on('end', () => {
-            console.log(results[0])
 
 
             // Split keys of the object by the tab character
