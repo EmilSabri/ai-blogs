@@ -19,6 +19,7 @@ export type Article = {
     image: Image;
     tags: Categories[] | string[];
     contentLink: string;
+    keyword?: string;
 };
 
 export type Reward = {

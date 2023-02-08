@@ -38,7 +38,14 @@
 
 	<!-- Name of Website  -->
 	<div class="header__web-icon">
-		<a href="/" on:click={linkClick}>BrianFog</a>
+		<a
+			href="/"
+			on:click={() => {
+				if (displayMenu) {
+					linkClick();
+				}
+			}}>BrianFog</a
+		>
 	</div>
 
 	<!-- Search -->
