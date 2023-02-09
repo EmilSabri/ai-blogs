@@ -1,6 +1,7 @@
 <script>
 	// @ts-nocheck
 	import { siteLinks } from '$lib/data';
+	import { About } from '$lib/components';
 
 	const navLinks = siteLinks.nav.map((link) => link.text);
 
@@ -18,7 +19,7 @@
 <!-- Not sure if  -->
 {#if data.url === 'about'}
 	<!-- About Type Component -->
-	<!-- <About /> -->
+	<About />
 {/if}
 
 {#if data.url === 'contact'}

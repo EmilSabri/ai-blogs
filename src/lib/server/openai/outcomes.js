@@ -1,7 +1,7 @@
 // @ts-nocheck
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
-
+// USED JUST FOR TESTING
 const prompt = `Imagine an you’re expert doctor writing an article for a website.
 The website is about brain fog for people who experience brain fog.
 Each article will have a title, description, and content.

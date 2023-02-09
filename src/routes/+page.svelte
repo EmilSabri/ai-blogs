@@ -1,6 +1,6 @@
 <script>
 	// @ts-nocheck
-	import { Homepage } from '$lib/components/index';
+	import { Homepage } from '$lib/components';
 
 	export let data;
 
