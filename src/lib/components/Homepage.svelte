@@ -14,7 +14,7 @@
 		<!-- Latest Article Section -->
 		<!-- TODO - List top performing articles -->
 		<div class="trending">
-			<h3 class="sectionTitle">The Juiciest</h3>
+			<h3 class="sectionTitle">Trending</h3>
 			<div class="trending__list">
 				{#each data.articles as article}
 					<ArticleCard {article} />
@@ -27,7 +27,7 @@
 		<!-- Todo - Show recent articles -->
 		<!-- Small on the side of the trending section -->
 		<div class="fast-relief">
-			<h3 class="sectionTitle">Fast Relief</h3>
+			<h3 class="sectionTitle">Recent</h3>
 			<div class="fast-relief__list">
 				{#each products.slice(0, -2) as product}
 					<div class="products">
