@@ -101,7 +101,7 @@
 		font-weight: 600;
 		line-height: 1.5;
 
-		margin: 0.5rem 1rem;
+		/* margin: 0.5rem 1rem; */
 		/* padding-bottom: 0.5rem; */
 
 		display: flex;

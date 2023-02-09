@@ -13,7 +13,7 @@
 </svelte:head>
 
 <div class="body-container" class:disableScroll>
-	<div class="slot-container">
+	<div id="slot-thot" class="slot-container">
 		<Header bind:displayMenu={disableScroll} />
 		<slot />
 	</div>

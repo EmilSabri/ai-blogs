@@ -39,6 +39,12 @@
 	}
 </script>
 
+<!-- https://www.verywellmind.com/relationships-survey-7104667 -->
+<!-- Super Cool ^^^ The website uses a grid sizing of grid-template-columns: minmax(0, 37.5rem) 18.75rem
+	Meaning that the maxwidth will be 37.5rem = 600px of the article side and the remaining right side is used for ads.
+	It also has infinite scroll on the right side so ads keep spawning as you scroll down.
+ -->
+
 <svelte:head>
 	<title>{articleData.title}</title>
 	<meta name="description" content={articleData.description} />
