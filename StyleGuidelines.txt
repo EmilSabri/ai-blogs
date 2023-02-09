@@ -1,0 +1,17 @@
+
+Components
+    * Should never manage the outermost margin. Let the parent element that renders the component deal with that.
+    * Components should manage everything within themselves starting from their outermost element.
+
+
+Mobile -> Tablet -> Desktop Sizes
+    * Home page
+        * Smaller screen forces top to bottom layout
+        * As the screen gets larger then the layout changes to a left to right layout
+				* Ultimately, if something looks too big, then change design to be left to right.
+    * Article pages
+        * Content
+			* max-width 1280 px
+			* Responsive layout that works from mobile to desktop
+        * Components underneath the article might scale differently depending on the screen size, but
+		   that would be considered not the content. So it should follow a similar rule to the home page notes.

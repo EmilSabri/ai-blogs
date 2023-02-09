@@ -13,8 +13,8 @@
 </svelte:head>
 
 <div class="body-container" class:disableScroll>
-	<Header bind:displayMenu={disableScroll} />
 	<div class="slot-container">
+		<Header bind:displayMenu={disableScroll} />
 		<slot />
 	</div>
 	<Footer />
@@ -55,10 +55,10 @@
 		font-weight: 400;
 		line-height: 1.5;
 
-		max-width: 1280px;
+		max-width: 1250px;
 
 		margin: 0 auto;
-		padding: 1em;
+		/* padding: 1em; */
 	}
 
 	/* Notes

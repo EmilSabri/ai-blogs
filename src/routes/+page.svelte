@@ -1,6 +1,6 @@
 <script>
 	// @ts-nocheck
-	import { ArticleCard } from '$lib/components/index';
+	import { Homepage } from '$lib/components/index';
 
 	export let data;
 
@@ -79,46 +79,12 @@
 	}
 </script>
 
-<div class="homepage">
-	<!-- <button class="btn" on:click={generateArticle}>Generate OpenAI Article</button> -->
-	<!-- Latest Article Section -->
-	<div class="">
-		<h3 class="sectionTitle">The Juiciest</h3>
-		<div class="articleGrid articleGridOuter">
-			{#each data.articles as article}
-				<ArticleCard {article} />
-			{/each}
-		</div>
-	</div>
+<div class="home-wrapper">
+	<Homepage {data} />
 </div>
 
 <style>
-	.homepage {
-		display: flex;
-		flex-direction: column;
-	}
-
-	.btn {
-		font-size: 1rem;
-		padding: 1em;
-		/* fon */
-	}
-
-	.sectionTitle {
-		margin-bottom: 1.1429em;
-		padding-bottom: 0.2858em;
-
-		font-size: 0.875rem;
-		line-height: 1.7143;
-		font-weight: 700;
-		letter-spacing: 0.02em;
-
-		border-bottom: 1px solid;
-	}
-
-	.articleGrid {
-		display: grid;
-		grid-template-columns: 1fr;
-		/* gap: 1em 1.25em; */
+	.home-wrapper {
+		margin: 1em;
 	}
 </style>

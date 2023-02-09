@@ -12,54 +12,56 @@
 </script>
 
 <div class="footer-container">
-	<!-- Icon -->
-	<div class="footer-icon">BrianFog</div>
+	<div class="footer">
+		<!-- Icon -->
+		<div class="footer-icon">BrianFog</div>
 
-	<!-- Email Capture -->
-	<!-- Todo - Capture emails into a list -->
-	<div class="email-form">
-		<div class="email-form__text">
-			Join 1,000 other mind conscious people getting the latest updates
+		<!-- Email Capture -->
+		<!-- Todo - Capture emails into a list -->
+		<div class="email-form">
+			<div class="email-form__text">
+				Join 1,000 other mind conscious people getting the latest updates
+			</div>
+			<div class="email-form__wrapper">
+				<input class="email-form__input" type="text" placeholder="Your email address" />
+				<div class="email-form__btn">SIGN UP</div>
+			</div>
 		</div>
-		<div class="email-form__wrapper">
-			<input class="email-form__input" type="text" placeholder="Your email address" />
-			<div class="email-form__btn">SIGN UP</div>
-		</div>
-	</div>
 
-	<!-- Nav Links -->
-	<div class="footerCol">
-		<ul class="footerMenu">
-			{#each siteLinks.nav as link}
-				<li class="footerMenuItem">
-					<a href={'/' + link.link}>{link.text}</a>
-				</li>
-			{/each}
-		</ul>
-	</div>
-
-	<!-- Socials -->
-	<div class="footerCol">
-		<div>
-			<div class="footerSocials-text">Follow Us</div>
-			<ul class="footerSocials">
-				{#each socialLinks as socialLink}
-					<li class="footerSocialsItem">
-						<a href={socialLink.link}>
-							<img src="/svg/{socialLink.icon}" width="22" alt="Instagram Logo" />
-						</a>
+		<!-- Nav Links -->
+		<div class="footerCol">
+			<ul class="footerMenu">
+				{#each siteLinks.nav as link}
+					<li class="footerMenuItem">
+						<a href={'/' + link.link}>{link.text}</a>
 					</li>
 				{/each}
 			</ul>
 		</div>
-	</div>
 
-	<!-- Privacy Policy -->
-	<div class="footerCol">
-		<div class="footerPP">
-			{#each siteLinks.footer as links}
-				<a class="footerPP__item" href={links.link}>{links.text}</a>
-			{/each}
+		<!-- Socials -->
+		<div class="footerCol">
+			<div>
+				<div class="footerSocials-text">Follow Us</div>
+				<ul class="footerSocials">
+					{#each socialLinks as socialLink}
+						<li class="footerSocialsItem">
+							<a href={socialLink.link}>
+								<img src="/svg/{socialLink.icon}" width="22" alt="Instagram Logo" />
+							</a>
+						</li>
+					{/each}
+				</ul>
+			</div>
+		</div>
+
+		<!-- Privacy Policy -->
+		<div class="footerCol">
+			<div class="footerPP">
+				{#each siteLinks.footer as links}
+					<a class="footerPP__item" href={links.link}>{links.text}</a>
+				{/each}
+			</div>
 		</div>
 	</div>
 </div>
@@ -80,19 +82,16 @@
 		color: #000;
 	}
 	.footer-container {
-		/* width: 100%; */
-		/* padding: 0 1em; */
-		margin-bottom: 3em;
-
-		border-top: 1px solid #ccc;
-
+		background-color: #ab3;
+	}
+	.footer {
+		/* margin-bottom: 3em; */
 		max-width: 1280px;
 		padding: 0 1em;
 		margin: 0 auto;
 		display: flex;
 		flex-direction: column;
 
-		background-color: #ab3;
 		/* color: #fff; */
 	}
 

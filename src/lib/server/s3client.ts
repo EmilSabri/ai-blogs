@@ -56,10 +56,10 @@ function getObject(Bucket: string, Key: string) {
 }
 
 // List objects in s3 bucket
-function listObjects(getMetaData = false) {
+function listObjects(getMetaData = false, maxKeys = 50) {
     // eslint-disable-next-line no-async-promise-executor
     return new Promise(async (resolve, reject) => {
-        const bucketParams = { Bucket: S3_BUCKET_ARTICLES, MaxKeys: 50, Delimiter: "/" }
+        const bucketParams = { Bucket: S3_BUCKET_ARTICLES, MaxKeys: maxKeys, Delimiter: "/" }
         const listObjectsCommand = new ListObjectsV2Command(bucketParams)
 
         try {

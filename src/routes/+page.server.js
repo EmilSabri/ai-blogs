@@ -11,7 +11,7 @@ import { s3Client } from "$lib/server/s3client"
 
 export async function load() {
     // s3 list objects in bucket with credentials
-    const articlesMeta = await s3Client.listObjects(true)
+    const articlesMeta = await s3Client.listObjects(true, 10)
 
     return {
         articles: articlesMeta,

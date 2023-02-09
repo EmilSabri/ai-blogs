@@ -1,3 +1,5 @@
+//  Adding pages is super easy
+//  Simply create the name and link, then associate a page component with it.
 const nav_links = [
     { link: 'brain-fog', text: 'Brain Fog' },
     { link: 'supplements', text: 'Supplements' },
