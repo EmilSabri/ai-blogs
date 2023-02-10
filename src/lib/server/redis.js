@@ -5,7 +5,7 @@ import { Queue, Worker, FlowProducer } from 'bullmq'
 import { REDIS_HOST, REDIS_PORT, REDIS_USERNAME, REDIS_PASSWORD } from '$env/static/private'
 
 
-export const KEYWORD_QUEUE = 'KEYWORD_QUEUE'
+export const KEYWORD_QUEUE = 'NEW_KEYWORD_QUEUE-619'
 
 const connection = {
     host: REDIS_HOST, 
@@ -15,10 +15,7 @@ const connection = {
 }
 
 export const queue = new Queue(KEYWORD_QUEUE, { connection: connection })
-export const flow = new FlowProducer({ connection })
 
-
-// Possibly have worker for this queue  create a flow tree for each keyword
 
 const retryOpts = {
     attempts: 3,
@@ -28,37 +25,50 @@ const retryOpts = {
     }
 }
 
+const testQueue = new Queue('QUEUEBEE' , { connection: connection })
+
 const promptFlow = async (job) => {
     const keyword = job.data.keyword
-    const originalTree = await flow.add({
-        name: 'prompt',
-        queueName: 'prompt',
-        data: {},
-        children: [
-            {
-                name: 'outline-paragraphs',
-                data: {},
-                queueName: 'outline-paragraphs',
-                opts: retryOpts,
-                children: [
-                    {
-                        name: 'outline',
-                        data: {keyword: keyword},
-                        queueName: 'outline',
-                        opts: retryOpts,
-                    }
-                ],
-            }
-        ]
-    })
+    testQueue.add('testJob', {keyword: keyword, step: 0}, retryOpts)
 
+    // await flow.add({
+    //     name: 'prompt',
+    //     queueName: 'prompt-step-69',
+    //     data: {keyword: keyword, step: 0},
+    //     opts: retryOpts
+    // })
     console.log(`Start promptFlow - ${keyword}`)
 }
 
+// const promptFlow = async (job) => {
+//     const keyword = job.data.keyword
+//     const originalTree = await flow.add({
+//         name: 'prompt',
+//         queueName: 'prompt',
+//         data: {},
+//         children: [
+//             {
+//                 name: 'outline-paragraphs',
+//                 data: {},
+//                 queueName: 'outline-paragraphs',
+//                 opts: retryOpts,
+//                 children: [
+//                     {
+//                         name: 'outline',
+//                         data: {keyword: keyword},
+//                         queueName: 'outline',
+//                         opts: retryOpts,
+//                     }
+//                 ],
+//             }
+//         ]
+//     })
+
+//     console.log(`Start promptFlow - ${keyword}`)
+// }
+
 // Workers
 new Worker(KEYWORD_QUEUE, promptFlow, {connection: connection})
-new Worker(KEYWORD_QUEUE, promptFlow, {connection: connection})
-
 
 // const testPubArticle = 'brain fog reddit'
 // await redisPub.publish(KEYWORD_QUEUE, testPubArticle);
