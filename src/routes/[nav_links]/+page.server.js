@@ -12,10 +12,7 @@ export async function load({ params }) {
     if ( !allowedUrls.includes(url) ) {
         throw error(404, `Not Found for ${url}`)
     }
-
-
-
-    // Todo - Get all posts with the tag {data.url} 
     
+    // Todo - Get all posts with the tag {data.url} 
     return {url: url};
 }

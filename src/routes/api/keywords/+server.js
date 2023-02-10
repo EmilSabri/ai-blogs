@@ -1,5 +1,6 @@
 // @ts-nocheck
 import { getKeywords } from '$lib/server'
+import { KEYWORD_QUEUE, queue } from '$lib/server/redis'
 
 const keywords = [
 //   'brain fog',
@@ -15,7 +16,7 @@ const keywords = [
 //   'foggy head',
 //   'brain fog and fatigue',
 //   'mind fog',
-  'brain fog reddit',
+//   'brain fog reddit',
   'brain fog depression',
   'adhd brain fog',
   'chemo brain fog',
@@ -124,8 +125,10 @@ export async function GET() {
     // }
 
     // Remove 20 keyword limit once keyword queue has been set up
-    const body = keywords.slice(0, 20)
+    const body = keywords.slice(0, 5)
+    body.forEach((keyword) => {
+        queue.add('keywords', { keyword: keyword })
+    })
 
     return new Response(JSON.stringify(body))
-
 }

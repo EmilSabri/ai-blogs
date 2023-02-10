@@ -7,7 +7,7 @@
 */
 
 // @ts-nocheck
-import { s3Client } from "$lib/server/s3client"
+import { s3Client } from "$lib/server/s3/s3client"
 
 export async function load() {
     // s3 list objects in bucket with credentials

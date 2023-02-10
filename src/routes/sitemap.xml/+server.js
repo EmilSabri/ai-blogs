@@ -2,7 +2,7 @@
 // Create function get() that returns a sitemap.xml file
 
 import { DOMAIN } from "$env/static/private"
-import { s3Client } from "$lib/server/s3client"
+import { s3Client } from "$lib/server/s3/s3client"
 
 function tempXML(url) {
     return `<url>

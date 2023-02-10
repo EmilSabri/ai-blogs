@@ -10,6 +10,7 @@ const configuration = new Configuration({
 const openAiApi = new OpenAIApi(configuration);
 
 // Constants for text completion
+const model_billing = .0200;  // Measured in $/1000 tokens
 const model = 'text-davinci-003';
 const max_tokens = 1500;
 const temperature = 0.7;
@@ -36,18 +37,15 @@ async function generateArticle(prompt) {
   } catch (error) {
     if (error.response) {
       console.error(error.response.status, error.response.data);
-      return error.response.data
+      return 'error'
       
     } else {
       console.error(`Error with OpenAI API request: ${error.message}`);
-      return {
-          error: {
-          message: 'An error occurred during your request.',
-        }
-      };
-    }
+      return 'error'
+    };
   }
 }
+
 
 
 function articleOutline(keyword) {

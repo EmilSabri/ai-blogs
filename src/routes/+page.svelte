@@ -51,7 +51,6 @@
 	};
 
 	async function generateArticle() {
-		const keyword = 'hypothyroidism brain fog';
 		const respKeywords = await fetch('/api/keywords');
 		const keywords = await respKeywords.json();
 

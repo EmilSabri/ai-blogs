@@ -1,6 +1,5 @@
 /* eslint-disable no-constant-condition */
 // @ts-nocheck
-import { S3_BUCKET_ARTICLES } from "$env/static/private";
 import { openai } from "$lib/server";
 
 import { json } from "@sveltejs/kit";
