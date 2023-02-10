@@ -1,6 +1,7 @@
 // @ts-nocheck
 import { getKeywords } from '$lib/server'
 import { KEYWORD_QUEUE, queue } from '$lib/server/redis'
+import { test } from '$lib/server/openai/broker'
 
 const keywords = [
 //   'brain fog',
@@ -17,22 +18,22 @@ const keywords = [
 //   'brain fog and fatigue',
 //   'mind fog',
 //   'brain fog reddit',
-  'brain fog depression',
-  'adhd brain fog',
-  'chemo brain fog',
-  'brain feels foggy',
-  'fuzzy brain',
-  'constant brain fog',
-  'my brain feels foggy',
-  'brain fog cure',
-  'feeling foggy',
-  'pandemic brain fog',
-  'brain fog after eating',
-  'cloudy head feeling',
-  'head feels heavy and foggy',
-  'my head feels foggy',
-  'cloudy head',
-  'get rid of brain fog',
+//   'brain fog depression',
+//   'adhd brain fog',
+//   'chemo brain fog',
+//   'brain feels foggy',
+//   'fuzzy brain',
+//   'constant brain fog',
+//   'my brain feels foggy',
+//   'brain fog cure',
+//   'feeling foggy',
+//   'pandemic brain fog',
+//   'brain fog after eating',
+//   'cloudy head feeling',
+//   'head feels heavy and foggy',
+//   'my head feels foggy',
+//   'cloudy head',
+//   'get rid of brain fog',
   'cloudy mind',
   'severe brain fog',
   'period brain fog',
@@ -125,10 +126,12 @@ export async function GET() {
     // }
 
     // Remove 20 keyword limit once keyword queue has been set up
-    const body = keywords.slice(0, 5)
-    body.forEach((keyword) => {
-        queue.add('keywords', { keyword: keyword })
-    })
+    test()
 
-    return new Response(JSON.stringify(body))
+    // const body = keywords.slice(0, 1)
+    // body.forEach((keyword) => {
+    //     queue.add('keywords', { keyword: keyword })
+    // })
+
+    return new Response(JSON.stringify({body: 'success'}))
 }

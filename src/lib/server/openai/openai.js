@@ -37,15 +37,17 @@ async function generateArticle(prompt) {
   } catch (error) {
     if (error.response) {
       console.error(error.response.status, error.response.data);
-      return 'error'
-      
+      return error.response.data
     } else {
       console.error(`Error with OpenAI API request: ${error.message}`);
-      return 'error'
-    };
+      return {
+          error: {
+          message: 'An error occurred during your request.',
+        }
+      };
+    }
   }
 }
-
 
 
 function articleOutline(keyword) {

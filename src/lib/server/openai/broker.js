@@ -10,8 +10,9 @@
 
 import { REDIS_HOST, REDIS_PORT, REDIS_USERNAME, REDIS_PASSWORD } from '$env/static/private'
 import { openai } from './openai'
-import { Queue, Worker, FlowProducer } from 'bullmq';
+import { Queue, Worker, QueueEvents } from 'bullmq';
 import { articles } from '$lib/server/articles'
+import { flow } from '$lib/server/redis'
 
 const connection = {
     host: REDIS_HOST, 
@@ -23,7 +24,22 @@ const connection = {
 const BROKER_QUEUE = 'BROKER_QUEUE'
 
 const queue = new Queue(BROKER_QUEUE, { connection: connection })
-const flow = new FlowProducer({ connection })
+
+const promptEvents = new QueueEvents('prompt', { connection: connection });
+const paragraphEvents = new QueueEvents('outline-paragraphs', { connection: connection });
+const outlineEvents = new QueueEvents('outline', { connection: connection });
+
+promptEvents.on('failed', ({ jobId, failedReason }) => {
+    console.log(`Job ${jobId} failed with reason ${failedReason}`);
+})
+paragraphEvents.on('failed', ({ jobId, failedReason }) => {
+    console.log(`Job ${jobId} failed with reason ${failedReason}`);
+})
+outlineEvents.on('failed', ({ jobId, failedReason }) => {
+    console.log(`Job ${jobId} failed with reason ${failedReason}`);
+})
+
+
 
 const retryOpts = {
     attempts: 3,
@@ -34,29 +50,28 @@ const retryOpts = {
 }
 
 // Open AI flow
-
 export async function test() {
-    const originalTree = await flow.add({
-        name: 'prompt',
-        queueName: 'prompt',
-        data: {},
-        children: [
-            {
-                name: 'outline-paragraphs',
-                data: {},
-                queueName: 'outline-paragraphs',
-                opts: retryOpts,
-                children: [
-                    {
-                        name: 'outline',
-                        data: {keyword: "brain fog reddit"},
-                        queueName: 'outline',
-                        opts: retryOpts,
-                    }
-                ],
-            }
-        ]
-    })
+    // const originalTree = await flow.add({
+    //     name: 'prompt',
+    //     queueName: 'prompt',
+    //     data: {},
+    //     children: [
+    //         {
+    //             name: 'outline-paragraphs',
+    //             data: {},
+    //             queueName: 'outline-paragraphs',
+    //             opts: retryOpts,
+    //             children: [
+    //                 {
+    //                     name: 'outline',
+    //                     data: {keyword: "brain fog reddit"},
+    //                     queueName: 'outline',
+    //                     opts: retryOpts,
+    //                 }
+    //             ],
+    //         }
+    //     ]
+    // })
 
     return {ding: "dong"}
 }
@@ -64,8 +79,6 @@ export async function test() {
 const promptFunc = async (job) => {
     const childrenValues = await job.getChildrenValues()
     const params = Object.values(childrenValues)[0]
-    console.log('worker-prompt', params.metadata)
-    console.log(params.markdown)
 
     // Send this data off to S3 bucket and article queue to be processed
     await articles.upload(
@@ -79,17 +92,14 @@ const promptFunc = async (job) => {
         `${params.metadata.contentLink}/metadata.json`, 
         params.metadata
     )
+    const millis = Date.now() - params.startTime
+    console.log(`Uploaded ${params.metadata.keyword} to S3 took: ${millis / 1000} secs`)
 }
-
-const workerPrompt = new Worker('prompt', promptFunc, {connection: connection})
 
 const paragraphsFunc = async (job) => {
     // Get children values
     const childrenValues = await job.getChildrenValues()
     const params = Object.values(childrenValues)[0]
-    console.log("work-paragraphs", params.keyword, params.title, params.description, params.headers)
-
-
 
     const prompt = openai.articleParagraphs(params.keyword, params.title, params.description, params.headers)
     const resp2 = await openai.generateArticle(prompt)
@@ -120,7 +130,8 @@ const paragraphsFunc = async (job) => {
 
     const body = {
         markdown: markdown,
-        metadata: params.metadata
+        metadata: params.metadata,
+        startTime: params.startTime
     }
     return body
     // Call open AI 
@@ -128,12 +139,10 @@ const paragraphsFunc = async (job) => {
 
 }
 
-const workerParagraphs = new Worker('outline-paragraphs', paragraphsFunc, {connection: connection})
-
 
 const outlineFunc = async (job) => {
+    const startTime = Date.now()
     const keyword = job.data.keyword
-    console.log('worker-outline', keyword)
    
     const metadata = {
         title: 'title',
@@ -156,6 +165,7 @@ const outlineFunc = async (job) => {
 
     if (resp === 'error') {
         // eslint-disable-next-line no-undef
+        console.log(`${keyword}`, "Rate limited, waiting 1 second")
         await worker.rateLimit(1000);
         throw Worker.RateLimitError();
     }
@@ -191,13 +201,34 @@ const outlineFunc = async (job) => {
         title: title,
         description: description,
         headers: headers,
-        metadata: metadata
+        metadata: metadata,
+        startTime: startTime
     }
     return body
 }
 
-const workerOutline = new Worker('outline', outlineFunc, {connection: connection})
+// 1 Worker
+// Took 26.832 seconds for 1 job = avg 26.832 seconds
+// Took 196 seconds for 9 jobs = avg 21 seconds
 
+// 2 Workers
+// Took 77 seconds for 6 jobs = avg 12 seconds per job
+// Took 135 seconds for 10 jobs = avg 13.5 seconds per job
+
+new Worker('prompt', promptFunc, {connection: connection})
+new Worker('outline-paragraphs', paragraphsFunc, {connection: connection})
+new Worker('outline', outlineFunc, {connection: connection})
+
+new Worker('prompt', promptFunc, {connection: connection})
+new Worker('outline-paragraphs', paragraphsFunc, {connection: connection})
+new Worker('outline', outlineFunc, {connection: connection})
+
+
+// Keep getting ReplyError: ERR max number of clients reached
+// when I add another set of workers (3)
+// How many clients does each worker use?
+// Is there a way to limit the number of clients?
+// What is the correct limit?
 
 
 // Todo - usage and billing limit

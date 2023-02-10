@@ -1,7 +1,7 @@
 // @ts-nocheck
 import { Entity, Schema} from 'redis-om'
 import { redisOm } from "../../hooks.server"
-import { Queue, Worker } from 'bullmq'
+import { Queue, Worker, FlowProducer } from 'bullmq'
 import { REDIS_HOST, REDIS_PORT, REDIS_USERNAME, REDIS_PASSWORD } from '$env/static/private'
 
 
@@ -15,21 +15,49 @@ const connection = {
 }
 
 export const queue = new Queue(KEYWORD_QUEUE, { connection: connection })
+export const flow = new FlowProducer({ connection })
 
-// Possibly have worker for this queue create a flow tree for each keyword
 
+// Possibly have worker for this queue  create a flow tree for each keyword
+
+const retryOpts = {
+    attempts: 3,
+    backoff: {
+        type: 'exponential',
+        delay: 500
+    }
+}
+
+const promptFlow = async (job) => {
+    const keyword = job.data.keyword
+    const originalTree = await flow.add({
+        name: 'prompt',
+        queueName: 'prompt',
+        data: {},
+        children: [
+            {
+                name: 'outline-paragraphs',
+                data: {},
+                queueName: 'outline-paragraphs',
+                opts: retryOpts,
+                children: [
+                    {
+                        name: 'outline',
+                        data: {keyword: keyword},
+                        queueName: 'outline',
+                        opts: retryOpts,
+                    }
+                ],
+            }
+        ]
+    })
+
+    console.log(`Start promptFlow - ${keyword}`)
+}
 
 // Workers
-const worker = new Worker(KEYWORD_QUEUE, async (job) => {
-    if (job.name === 'keywords') {
-        console.log('worker1', job.data.keyword, Date.now())
-    }
-}, {connection: connection})
-
-
-worker.on('error', err => {
-    console.log(err)
-})
+new Worker(KEYWORD_QUEUE, promptFlow, {connection: connection})
+new Worker(KEYWORD_QUEUE, promptFlow, {connection: connection})
 
 
 // const testPubArticle = 'brain fog reddit'
