@@ -2,21 +2,15 @@
 // @ts-nocheck
 /* 
     broker.js
-    1. The broker will be responsible for managing the queue of requests to the OpenAI API.
-    2. It will also be responsible for managing the rate limit of the API.
-    3. It will also be responsible for managing the billing of the API.
 
 */
 
-import { REDIS_HOST, REDIS_PORT, REDIS_USERNAME, REDIS_PASSWORD } from '$env/static/private'
-import { openai } from './openai'
-import { Queue, Worker, QueueEvents } from 'bullmq';
-import { articles } from '$lib/server/articles'
-import { flow } from '$lib/server/redis'
-import { outlineFunc } from './outline_job';
-import { paragraphsFunc } from './paragraph_job';
-import { promptFunc } from './prompt_job';
+import { REDIS_HOST, REDIS_PORT, REDIS_USERNAME, REDIS_PASSWORD, OPENAI_BILL_BUFFER, OPENAI_MAX_BILL } from '$env/static/private'
+import { model_billing } from './openai'
+import { Worker,  } from 'bullmq';
 
+import { ioRedis } from '../../../hooks.server';
+import { createArticleFunc, calcMaxSteps } from './prompts';
 
 const connection = {
     host: REDIS_HOST, 
@@ -26,7 +20,6 @@ const connection = {
 }
 
 const BROKER_QUEUE = 'BROKER_QUEUE'
-
 
 // Open AI flow
 export async function test() {
@@ -41,17 +34,7 @@ export async function test() {
 // 2 Workers
 // Took 77 seconds for 6 jobs = avg 12 seconds per job
 // Took 135 seconds for 10 jobs = avg 13.5 seconds per job
-
 // Took 107 seconds for 7 jobs = avg 15.2 seconds per job
-
-// new Worker('prompt', promptFunc, {connection: connection})
-// new Worker('outline-paragraphs', paragraphsFunc, {connection: connection})
-// new Worker('outline', outlineFunc, {connection: connection})
-
-// new Worker('prompt', promptFunc, {connection: connection})
-// new Worker('outline-paragraphs', paragraphsFunc, {connection: connection})
-// new Worker('outline', outlineFunc, {connection: connection})
-
 
 // Process Step Jobs
 // 1 Worker
@@ -63,46 +46,51 @@ export async function test() {
 // Took 34.616 secs for 20 jobs = avg 1.73 seconds
 const promptStepFunc = async (job) => {
 
-    if (job.data.step === 0) {
-        let resp = await outlineFunc(job)
-        await job.update({...job.data, step: 1, body: resp })
+    // Calculate next usage billing 
+    const token_usage = await ioRedis.get('openai_total_tokens')
+    const request_count = await ioRedis.get('openai_request_count')
+    // console.log("TOKEN USAGE", token_usage, "REQUEST COUNT", request_count)
+    const curr_billing = (token_usage / 1000) * model_billing
+    const next_usage_bill = (token_usage / request_count) / 1000 * model_billing
+
+    // don't throw just check if it's greater than max - buffer and notify user
+    if ( curr_billing + next_usage_bill*2 >= OPENAI_MAX_BILL - OPENAI_BILL_BUFFER ) {
+        console.log("MAX BILLING REACHED")
+    } else if ( curr_billing + next_usage_bill*2 >= OPENAI_MAX_BILL ) {
+        // If next usage will be >= max then throw error
+        console.log("BILLING REACHED MAXIMUM")
+        throw new Error("BILLING REACHED MAXIMUM")
     }
 
-    if (job.data.step === 1) {
-        let resp = await paragraphsFunc(job)
-        await job.update({...job.data, step: 2, body: resp })
-    }
-
-    if (job.data.step === 2) {
-        await promptFunc(job)
-        await job.update({...job.data, step: 3 })
+    // Todo - If OpenAI request fails (too many requests or servers down)
+    // Calculate exponential backoff by keeping track of the number of times 
+    // tried in job.data.retries and using that in the backoff formula
+    try {
+        while (job.data.step < calcMaxSteps(job.data.articleType)) {
+            let resp = await createArticleFunc(job)
+            await job.update({...job.data, step: job.data.step + 1, body: resp })
+        }
+    } catch (err) {
+        await job.update({...job.data, retries: job.data.retries + 1 })
+        const backoff = (2 ** (job.data.retries)) * 1000 // delay = 1000ms = 1 second
+        this.rateLimit(backoff)     // todo - Check if this works. Might fail on 'this'
+        console.log("WORKER ERROR", err)
     }
 }
 
 new Worker('QUEUEBEE', promptStepFunc, {connection: connection})
 new Worker('QUEUEBEE', promptStepFunc, {connection: connection})
-new Worker('QUEUEBEE', promptStepFunc, {connection: connection})
-new Worker('QUEUEBEE', promptStepFunc, {connection: connection})
-new Worker('QUEUEBEE', promptStepFunc, {connection: connection})
+// new Worker('QUEUEBEE', promptStepFunc, {connection: connection})
+// new Worker('QUEUEBEE', promptStepFunc, {connection: connection})
+// new Worker('QUEUEBEE', promptStepFunc, {connection: connection})
 
-new Worker('QUEUEBEE', promptStepFunc, {connection: connection})
-new Worker('QUEUEBEE', promptStepFunc, {connection: connection})
-new Worker('QUEUEBEE', promptStepFunc, {connection: connection})
-new Worker('QUEUEBEE', promptStepFunc, {connection: connection})
-new Worker('QUEUEBEE', promptStepFunc, {connection: connection})
+// new Worker('QUEUEBEE', promptStepFunc, {connection: connection})
+// new Worker('QUEUEBEE', promptStepFunc, {connection: connection})
+// new Worker('QUEUEBEE', promptStepFunc, {connection: connection})
+// new Worker('QUEUEBEE', promptStepFunc, {connection: connection})
+// new Worker('QUEUEBEE', promptStepFunc, {connection: connection})
 
 
 // Keep getting ReplyError: ERR max number of clients reached
 // Figure out way to keep track of number of # of clients and limit them
 // Figure out way to gracefully catch this error and limit the number of workers
-
-// How many clients does each worker use?
-    // Seems to be 1 client per worker
-// Is there a way to limit the number of clients?
-    // Yes
-
-
-// Todo - usage and billing limit
-// Still unsure the best way to track number of tokens and the billing usage with these workers.
-// Might need to implement a redis variable with a lock to keep track of the number of tokens used and
-// cancel jobs if they are going to exceed the limit.

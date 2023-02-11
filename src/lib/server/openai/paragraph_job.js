@@ -3,13 +3,10 @@
 import { openai } from './openai'
 
 export const paragraphsFunc = async (job) => {
-    // Get children values
-    // const childrenValues = await job.getChildrenValues()
-    // const params = Object.values(childrenValues)[0]
     const params = job.data.body
 
-    const prompt = openai.articleParagraphs(params.keyword, params.title, params.description, params.headers)
-    const resp2 = await openai.generateArticle(prompt)
+    const prompt = articleParagraphs(params.keyword, params.title, params.description, params.headers)
+    const resp2 = await openai.call(prompt)
     const text = resp2.data.choices[0].text
 
     const headers2 = [];
@@ -41,7 +38,22 @@ export const paragraphsFunc = async (job) => {
         startTime: params.startTime
     }
     return body
-    // Call open AI 
-    // prompt = openai.articleParagraphs(params.keyword, params.title, params.description, params.headers)
-
 }
+
+function articleParagraphs(keyword, title, description, headers) {
+    return `Imagine you’re an expert doctor writing an article for a website.
+  The website is about brain fog, remedies to brain fog, supplements, and general information related to brain fog.
+  Write the outline to an article with these keywords "${keyword}".
+  ${title}
+  ${description}
+  ${headers.join('\n')}
+  Now write a paragraph for each header1 to header${headers.length} that are 6 sentences long each.
+  In the format of
+  Header1: data
+  paragraph1
+  HeaderX:
+  paragraphX
+  HeaderLast:
+  paragraphLast
+  `
+  }

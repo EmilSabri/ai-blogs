@@ -119,7 +119,6 @@ export async function GET() {
 
         console.log(keywords)
     }
-
     
     // const body = {
     //     keywords: await getKeywords(callOAI)
@@ -127,10 +126,11 @@ export async function GET() {
 
     // Remove 20 keyword limit once keyword queue has been set up
     test()
-
-    const body = keywords.slice(0, 5)
+    let i = 0
+    const body = keywords.slice(0, 1)
     body.forEach((keyword) => {
-        queue.add('keywords', { keyword: keyword })
+        
+        queue.add('keywords', { keyword: keyword})
     })
 
     return new Response(JSON.stringify({body: 'success'}))

@@ -20,4 +20,5 @@ export const promptFunc = async (job) => {
     )
     const millis = Date.now() - params.startTime
     console.log(`Uploaded ${params.metadata.keyword} to S3 took: ${millis / 1000} secs`)
+    return {success: true}
 }

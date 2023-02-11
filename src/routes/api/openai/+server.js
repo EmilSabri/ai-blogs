@@ -52,7 +52,7 @@ export async function POST( event ) {
     const req = await event.request.json()
 
     let prompt = openai.articleOutline(req.keyword)
-    const resp = await openai.generateArticle(prompt)
+    const resp = await openai.call(prompt)
  
 
     let text = resp.data.choices[0].text
@@ -83,7 +83,7 @@ export async function POST( event ) {
     }
 
     prompt = openai.articleParagraphs(req.keyword, title, description, headers)
-    const resp2 = await openai.generateArticle(prompt)
+    const resp2 = await openai.call(prompt)
     text = resp2.data.choices[0].text
 
     const headers2 = [];
@@ -102,13 +102,7 @@ export async function POST( event ) {
         i += 1;
     }
     const split_headings = headers2.map(header => header.h.split(':'))
-    // console.log("---------------------------------")
-    // console.log(text)
-    // console.log(split_headings)
-    // console.log("---------------------------------")
     
-    
-
     const markdown = headers2.map(pair => {
         return `## ${pair.h.trim().split(':')[1]}\n\n${pair.p}\n\n`
     }).join('\n')

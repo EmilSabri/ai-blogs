@@ -1,16 +1,17 @@
 // @ts-nocheck
 import { OPENAI_KEY, OPENAI_MAX_BILL } from "$env/static/private";
 import { Configuration, OpenAIApi } from "openai";
+import { ioRedis } from "../../../hooks.server";
 
 
 const configuration = new Configuration({
     apiKey: OPENAI_KEY,
-  });
+});
 
 const openAiApi = new OpenAIApi(configuration);
 
 // Constants for text completion
-const model_billing = .0200;  // Measured in $/1000 tokens
+export const model_billing = .0200;  // Measured in $/1000 tokens
 const model = 'text-davinci-003';
 const max_tokens = 1500;
 const temperature = 0.7;
@@ -18,9 +19,8 @@ const top_p = 1;
 const frequency_penalty = 0.2;
 const presence_penalty = 0;
 
-// Todo - Track usage for billing 
 
-async function generateArticle(prompt) {
+async function call(prompt) {
   const body = {
     model: model,
     prompt: prompt,
@@ -33,8 +33,10 @@ async function generateArticle(prompt) {
 
   try {
     const resp = await openAiApi.createCompletion(body);
+    await updateUsage(resp.data.usage)
     return resp;
   } catch (error) {
+    // Todo - Throw ERORR
     if (error.response) {
       console.error(error.response.status, error.response.data);
       return error.response.data
@@ -49,50 +51,14 @@ async function generateArticle(prompt) {
   }
 }
 
-
-function articleOutline(keyword) {
-    return `Imagine you’re an expert doctor writing an article for a website.
-    The website is about brain fog, remedies to brain fog, supplements, and general information related to brain fog.
-    Write the outline to an article with these keywords "${keyword}".
-    An outline has a title, description, and headers that structure the article.
-    The description is brief typically 2 to 3 sentences long.
-    The headers are less than 8 words. Every outline will have 5 to 8 headers.
-    In the format of 
-    Title: data
-    Description: data
-    Headers1:
-    HeadersX:
-    HeadersLast:`
-}
-
-function articleParagraphs(keyword, title, description, headers) {
-  return `Imagine you’re an expert doctor writing an article for a website.
-The website is about brain fog, remedies to brain fog, supplements, and general information related to brain fog.
-Write the outline to an article with these keywords "${keyword}".
-${title}
-${description}
-${headers.join('\n')}
-Now write a paragraph for each header1 to header${headers.length} that are 6 sentences long each.
-In the format of
-Header1: data
-paragraph1
-HeaderX:
-paragraphX
-HeaderLast:
-paragraphLast
-`
-}
-
-function articlePrompt(keyword) {
-    return `Imagine an you’re expert doctor writing an article for a website.
-The website is about brain fog for people who experience brain fog.
-Each article will have a title, description, and content.
-The content typically has short headers, less than 6 words, describing each paragraph and the paragraphs should be about 3 to 4 sentences long.
-The article’s content should have around 500 words in it. Now give me an article based on these keywords "${keyword}".`
+// TODO -
+// 1. Track trailing 30 days of usage
+// 2. Track total usage as a list of trailing 30 days usage = [month1_usage, month2_usage, ...]
+async function updateUsage(usage) {
+  await ioRedis.incrby('openai_total_tokens', usage.total_tokens)
+  await ioRedis.incrby('openai_request_count', 1)
 }
 
 export const openai = {
-    generateArticle,
-    articleOutline,
-    articleParagraphs,
+    call,
 }

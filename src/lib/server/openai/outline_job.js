@@ -5,16 +5,15 @@ import { openai } from './openai'
 
 // export const outlineFunc = async (job) => {
 
-//     const body = {
-//         keyword: job.data.keyword,
-//         title: 'title',
-//     }
-//     return body
-// }
+/*
+    job.data.body = {
+        keyword: 'keyword',
+    }
+*/
 
 export const outlineFunc = async (job) => {
     const startTime = Date.now()
-    const keyword = job.data.keyword
+    const keyword = job.data.body.keyword    
    
     const metadata = {
         title: 'title',
@@ -30,10 +29,9 @@ export const outlineFunc = async (job) => {
         keyword: keyword
     }
 
-
     // Mock data to simulate OpenAI response
-    const prompt = openai.articleOutline(keyword)
-    const resp = await openai.generateArticle(prompt)
+    const prompt = articleOutline(keyword)
+    const resp = await openai.call(prompt)
 
     if (resp === 'error') {
         // eslint-disable-next-line no-undef
@@ -77,4 +75,19 @@ export const outlineFunc = async (job) => {
         startTime: startTime
     }
     return body
+}
+
+function articleOutline(keyword) {
+    return `Imagine you’re an expert doctor writing an article for a website.
+    The website is about brain fog, remedies to brain fog, supplements, and general information related to brain fog.
+    Write the outline to an article with these keywords "${keyword}".
+    An outline has a title, description, and headers that structure the article.
+    The description is brief typically 2 to 3 sentences long.
+    The headers are less than 8 words. Every outline will have 5 to 8 headers.
+    In the format of 
+    Title: data
+    Description: data
+    Headers1:
+    HeadersX:
+    HeadersLast:`
 }
