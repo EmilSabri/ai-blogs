@@ -78,8 +78,8 @@
 
 <!-- Menu (click === true) -->
 <div class="nav-menu" class:displayMenu>
-	<div class="search-input-container">
-		<form on:submit|preventDefault={goToSearch}>
+	<div>
+		<form on:submit|preventDefault={goToSearch} class="search-input-container">
 			<img
 				class="search-input-icon"
 				src="/svg/search-icon.svg"
@@ -174,31 +174,29 @@
 	}
 
 	.search-input-container {
-		/* display: flex;
+		display: flex;
 		flex-direction: row;
-		justify-content: center;
-		align-items: center; */
-		border: 1px solid #212121;
+		/* justify-content: center; */
+		/* align-items: center; */
+		border: 2px solid #212121;
 		border-radius: 1em;
+		padding: 0.4em;
 		width: 80%;
-		/* padding: 0.5em; */
-		padding-top: 0.7em;
-		padding-left: 1em;
-		/* padding-bottom; */
 	}
 
 	.search-input-icon {
+		/* border: 2px solid #212121; */
+		padding-left: 1em;
 	}
 
 	.search-input {
+		width: 100%;
 		font-size: 1rem;
 		font-family: 'Merriweather Sans', 'sans-serif';
 		padding: 0.5em;
 
-		/* padding: 0.5em; */
-		padding-left: 1em;
-		padding-bottom: 0.5em;
-		/* margin-top: 2em */
+		/* padding-left: 1em;
+		padding-bottom: 0.5em; */
 	}
 
 	.search-input:focus {
