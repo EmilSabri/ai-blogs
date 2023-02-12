@@ -1,7 +1,7 @@
 // @ts-nocheck
 import { S3_BUCKET_ARTICLES } from "$env/static/private";
 import { s3Client } from "$lib/server";
-import { articleRepository, markdownRepository } from "$lib/server/redis"
+import { Markdown, articleRepository, markdownRepository } from "$lib/server/redis"
 
 
 

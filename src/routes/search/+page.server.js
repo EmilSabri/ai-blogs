@@ -22,7 +22,7 @@ export async function load({ url }) {
 
     // Retrieve articles from redis based on search query
     console.log(query)
-
+    let didFind = true
     // Find based on query
     let articles = await articleRepository.search()
         .where('title').match(query)
@@ -30,6 +30,7 @@ export async function load({ url }) {
         .return.all()
 
     if (articles.length === 0) {
+        didFind = false
         console.log('No results found, returning all articles')
         articles = await articleRepository.search().return.all()
 
@@ -38,6 +39,7 @@ export async function load({ url }) {
 
     return {
         search_params: query,
-        articles: results
+        didFind: didFind,
+        articles: results,
     }
 }
