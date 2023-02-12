@@ -53,21 +53,31 @@ new Worker(KEYWORD_QUEUE, promptFlow, {connection: connection})
 // Read up on redis-om ^^^
 
 export class Article extends Entity {}
+export class Markdown extends Entity {}
+
+
+const markdownSchema = new Schema(Markdown, {
+    contentLink: { type: 'string' },
+    markdown: { type: 'string' },
+})
 
 const articleSchema = new Schema(Article, {
-    title: { type: 'string' },
-    description: { type: 'string' },
+    title: { type: 'text' },
+    description: { type: 'text' },
     date: { type: 'date' },
     author: { type: 'string' },
     imageUrl: { type: 'string', indexed: false}, 
     imageAlt: { type: 'string', indexed: false },
     tags: { type: 'string[]' },
-    contentLink: { type: 'string', indexed: false },
+    contentLink: { type: 'string'},
     keyword: { type: 'string', indexed: false},
 })
 
-// export const articleRepository = redisOm.fetchRepository(articleSchema)
-// await articleRepository.createIndex();
+export const articleRepository = redisOm.fetchRepository(articleSchema)
+await articleRepository.createIndex();
+
+export const markdownRepository = redisOm.fetchRepository(markdownSchema)
+await markdownRepository.createIndex();
 
 
 // const article1 = articleRepository.createEntity(
