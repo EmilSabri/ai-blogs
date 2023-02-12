@@ -1,7 +1,10 @@
 <script>
+	import { goto } from '$app/navigation';
+
 	// @ts-nocheck
 	import { siteLinks } from '$lib/data';
 	import { tick } from 'svelte';
+	import { debounce } from 'throttle-debounce';
 
 	export let displayMenu = false;
 	let headerHeight;
@@ -16,6 +19,17 @@
 	}
 
 	function linkClick() {
+		displayMenu = !displayMenu;
+	}
+
+	// Use this to debounce user input from search before making calls
+	let inputValue = '';
+	const debounceFunc = debounce(500, (val) => {
+		inputValue = val;
+	});
+
+	function goToSearch() {
+		goto(`/search?q=${searchInput?.value || ''}`);
 		displayMenu = !displayMenu;
 	}
 </script>
@@ -65,13 +79,23 @@
 <!-- Menu (click === true) -->
 <div class="nav-menu" class:displayMenu>
 	<div class="search-input-container">
-		<img
-			class="search-input-icon"
-			src="/svg/search-icon.svg"
-			width="20px"
-			alt="Search www.BrainFog.com icon"
-		/>
-		<input class="search-input" type="text" placeholder="Search" bind:this={searchInput} />
+		<form on:submit|preventDefault={goToSearch}>
+			<img
+				class="search-input-icon"
+				src="/svg/search-icon.svg"
+				width="20px"
+				alt="Search www.BrainFog.com icon"
+			/>
+			<input
+				class="search-input"
+				type="text"
+				placeholder="Search"
+				on:input={() => {
+					debounceFunc(searchInput.value);
+				}}
+				bind:this={searchInput}
+			/>
+		</form>
 	</div>
 	<ul class="nav-links">
 		{#each links as link}

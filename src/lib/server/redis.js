@@ -1,11 +1,12 @@
 // @ts-nocheck
 import { Entity, Schema} from 'redis-om'
 import { redisOm } from "../../hooks.server"
-import { Queue, Worker, FlowProducer } from 'bullmq'
+import { Queue, Worker } from 'bullmq'
 import { REDIS_HOST, REDIS_PORT, REDIS_USERNAME, REDIS_PASSWORD } from '$env/static/private'
 import { ArticleTypes } from './openai/prompts'
 
 export const KEYWORD_QUEUE = 'NEW_KEYWORD_QUEUE-619'
+export const BROKER_QUEUE = 'BROKER_QUEUE'
 
 const connection = {
     host: REDIS_HOST, 
@@ -25,7 +26,7 @@ const retryOpts = {
     }
 }
 
-const testQueue = new Queue('QUEUEBEE' , { connection: connection })
+const testQueue = new Queue(BROKER_QUEUE , { connection: connection })
 
 const promptFlow = async (job) => {
     const keyword = job.data.keyword

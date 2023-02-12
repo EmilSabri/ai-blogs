@@ -1,7 +1,4 @@
-import { test } from "$lib/server/openai/broker";
-
-
 export async function GET() {
-    const body = await test()
+    const body = {dint: 'dong'}
     return new Response(JSON.stringify(body))
 }

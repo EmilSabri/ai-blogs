@@ -2,15 +2,16 @@
 // @ts-nocheck
 /* 
     broker.js
-
+    Todo - Should prolly rename this
 */
 
 import { REDIS_HOST, REDIS_PORT, REDIS_USERNAME, REDIS_PASSWORD, OPENAI_BILL_BUFFER, OPENAI_MAX_BILL } from '$env/static/private'
 import { model_billing } from './openai'
-import { Worker,  } from 'bullmq';
-
-import { ioRedis } from '../../../hooks.server';
+import { BROKER_QUEUE } from '../redis';
 import { createArticleFunc, calcMaxSteps } from './prompts';
+import { Worker } from 'bullmq';
+import { ioRedis } from '../../../hooks.server';
+
 
 const connection = {
     host: REDIS_HOST, 
@@ -19,33 +20,8 @@ const connection = {
     password: REDIS_PASSWORD
 }
 
-const BROKER_QUEUE = 'BROKER_QUEUE'
-
 // Open AI flow
-export async function test() {
-    return {ding: "dong"}
-}
-
-// Using Flow Jobs with sub children
-// 1 Worker
-// Took 26.832 seconds for 1 job = avg 26.832 seconds
-// Took 196 seconds for 9 jobs = avg 21 seconds
-
-// 2 Workers
-// Took 77 seconds for 6 jobs = avg 12 seconds per job
-// Took 135 seconds for 10 jobs = avg 13.5 seconds per job
-// Took 107 seconds for 7 jobs = avg 15.2 seconds per job
-
-// Process Step Jobs
-// 1 Worker
-// Took 28.881 secs for 1 job = avg 28.881
-// 5 Workers
-// Took 31.512 secs for 5 jobs = avg 6.3 seconds
-// 10 Workers
-// Took 27.858 secs for 10 jobs = avg 2.7 seconds
-// Took 34.616 secs for 20 jobs = avg 1.73 seconds
 const promptStepFunc = async (job) => {
-
     // Calculate next usage billing 
     const token_usage = await ioRedis.get('openai_total_tokens')
     const request_count = await ioRedis.get('openai_request_count')
@@ -78,17 +54,17 @@ const promptStepFunc = async (job) => {
     }
 }
 
-new Worker('QUEUEBEE', promptStepFunc, {connection: connection})
-new Worker('QUEUEBEE', promptStepFunc, {connection: connection})
-// new Worker('QUEUEBEE', promptStepFunc, {connection: connection})
-// new Worker('QUEUEBEE', promptStepFunc, {connection: connection})
-// new Worker('QUEUEBEE', promptStepFunc, {connection: connection})
+new Worker(BROKER_QUEUE, promptStepFunc, {connection: connection})
+new Worker(BROKER_QUEUE, promptStepFunc, {connection: connection})
+new Worker(BROKER_QUEUE, promptStepFunc, {connection: connection})
+new Worker(BROKER_QUEUE, promptStepFunc, {connection: connection})
+new Worker(BROKER_QUEUE, promptStepFunc, {connection: connection})
 
-// new Worker('QUEUEBEE', promptStepFunc, {connection: connection})
-// new Worker('QUEUEBEE', promptStepFunc, {connection: connection})
-// new Worker('QUEUEBEE', promptStepFunc, {connection: connection})
-// new Worker('QUEUEBEE', promptStepFunc, {connection: connection})
-// new Worker('QUEUEBEE', promptStepFunc, {connection: connection})
+new Worker(BROKER_QUEUE, promptStepFunc, {connection: connection})
+new Worker(BROKER_QUEUE, promptStepFunc, {connection: connection})
+new Worker(BROKER_QUEUE, promptStepFunc, {connection: connection})
+new Worker(BROKER_QUEUE, promptStepFunc, {connection: connection})
+new Worker(BROKER_QUEUE, promptStepFunc, {connection: connection})
 
 
 // Keep getting ReplyError: ERR max number of clients reached

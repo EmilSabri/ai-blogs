@@ -1,7 +1,5 @@
 // @ts-nocheck
-import { getKeywords } from '$lib/server'
 import { KEYWORD_QUEUE, queue } from '$lib/server/redis'
-import { test } from '$lib/server/openai/broker'
 
 const keywords = [
 //   'brain fog',
@@ -125,11 +123,10 @@ export async function GET() {
     // }
 
     // Remove 20 keyword limit once keyword queue has been set up
-    test()
+
     let i = 0
     const body = keywords.slice(0, 1)
     body.forEach((keyword) => {
-        
         queue.add('keywords', { keyword: keyword})
     })
 
