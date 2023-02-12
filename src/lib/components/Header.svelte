@@ -31,6 +31,7 @@
 	function goToSearch() {
 		goto(`/search?q=${searchInput?.value || ''}`);
 		displayMenu = !displayMenu;
+		searchInput.value = '';
 	}
 </script>
 

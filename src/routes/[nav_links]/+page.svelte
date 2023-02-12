@@ -13,7 +13,7 @@
 
 {#if navLinks.includes(data.url)}
 	<!-- NavLink Type Component - Display all posts with the tag {data.url} -->
-	<!-- <NavLink tag={data.url} /> -->
+	<NavLink tag="{data.url}," articles={data.articles} />
 {/if}
 
 <!-- Not sure if  -->

@@ -1,7 +1,22 @@
 // @ts-nocheck
 import { siteLinks } from '$lib/data';
 import { error } from '@sveltejs/kit';
+import { articleRepository } from "$lib/server/redis"
 
+const toArticle = (article) => {
+    return {
+        title: article.title,
+        description: article.description,
+        date: article.date,
+        image: {
+            url: article.imageUrl,
+            alt: article.imageAlt,
+        },
+        tags: article.tags,
+        contentLink: article.contentLink,
+        keyword: article.keyword,
+    }
+}
 
 /** @type {import('./$types').PageLoad} */
 export async function load({ params }) {
@@ -12,7 +27,20 @@ export async function load({ params }) {
     if ( !allowedUrls.includes(url) ) {
         throw error(404, `Not Found for ${url}`)
     }
+
+    let articles = []
+    const navLinks = siteLinks.nav.map((link) => link.link)
+
+    if ( navLinks.includes(url) ) {
+        // Pull articles with tag {url}
+        const articleResults = await articleRepository.search().where('tags').containOneOf(url).return.all()
+        
+        if (articleResults.length > 0) {
+            articles = articleResults.map((article) => toArticle(article))
+        }
+    }
+
     
     // Todo - Get all posts with the tag {data.url} 
-    return {url: url};
+    return {url: url, articles: articles};
 }
