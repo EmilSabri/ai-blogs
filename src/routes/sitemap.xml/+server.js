@@ -2,7 +2,7 @@
 // Create function get() that returns a sitemap.xml file
 
 import { DOMAIN } from "$env/static/private"
-import { s3Client } from "$lib/server/s3/s3client"
+import { articles } from "$lib/server/"
 
 function tempXML(url) {
     return `<url>
@@ -18,7 +18,7 @@ export async function GET() {
       'Content-Type': 'application/xml',
     }
 
-    const data = await s3Client.listObjects();
+    const data = await articles.getPublicArticles(false, 300)
 
     let urls = data?.map((url) => tempXML(url)) || []
     

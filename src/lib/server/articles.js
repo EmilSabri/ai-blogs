@@ -32,6 +32,9 @@ async function getArticle(prefix, key) {
     return s3Client.getObject(S3_BUCKET_ARTICLES, prefix + "/" + key)
 }
 
+// Todo - 
+// 1. Add pagination
+// 2. Abliity to get all articles for sitemap.xml
 async function getPublicArticles(getMetaData = false, limit = 50) {
     const articles = await s3Client.listObjects(getMetaData, limit, 'public/')
     return articles

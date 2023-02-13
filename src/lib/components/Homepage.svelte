@@ -26,14 +26,13 @@
 		<!-- List of supplements / products to help with brain fog -->
 		<!-- Todo - Show recent articles -->
 		<!-- Small on the side of the trending section -->
-		<div class="fast-relief">
+		<!-- <div class="fast-relief">
 			<h3 class="sectionTitle">Recent</h3>
 			<div class="fast-relief__list">
 				{#each products.slice(0, -2) as product}
 					<div class="products">
 						<div class="products__item">
 							<h4>{product}</h4>
-							<!-- Turn this into a ProductCard component -->
 							<h3 class="">$10.99</h3>
 							<p>
 								Feel GREAT again with our B12 shots! Only when you experience the divinity that is
@@ -43,7 +42,7 @@
 					</div>
 				{/each}
 			</div>
-		</div>
+		</div> -->
 	</div>
 </div>
 

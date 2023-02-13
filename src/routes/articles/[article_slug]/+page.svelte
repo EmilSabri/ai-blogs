@@ -1,6 +1,4 @@
 <script>
-	import Header from '$lib/components/Header.svelte';
-
 	import { unified } from 'unified';
 	import remarkParse from 'remark-parse';
 	import remarkFrontmatter from 'remark-frontmatter';
@@ -11,32 +9,12 @@
 	let markdown = data.markdown;
 	let articleData = data.metadata;
 
-	// let articleData = data.metaData || {
-	// 	title: 'The Manhattan high-rise that shrunk itself down',
-	// 	description:
-	// 		'In 1986, a New York zoning activist made a startling discovery: A newly constructed building was over a dozen floors too high. What followed was one of the strangest outcomes in the history of big-city housing.',
-	// 	image: {
-	// 		url: 'https://cdn.pixabay.com/photo/2013/07/12/17/47/test-pattern-152459__340.png',
-	// 		alt: 'Test Image'
-	// 	},
-	// 	author: 'Brian Foggy',
-	// 	date: 'February 5, 2023',
-	// 	tags: ['BigBootyBitches', 'Ice Cold', 'Buziness'],
-	// 	contentLink: 'Markdown-Result-Component'
-	// };
-
 	let articleHtml = unified()
 		.use(remarkParse)
 		.use(remarkFrontmatter, ['yaml']) // Parse frontmatter
 		.use(remarkRehype)
 		.use(rehypeStringify)
 		.process(markdown);
-
-	let isEditing = false;
-	function editArticle() {
-		console.log('Edit Article');
-		isEditing = !isEditing;
-	}
 </script>
 
 <!-- https://www.verywellmind.com/relationships-survey-7104667 -->

@@ -5,7 +5,7 @@
 
 <div class="articles-container">
 	<!-- Bread crumbs Yum -->
-	<Breadcrumbs />
+	<!-- <Breadcrumbs /> -->
 	<slot />
 </div>
 
