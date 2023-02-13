@@ -22,6 +22,7 @@
 
 <style>
 	@import url('https://fonts.googleapis.com/css?family=Merriweather+Sans');
+	@import url('https://fonts.googleapis.com/css?family=Merriweather');
 
 	*,
 	*::before,

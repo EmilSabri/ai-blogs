@@ -14,7 +14,8 @@ export async function load() {
     // s3 list objects in bucket with credentials
     // const articlesMeta = await s3Client.listObjects(true, 50)
 
-    const articlesMeta = await articles.getPrivateArticles(true, 10)
+    // Todo - Get list of articles from redis
+    const articlesMeta = await articles.getPrivateArticles(true, 90)
     
     return {
         articles: articlesMeta,

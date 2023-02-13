@@ -44,7 +44,7 @@ export async function load({ params }) {
     // Pull from S3 if not in redis
     if (articleResults.length === 0 || markdownResults.length === 0) {
         start = Date.now()
-        const prefix = 'public/'
+        const prefix = 'private'
         markdown = await articles.getArticle(prefix, `${key}/markdown.md`)
         const metadata = await articles.getArticle(prefix, `${key}/metadata.json`)
         console.log(`S3 took: ${(Date.now() - start) / 1000} secs`)
