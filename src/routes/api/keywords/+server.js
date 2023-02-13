@@ -114,8 +114,6 @@ export async function GET() {
             let keyWord = results[key][i]
             keywords.push(keyWord)
         }
-
-        console.log(keywords)
     }
     
     // const body = {

@@ -49,11 +49,6 @@ export function getKeywords(someFunc) {
     fs.createReadStream('./src/lib/server/keywords/brainfog.csv', { encoding: 'ucs-2' })
         .pipe(csv())
         .on('data', (data) => {
-            // console.log(Object.keys(data)[0])
-            // console.log(Object.values(data)[0])
-            // console.log('-----------------')
-            // const key = decodeURIComponent(Object.keys(data)[0])
-            // const value = decodeURIComponent(Object.values(data)[0])
             results.push(data)
         })
         .on('end', () => {

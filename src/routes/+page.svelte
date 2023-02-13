@@ -4,37 +4,6 @@
 
 	export let data;
 
-	// call fetch to POST an article to api/articles
-	function postArticles(contentType, key, body) {
-		return fetch('/api/articles', {
-			method: 'POST',
-			headers: {
-				'content-type': 'application/json'
-			},
-			body: JSON.stringify({
-				Key: key,
-				Body: body,
-				ContentType: contentType
-			})
-		});
-	}
-
-	async function uploadS3() {
-		// Upload markdown
-		const responseMd = await postArticles(
-			'text/markdown',
-			`${articleData.contentLink}/markdown.md`,
-			markdown
-		);
-
-		// Upload metadata
-		const responseMeta = await postArticles(
-			'application/json',
-			`${articleData.contentLink}/metadata.json`,
-			articleData
-		);
-	}
-
 	let markdown = '# Header1 \n yolo';
 
 	let articleData = {
@@ -73,7 +42,7 @@
 			// Should prolly just pass these values into the function
 			markdown = body.markdown;
 			articleData = body.metadata;
-			uploadS3();
+			// uploadS3();
 		}
 	}
 </script>

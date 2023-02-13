@@ -4,11 +4,12 @@ import { s3Client } from "$lib/server";
 import { Readable } from "stream";
 
 
-async function upload(ContentType, Key, Body) {
+// Uploads to private bucket
+async function upload(ContentType, Key, Body, prefix="private") {
     let file = ContentType === "application/json" ? JSON.stringify(Body) : Body
     const readable = Readable.from(file)
 
-    const resp = await s3Client.uploadObject(S3_BUCKET_ARTICLES, Key, readable, ContentType, Buffer.byteLength(file))
+    const resp = await s3Client.uploadObject(S3_BUCKET_ARTICLES, prefix + "/" + Key, readable, ContentType, Buffer.byteLength(file))
     
     // Todo - Add error handling if S3 upload fails
     const body = {
@@ -16,7 +17,36 @@ async function upload(ContentType, Key, Body) {
     }
 }
 
+async function deleteObject(Key, prefix) {
+    await s3Client.deleteObject(S3_BUCKET_ARTICLES, prefix + "/" + Key)
+}
+
+async function swapVisibility(ContentType, Key, Body, prefix) {
+    const newPrefix = prefix === 'private' ? 'public' : 'private';
+
+    await upload(ContentType, Key, Body, newPrefix)
+    await deleteObject(Key, prefix)
+}
+
+async function getArticle(prefix, key) {
+    return s3Client.getObject(S3_BUCKET_ARTICLES, prefix + "/" + key)
+}
+
+async function getPublicArticles(getMetaData = false, limit = 50) {
+    const articles = await s3Client.listObjects(getMetaData, limit, 'public/')
+    return articles
+}
+
+async function getPrivateArticles(getMetaData = false, limit = 50) {
+    const articles = await s3Client.listObjects(getMetaData, limit, 'private/')
+    return articles
+}
 
 export const articles = {
-    upload: upload
+    upload: upload,
+    getPrivateArticles: getPrivateArticles,
+    getPublicArticles: getPublicArticles,
+    getArticle: getArticle,
+    swapVisibility: swapVisibility
+    
 }

@@ -8,11 +8,14 @@
 
 // @ts-nocheck
 import { s3Client } from "$lib/server/s3/s3client"
+import { articles } from "$lib/server/articles"
 
 export async function load() {
     // s3 list objects in bucket with credentials
-    const articlesMeta = await s3Client.listObjects(true, 50)
+    // const articlesMeta = await s3Client.listObjects(true, 50)
 
+    const articlesMeta = await articles.getPrivateArticles(true, 10)
+    
     return {
         articles: articlesMeta,
     }

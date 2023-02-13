@@ -1,6 +1,6 @@
 /* eslint-disable prefer-const */
 import { S3_ACCESS_KEY, S3_SECERET_KEY, S3_REGION, S3_BUCKET_ARTICLES } from "$env/static/private";
-import { S3Client, GetObjectCommand, PutObjectCommand, ListObjectsV2Command } from "@aws-sdk/client-s3";
+import { S3Client, GetObjectCommand, PutObjectCommand, ListObjectsV2Command, DeleteObjectCommand } from "@aws-sdk/client-s3";
 
 // s3 list objects in bucket with credentials
 const accessKeyID = S3_ACCESS_KEY
@@ -56,21 +56,24 @@ function getObject(Bucket: string, Key: string) {
 }
 
 // List objects in s3 bucket
-function listObjects(getMetaData = false, maxKeys = 50) {
+function listObjects(getMetaData = false, maxKeys = 50, prefix = "") {
     // eslint-disable-next-line no-async-promise-executor
     return new Promise(async (resolve, reject) => {
-        const bucketParams = { Bucket: S3_BUCKET_ARTICLES, MaxKeys: maxKeys, Delimiter: "/" }
+        const bucketParams = { Bucket: S3_BUCKET_ARTICLES, MaxKeys: maxKeys, Delimiter: "/", Prefix: prefix }
         const listObjectsCommand = new ListObjectsV2Command(bucketParams)
 
         try {
             const data = await client.send(listObjectsCommand)
 
-            let articles = data?.CommonPrefixes.map((prefix) => prefix.Prefix.slice(0, -1)) || []
+            if (!data.CommonPrefixes) resolve([])
+
+            let articles = data?.CommonPrefixes.map((thing) => thing.Prefix.slice(0, -1).replace(prefix, "")) || []
 
             let answer = []
             if (getMetaData) {
                 for (let i = 0; i < articles.length; i++) {
-                    const key = `${articles[i]}/metadata.json`
+                    const key = `${prefix}${articles[i]}/metadata.json`
+                    // Todo - Batch this to get all objects at once
                     const file = await getObject(S3_BUCKET_ARTICLES, key)
                     answer.push(JSON.parse(file))
                 }
@@ -111,22 +114,24 @@ function uploadObject(Bucket: string, Key: string, Body: any, ContentType: strin
 }
 
 // Delete object from s3 bucket
-// export function deleteObject(Bucket: string, Key: string) {
-//     // eslint-disable-next-line no-async-promise-executor
-//     return new Promise(async (resolve, reject) => {
-//         const deleteObjectCommand = new DeleteObjectCommand({ Bucket, Key })
+export function deleteObject(Bucket: string, Key: string) {
+    // eslint-disable-next-line no-async-promise-executor
+    return new Promise(async (resolve, reject) => {
+        const deleteObjectCommand = new DeleteObjectCommand({ Bucket, Key })
 
-//         try {
-//             resolve(client.send(deleteObjectCommand))
-//         } catch (err) {
-//             // Handle the error or throw
-//             return reject(err)
-//         }
-//     })
-// }
+        try {
+            client.send(deleteObjectCommand)
+            resolve(true)
+        } catch (err) {
+            // Handle the error or throw
+            return reject(err)
+        }
+    })
+}
 
 export const s3Client = {
     getObject,
     listObjects,
     uploadObject,
+    deleteObject
 }

@@ -1,9 +1,9 @@
 <script>
 	// @ts-nocheck
 	import { siteLinks } from '$lib/data';
-	import { About } from '$lib/components';
+	import { About, NavLink } from '$lib/components';
 
-	const navLinks = siteLinks.nav.map((link) => link.text);
+	const navLinks = siteLinks.nav.map((link) => link.link);
 
 	export let data;
 	// Todo - Create components for urls in nav_links and one for about, contact, pravicy policy, and terms of service
@@ -13,7 +13,7 @@
 
 {#if navLinks.includes(data.url)}
 	<!-- NavLink Type Component - Display all posts with the tag {data.url} -->
-	<NavLink tag="{data.url}," articles={data.articles} />
+	<NavLink tag={data.url} articles={data.articles} />
 {/if}
 
 <!-- Not sure if  -->
