@@ -5,15 +5,11 @@ import { Markdown, articleRepository, markdownRepository } from "$lib/server/red
 /** @type {import('./$types').PageLoad} */
 export async function load({ params }) {
     const key = `${params.article_slug}`
-    console.log('key -', key)
 
     // Check redis
-    let start = Date.now()
     let articleResults = await articleRepository.search().where('contentLink').equals(key).return.all()
     let markdownResults = await markdownRepository.search().where('contentLink').equals(key).return.all()
-    console.log(`Redis took: ${(Date.now() - start) / 1000} secs`)
-    console.log('Redis results -', articleResults.length, markdownResults.length)
-
+    
     const toArticle = (article) => {
         return {
             title: article.title,
@@ -43,11 +39,9 @@ export async function load({ params }) {
 
     // Pull from S3 if not in redis
     if (articleResults.length === 0 || markdownResults.length === 0) {
-        start = Date.now()
         const prefix = 'private'
         markdown = await articles.getArticle(prefix, `${key}/markdown.md`)
         const metadata = await articles.getArticle(prefix, `${key}/metadata.json`)
-        console.log(`S3 took: ${(Date.now() - start) / 1000} secs`)
         metaJson = JSON.parse(metadata)
 
         // Save to redis

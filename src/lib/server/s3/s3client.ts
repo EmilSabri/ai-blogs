@@ -71,10 +71,16 @@ function listObjects(getMetaData = false, maxKeys = 50, prefix = "") {
 
             let answer = []
             if (getMetaData) {
+                let filePromises = []
                 for (let i = 0; i < articles.length; i++) {
                     const key = `${prefix}${articles[i]}/metadata.json`
-                    // Todo - Batch this to get all objects at once
-                    const file = await getObject(S3_BUCKET_ARTICLES, key)
+                    const file = getObject(S3_BUCKET_ARTICLES, key)
+                    filePromises.push(file)
+                }
+
+                // Brought wait time down from 5-8 seconds to 1 second
+                for (const fileProm of filePromises) {
+                    const file = await fileProm
                     answer.push(JSON.parse(file))
                 }
                 resolve(answer)

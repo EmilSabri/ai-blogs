@@ -15,7 +15,9 @@ export async function load() {
     // const articlesMeta = await s3Client.listObjects(true, 50)
 
     // Todo - Get list of articles from redis
+    // const startTime = Date.now()
     const articlesMeta = await articles.getPrivateArticles(true, 90)
+    // console.log("Time to load homepage - ", (Date.now() - startTime) / 1000, " seconds")
     
     return {
         articles: articlesMeta,

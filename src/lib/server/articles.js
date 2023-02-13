@@ -42,11 +42,24 @@ async function getPrivateArticles(getMetaData = false, limit = 50) {
     return articles
 }
 
+function calcFuncTime(func) {
+
+
+    return async (...args) => {
+        const startTime = Date.now()
+        const resp = await func(...args)
+        const endTime = Date.now() - startTime
+        console.log(`${func.name}()`, endTime / 1000, "seconds")
+        return resp
+    }
+}
+
+
 export const articles = {
-    upload: upload,
-    getPrivateArticles: getPrivateArticles,
-    getPublicArticles: getPublicArticles,
-    getArticle: getArticle,
-    swapVisibility: swapVisibility
+    upload: calcFuncTime(upload),
+    getPrivateArticles: calcFuncTime(getPrivateArticles),
+    getPublicArticles: calcFuncTime(getPublicArticles),
+    getArticle: calcFuncTime(getArticle),
+    swapVisibility: calcFuncTime(swapVisibility)
     
 }
