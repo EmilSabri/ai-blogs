@@ -28,7 +28,12 @@ export async function POST( event ) {
 export async function PUT( event ) {
     const req = await event.request.json()
 
-    articles.swapVisibility(req.ContentType, req.Key, req.Body, req.prefix)
+    if (req.noMarkdown) {
+        articles.noMarkdown(req.ContentType, req.Key, req.Body, req.prefix)
+    } else {
+        articles.swapVisibility(req.ContentType, req.Key, req.Body, req.prefix)
+    }
+
     
     const body = {
         success: true,

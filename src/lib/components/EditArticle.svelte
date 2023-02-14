@@ -65,7 +65,7 @@
 		);
 	}
 
-	async function swapVisibility() {
+	async function swapVisibility(noMarkdown = false) {
 		fetch('/api/articles', {
 			method: 'PUT',
 			headers: {
@@ -75,7 +75,8 @@
 				Key: `${articleData.contentLink}/markdown.md`,
 				Body: markdown,
 				ContentType: 'text/markdown',
-				prefix: prefix
+				prefix: prefix,
+				noMarkdown: noMarkdown
 			})
 		});
 
@@ -88,7 +89,8 @@
 				Key: `${articleData.contentLink}/metadata.json`,
 				Body: articleData,
 				ContentType: 'application/json',
-				prefix: prefix
+				prefix: prefix,
+				noMarkdown: noMarkdown
 			})
 		});
 
@@ -101,12 +103,13 @@
 	<div>
 		<btn class="uploadS3" on:click={uploadS3}>Save Article</btn>
 	</div>
-	<div>
+	<div class="swap">
 		<div>Currently {prefix}</div>
-		<btn class="uploadS3" on:click={swapVisibility}>
+		<btn class="uploadS3" on:click={() => swapVisibility(false)}>
 			GO {prefix === 'private' ? 'PUBLIC' : 'PRIVATE'}
 		</btn>
 	</div>
+	<btn class="uploadS3" on:click={() => swapVisibility(true)}> Move to No-Markdown </btn>
 	<div>
 		<!-- If you wanna edit contentLink you gotta delete the old one -->
 		<!-- <div>
@@ -195,5 +198,9 @@
 	.uploadS3 {
 		padding: 0.1em;
 		background-color: greenyellow;
+	}
+
+	.swap {
+		margin: 0.5em;
 	}
 </style>

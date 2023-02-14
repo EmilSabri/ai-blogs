@@ -28,6 +28,12 @@ async function swapVisibility(ContentType, Key, Body, prefix) {
     await deleteObject(Key, prefix)
 }
 
+async function noMarkdown(ContentType, Key, Body, prefix) {
+
+    await upload(ContentType, Key, Body, 'no-markdown')
+    await deleteObject(Key, prefix)
+}
+
 async function getArticle(prefix, key) {
     return s3Client.getObject(S3_BUCKET_ARTICLES, prefix + "/" + key)
 }
@@ -63,6 +69,7 @@ export const articles = {
     getPrivateArticles: calcFuncTime(getPrivateArticles),
     getPublicArticles: calcFuncTime(getPublicArticles),
     getArticle: calcFuncTime(getArticle),
-    swapVisibility: calcFuncTime(swapVisibility)
+    swapVisibility: calcFuncTime(swapVisibility),
+    noMarkdown: calcFuncTime(noMarkdown)
     
 }

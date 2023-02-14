@@ -8,8 +8,8 @@ export async function load( { url } ) {
         throw new Error('Fuck outta here BOIIIII')
     }
 
-    const privateArticles = await articles.getPrivateArticles(false, 60)
-    const publicArticles = await articles.getPublicArticles(false, 60)
+    const privateArticles = await articles.getPrivateArticles(false, 150)
+    const publicArticles = await articles.getPublicArticles(false, 150)
 
     return {
         privateArticles: privateArticles,
