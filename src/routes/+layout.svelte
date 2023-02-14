@@ -6,6 +6,7 @@
 <svelte:head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>BrianFog</title>
+	<meta name="description" content="Home page of BrianFog.com" />
 	<!-- Todo - Facebook Open Graph Tags -->
 
 	<!-- Todo - Twitter Cards -->
