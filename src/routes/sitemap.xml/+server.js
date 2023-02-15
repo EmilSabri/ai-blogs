@@ -4,12 +4,28 @@
 import { DOMAIN } from "$env/static/private"
 import { articles } from "$lib/server/"
 
-function tempXML(url) {
+// TODO - Save sitemap.xml to a file and update it every 48 hours
+// 1. Check last time the file was updated using redis as the store for the last mod data
+// 2. If it's been more than 48 hours, update the file
+// 3. Else return it as is from the S3 bucket
+
+// Todo - Add ancillary pages to sitemap such as search, about, tag pages, etc.
+function tempXML(datum) {
+    const url = datum.contentLink
+    const date = new Date(datum.date).toISOString()
     return `<url>
     <loc>https://www.${DOMAIN}/articles/${url}</loc>
-    <lastmod>2023-24-23T23:58:19-07:00</lastmod>
+    <lastmod>${date}</lastmod>
     </url>`
-   }
+  }
+
+function getLatestDate(firstDate, secondDate) {
+  if (firstDate > secondDate) {
+    return firstDate
+  }
+
+  return secondDate
+}
   
 
 export async function GET() {
@@ -18,23 +34,20 @@ export async function GET() {
       'Content-Type': 'application/xml',
     }
 
-    const data = await articles.getPublicArticles(false, 300)
+    const metadata = await articles.getPublicArticles(true, 300)
 
-    let urls = data?.map((url) => tempXML(url)) || []
+    let latestDate = new Date(0)
+    let urls = metadata?.map((datum) => {
+      latestDate = getLatestDate(latestDate, new Date(datum.date))
+      return tempXML(datum)
+    }) || []
     
 
     const resp = new Response(`<?xml version="1.0" encoding="UTF-8" ?>
-    <urlset
-      xmlns="https://www.sitemaps.org/schemas/sitemap/0.9"
-      xmlns:news="https://www.google.com/schemas/sitemap-news/0.9"
-      xmlns:xhtml="https://www.w3.org/1999/xhtml"
-      xmlns:mobile="https://www.google.com/schemas/sitemap-mobile/1.0"
-      xmlns:image="https://www.google.com/schemas/sitemap-image/1.1"
-      xmlns:video="https://www.google.com/schemas/sitemap-video/1.1"
-    > 
+    <urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9"> 
     <url>
       <loc>https://www.${DOMAIN}/</loc>
-      <lastmod>2023-24-23T23:58:19-07:00</lastmod>
+      <lastmod>${latestDate.toISOString()}</lastmod>
       <changefreq>daily</changefreq>
     </url>
 

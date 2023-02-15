@@ -1,0 +1,5 @@
+{
+	"runtime": "nodejs16.x",
+	"handler": "Users/esabri/ai-blogs/.svelte-kit/vercel-tmp/index.js",
+	"launcherType": "Nodejs"
+}

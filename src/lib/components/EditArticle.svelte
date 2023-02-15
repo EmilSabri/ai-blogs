@@ -50,6 +50,7 @@
 		});
 	}
 
+	// Todo - Modify date object when uploading to S3 to be date now() since that's the last time it's been edited
 	async function uploadS3() {
 		// Upload markdown
 		const responseMd = await postArticles(
