@@ -34,9 +34,9 @@
 		<p class="description">{articleData.description}</p>
 		<img src={articleData.image.url} alt={articleData.image.alt} loading="lazy" />
 		<div class="article-meta">
-			<a href="/author/{articleData.author}">{articleData.author}</a>
+			<a href="/author/{articleData.author}">{articleData.author || 'Brian R. Foggy'}</a>
 			<span class="I-seperator">|</span>
-			<div>Updated on {articleData.date}</div>
+			<div>Updated on {new Date(articleData.date).toLocaleString().split(',')[0]}</div>
 		</div>
 	</div>
 
