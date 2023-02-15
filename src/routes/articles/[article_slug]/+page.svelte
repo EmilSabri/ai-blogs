@@ -32,7 +32,7 @@
 	<div class="article-titles">
 		<h1>{articleData.title}</h1>
 		<p class="description">{articleData.description}</p>
-		<img src={articleData.image.url} alt={articleData.image.alt} />
+		<img src={articleData.image.url} alt={articleData.image.alt} loading="lazy" />
 		<div class="article-meta">
 			<a href="/author/{articleData.author}">{articleData.author}</a>
 			<span class="I-seperator">|</span>

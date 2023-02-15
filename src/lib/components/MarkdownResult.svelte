@@ -9,7 +9,7 @@
 		{articleData.title}
 	</h1>
 	<h2 class="subTitle">{articleData.description}</h2>
-	<img class="thumbnail" src={articleData.image.url} alt={articleData.image.alt} />
+	<img class="thumbnail" src={articleData.image.url} alt={articleData.image.alt} loading="lazy" />
 
 	<!-- Area for Author and Tags/Categories  -->
 	<div class="articleInfo">

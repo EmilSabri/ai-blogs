@@ -47,7 +47,7 @@
 					{#each socialLinks as socialLink}
 						<li class="footerSocialsItem">
 							<a href={socialLink.link}>
-								<img src="/svg/{socialLink.icon}" width="22" alt="Instagram Logo" />
+								<img src="/svg/{socialLink.icon}" width="22" alt="Instagram Logo" loading="lazy" />
 							</a>
 						</li>
 					{/each}

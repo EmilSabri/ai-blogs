@@ -47,6 +47,7 @@
 			on:click={() => {
 				displayMenu = !displayMenu;
 			}}
+			loading="lazy"
 		/>
 	</div>
 	<!-- Logo of Website (head with clouds surrounding it) -->
@@ -74,6 +75,7 @@
 			displayMenu = !displayMenu;
 			tickTock();
 		}}
+		loading="lazy"
 	/>
 </div>
 
@@ -86,6 +88,7 @@
 				src="/svg/search-icon.svg"
 				width="20px"
 				alt="Search www.BrainFog.com icon"
+				loading="lazy"
 			/>
 			<input
 				class="search-input"
