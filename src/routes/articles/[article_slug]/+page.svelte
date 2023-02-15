@@ -1,20 +1,62 @@
 <script>
+	// @ts-nocheck
+
 	import { unified } from 'unified';
 	import remarkParse from 'remark-parse';
 	import remarkFrontmatter from 'remark-frontmatter';
 	import remarkRehype from 'remark-rehype';
 	import rehypeStringify from 'rehype-stringify';
+	import TableContent from '$lib/components/TableContent.svelte';
 
 	export let data;
 	let markdown = data.markdown;
 	let articleData = data.metadata;
 
+	const headers = [];
+	let testTree;
+	function move(options) {
+		return function (tree, file) {
+			testTree = tree;
+			// console.log(tree);
+			for (const node of tree.children) {
+				if (node.type === 'heading') {
+					headers.push(node.children[0].value);
+				}
+			}
+		};
+	}
+
+	function test(options) {
+		return function (tree, file) {
+			testTree = tree;
+			console.log(tree);
+
+			for (let i = 0; i < tree.children.length; i++) {
+				let node = tree.children[i];
+				if (node.type === 'element' && node.tagName === 'h2') {
+					const title = node.children[0].value;
+					headers.push({
+						text: title,
+						id: title.replaceAll(' ', '-')
+					});
+					tree.children[i].properties = {
+						id: node.children[0].value.replaceAll(' ', '-')
+					};
+				}
+			}
+		};
+	}
+
 	let articleHtml = unified()
 		.use(remarkParse)
 		.use(remarkFrontmatter, ['yaml']) // Parse frontmatter
 		.use(remarkRehype)
+		.use(test)
 		.use(rehypeStringify)
 		.process(markdown);
+
+	// console.log(headers);
+	console.log(testTree);
 </script>
 
 <!-- https://www.verywellmind.com/relationships-survey-7104667 -->
@@ -41,6 +83,7 @@
 	</div>
 
 	<!-- Todo - Table of Contents based on the headers within the body -->
+	<TableContent {headers} />
 	{#await articleHtml then value}
 		<div class="articleContent">
 			{@html value}
