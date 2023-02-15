@@ -45,6 +45,7 @@
 		line-height: 1.5;
 
 		font-family: 'Roboto', sans-serif;
+		font-display: swap;
 	}
 
 	.articleInfo {

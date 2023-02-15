@@ -34,6 +34,7 @@
 
 	.body-container {
 		font-family: 'Merriweather Sans', 'sans-serif';
+		font-display: swap;
 		font-size: 1rem;
 		font-weight: 400;
 		line-height: 1.5;

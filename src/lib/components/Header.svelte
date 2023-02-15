@@ -124,6 +124,7 @@
 	}
 
 	.header-container {
+		font-display: swap;
 		font-family: 'Merriweather Sans', 'sans-serif';
 		font-size: 1.5rem;
 		font-weight: 600;

@@ -3,6 +3,7 @@
 
 @import url('https://fonts.googleapis.com/css?family=Merriweather+Sans');
 .body { 
+    font-display: swap;
     font-family: 'Merriweather Sans', 'sans-serif';   
     font-size: 1rem;
     font-weight: 400;
