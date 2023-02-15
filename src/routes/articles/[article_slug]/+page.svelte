@@ -14,19 +14,7 @@
 
 	const headers = [];
 	let testTree;
-	function move(options) {
-		return function (tree, file) {
-			testTree = tree;
-			// console.log(tree);
-			for (const node of tree.children) {
-				if (node.type === 'heading') {
-					headers.push(node.children[0].value);
-				}
-			}
-		};
-	}
-
-	function test(options) {
+	function tableOfContents(options) {
 		return function (tree, file) {
 			testTree = tree;
 			console.log(tree);
@@ -51,11 +39,10 @@
 		.use(remarkParse)
 		.use(remarkFrontmatter, ['yaml']) // Parse frontmatter
 		.use(remarkRehype)
-		.use(test)
+		.use(tableOfContents)
 		.use(rehypeStringify)
 		.process(markdown);
 
-	// console.log(headers);
 	console.log(testTree);
 </script>
 
