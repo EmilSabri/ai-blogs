@@ -8,14 +8,14 @@ export const promptFunc = async (job) => {
     const prefix = 'private'
     await articles.upload(
         `text/markdown`,
-        `${params.metadata.contentLink}/markdown.md`,
+        `${params.metadata.contentLink.toLowerCase()}/markdown.md`,
         params.markdown,
         prefix
     )
 
     await articles.upload(
         'application/json', 
-        `${params.metadata.contentLink}/metadata.json`, 
+        `${params.metadata.contentLink.toLowerCase()}/metadata.json`, 
         params.metadata,
         prefix
     )

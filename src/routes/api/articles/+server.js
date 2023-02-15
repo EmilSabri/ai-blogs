@@ -16,8 +16,8 @@ export async function GET() {
 // Uploads an object to the bucket
 export async function POST( event ) {
     const req = await event.request.json()
-    articles.upload(req.ContentType, req.Key, req.Body, req.prefix)
-
+    articles.upload(req.ContentType, req.Key.toLowerCase(), req.Body, req.prefix)
+    
     const body = {
         success: true,
     }

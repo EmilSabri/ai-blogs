@@ -63,13 +63,13 @@ function calcFuncTime(func) {
     }
 }
 
-
 export const articles = {
     upload: calcFuncTime(upload),
     getPrivateArticles: calcFuncTime(getPrivateArticles),
     getPublicArticles: calcFuncTime(getPublicArticles),
     getArticle: calcFuncTime(getArticle),
     swapVisibility: calcFuncTime(swapVisibility),
-    noMarkdown: calcFuncTime(noMarkdown)
+    noMarkdown: calcFuncTime(noMarkdown),
+    deleteObject: deleteObject
     
 }

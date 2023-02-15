@@ -19,7 +19,8 @@
 		author: 'joe bloe',
 		date: new Date().toLocaleDateString(),
 		tags: ['BigBootyBitches', 'Ice Cold', 'Buziness'],
-		contentLink: 'Markdown-Result-Component'
+		contentLink: 'Markdown-Result-Component',
+		keyword: 'keyword'
 	};
 
 	export let markdown = '';
@@ -61,7 +62,7 @@
 		const responseMeta = await postArticles(
 			'application/json',
 			`${articleData.contentLink}/metadata.json`,
-			articleData
+			{ ...articleData, contentLink: articleData.contentLink.toLocaleLowerCase() }
 		);
 	}
 
