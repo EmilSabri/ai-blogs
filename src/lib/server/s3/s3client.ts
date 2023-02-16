@@ -33,7 +33,7 @@ function getObject(Bucket: string, Key: string) {
         const getObjectCommand = new GetObjectCommand({ Bucket, Key })
 
         try {
-            console.log('s3.getObject() - ', Key)
+            // console.log('s3.getObject() - ', Key)
             const response = await client.send(getObjectCommand)
 
             // Store all of data chunks returned from the response data stream 

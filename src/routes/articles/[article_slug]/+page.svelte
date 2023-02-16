@@ -69,12 +69,14 @@
 		</div>
 	</div>
 
-	<!-- Todo - Table of Contents based on the headers within the body -->
 	<div>
-		<!-- Todo turn into a product's list component -->
+		<!-- Todo -  turn into a product's list component -->
+		<!-- Todo - Suggest products based on keywords in article  -->
+		<!-- Todo - Think about testing having this component versus spacing out the links in the body -->
+		<div>Too Long Didn't Read</div>
 		{#each Object.values(affiliate.product_map) as affiliateLink}
 			{#if affiliateLink.length > 0}
-				{@html affiliateLink[1]}
+				<!-- {@html affiliateLink[0]} -->
 			{/if}
 		{/each}
 	</div>
