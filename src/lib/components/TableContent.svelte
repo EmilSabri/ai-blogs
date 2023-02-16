@@ -2,8 +2,6 @@
 	// @ts-nocheck
 
 	export let headers = [];
-
-	console.log('Table of Contents - ', headers);
 </script>
 
 <!-- Todo - Add styling make this look dope -->

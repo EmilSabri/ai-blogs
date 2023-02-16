@@ -7,6 +7,7 @@
 	import remarkRehype from 'remark-rehype';
 	import rehypeStringify from 'rehype-stringify';
 	import TableContent from '$lib/components/TableContent.svelte';
+	import { affiliate } from '$lib/data';
 
 	export let data;
 	let markdown = data.markdown;
@@ -17,7 +18,6 @@
 	function tableOfContents(options) {
 		return function (tree, file) {
 			testTree = tree;
-			console.log(tree);
 
 			for (let i = 0; i < tree.children.length; i++) {
 				let node = tree.children[i];
@@ -43,7 +43,7 @@
 		.use(rehypeStringify)
 		.process(markdown);
 
-	console.log(testTree);
+	// console.log(testTree);
 </script>
 
 <!-- https://www.verywellmind.com/relationships-survey-7104667 -->
@@ -70,6 +70,14 @@
 	</div>
 
 	<!-- Todo - Table of Contents based on the headers within the body -->
+	<div>
+		<!-- Todo turn into a product's list component -->
+		{#each Object.values(affiliate.product_map) as affiliateLink}
+			{#if affiliateLink.length > 0}
+				{@html affiliateLink[1]}
+			{/if}
+		{/each}
+	</div>
 	<TableContent {headers} />
 	{#await articleHtml then value}
 		<div class="articleContent">
