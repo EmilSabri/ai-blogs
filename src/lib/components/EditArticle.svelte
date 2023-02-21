@@ -55,7 +55,7 @@
 		// Upload markdown
 		const responseMd = await postArticles(
 			'text/markdown',
-			`${articleData.contentLink}/markdown.md`,
+			`${articleData.contentLink.toLocaleLowerCase()}/markdown.md`,
 			markdown
 		);
 
@@ -63,7 +63,11 @@
 		const responseMeta = await postArticles(
 			'application/json',
 			`${articleData.contentLink}/metadata.json`,
-			{ ...articleData, contentLink: articleData.contentLink.toLocaleLowerCase() }
+			{
+				...articleData,
+				contentLink: articleData.contentLink.toLocaleLowerCase(),
+				date: new Date().toLocaleDateString('en-US')
+			}
 		);
 	}
 
@@ -74,7 +78,7 @@
 				'content-type': 'application/json'
 			},
 			body: JSON.stringify({
-				Key: `${articleData.contentLink}/markdown.md`,
+				Key: `${articleData.contentLink.toLocaleLowerCase()}/markdown.md`,
 				Body: markdown,
 				ContentType: 'text/markdown',
 				prefix: prefix,
@@ -88,7 +92,7 @@
 				'content-type': 'application/json'
 			},
 			body: JSON.stringify({
-				Key: `${articleData.contentLink}/metadata.json`,
+				Key: `${articleData.contentLink.toLocaleLowerCase()}/metadata.json`,
 				Body: articleData,
 				ContentType: 'application/json',
 				prefix: prefix,

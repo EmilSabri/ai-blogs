@@ -60,7 +60,7 @@
 				if (displayMenu) {
 					linkClick();
 				}
-			}}>BrianFog</a
+			}}>BrianFog 🧠</a
 		>
 	</div>
 

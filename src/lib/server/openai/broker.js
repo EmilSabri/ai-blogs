@@ -19,7 +19,10 @@ const connection = {
     username: REDIS_USERNAME,
     password: REDIS_PASSWORD
 }
-
+// Figure out creating workers without needing to export function
+export function test() {
+    console.log('wtf)')
+}
 // Open AI flow
 const promptStepFunc = async (job) => {
     // Calculate next usage billing 

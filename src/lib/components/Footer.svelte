@@ -14,7 +14,7 @@
 <div class="footer-container">
 	<div class="footer">
 		<!-- Icon -->
-		<div class="footer-icon">BrianFog</div>
+		<div class="footer-icon">BrianFog 🧠</div>
 
 		<!-- Email Capture -->
 		<!-- Todo - Capture emails into a list -->

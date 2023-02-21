@@ -5,5 +5,6 @@ import ArticleCard from "./ArticleCard.svelte"
 import Homepage from "./Homepage.svelte"
 import About from "./About.svelte"
 import NavLink from "./NavLink.svelte"
+import ProductCard from "./ProductCard.svelte"
 
-export { Homepage, Header, Breadcrumbs, Footer, ArticleCard, About, NavLink  }
+export { Homepage, Header, Breadcrumbs, Footer, ArticleCard, About, NavLink, ProductCard  }

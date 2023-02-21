@@ -8,6 +8,7 @@
 	import rehypeStringify from 'rehype-stringify';
 	import TableContent from '$lib/components/TableContent.svelte';
 	import { affiliate } from '$lib/data';
+	import ProductCard from '$lib/components/ProductCard.svelte';
 
 	export let data;
 	let markdown = data.markdown;
@@ -70,15 +71,21 @@
 	</div>
 
 	<div>
-		<!-- Todo -  turn into a product's list component -->
+		<!-- Todo - turn into a product's list component -->
 		<!-- Todo - Suggest products based on keywords in article  -->
 		<!-- Todo - Think about testing having this component versus spacing out the links in the body -->
-		<div>Too Long Didn't Read</div>
-		{#each Object.values(affiliate.product_map) as affiliateLink}
-			{#if affiliateLink.length > 0}
-				<!-- {@html affiliateLink[0]} -->
-			{/if}
-		{/each}
+		<div>
+			<div class="productListName">Instant Relief</div>
+			<div class="productList">
+				{#each Object.entries(affiliate.product_map) as [key, value]}
+					{#if value.length > 0}
+						<div class="productCard">
+							<ProductCard name={key} amznHtml={value[0]} />
+						</div>
+					{/if}
+				{/each}
+			</div>
+		</div>
 	</div>
 	<TableContent {headers} />
 	{#await articleHtml then value}
@@ -146,6 +153,30 @@
 		padding: 0px;
 
 		color: #212121;
+	}
+
+	.productListName {
+		font-family: Arial, Helvetica, sans-serif;
+		font-size: 1.75rem;
+		font-weight: 600;
+		line-height: 1.15;
+		width: 100%;
+		margin: 0 auto;
+		padding: 0px;
+
+		color: #212121;
+	}
+
+	.productList {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: space-between;
+	}
+
+	.productCard {
+		width: 100%;
+		max-width: 300px;
 	}
 
 	.article-container {

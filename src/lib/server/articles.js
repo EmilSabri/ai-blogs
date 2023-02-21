@@ -58,7 +58,7 @@ function calcFuncTime(func) {
         const startTime = Date.now()
         const resp = await func(...args)
         const endTime = Date.now() - startTime
-        console.log(`${func.name}()`, endTime / 1000, "seconds")
+        // console.log(`${func.name}()`, endTime / 1000, "seconds")
         return resp
     }
 }

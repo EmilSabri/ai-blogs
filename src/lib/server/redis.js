@@ -41,7 +41,7 @@ const promptFlow = async (job) => {
     testQueue.add('testJob', jobData, retryOpts)
 
     
-    console.log(`Start promptFlow - ${keyword}`)
+    // console.log(`Start promptFlow - ${keyword}`)
 }
 
 // Workers
