@@ -34,7 +34,7 @@ export async function GET() {
       'Content-Type': 'application/xml',
     }
 
-    const metadata = await articles.getPublicArticles(true, 300)
+    const metadata = await articles.getPublicArticles(true, 999)
 
     let latestDate = new Date(0)
     let urls = metadata?.map((datum) => {

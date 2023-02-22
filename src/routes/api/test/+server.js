@@ -1,24 +1,21 @@
 import { articles } from '$lib/server/articles';
 
 export async function GET() {
-
-    // Get all public articles and their images
-    const publicList = await articles.getPublicArticles(true, 'public', 1000)
-    const images = []
-
-
-
     // Get all private articles
-    const privateList = await articles.getPrivateArticles(false, 'private', 1000)
-
-    // Randomly select an image and use it for the article
-    // Set the image alt to the title of the article
-    for (let i = 0; i < privateList.length; i++) {
-        let article = articles.getArticle('private', privateList[i])
+    const publicList = await articles.getPublicArticles(false, 600)
 
 
+    for (let i = 0; i < publicList.length; i++) {
+        let markdown = await articles.getArticle('public', publicList[i] + '/markdown.md')
+
+        if (markdown.length <= 50) {
+            let metadata = await articles.getArticle('public', publicList[i] + '/metadata.json')
+
+            articles.noMarkdown('text/markdown', publicList[i] + '/markdown.md', markdown, 'public')
+            articles.noMarkdown('application/json', publicList[i] + '/metadata.json', metadata, 'public')
+            console.log(i, publicList[i])
+        }
     }
-
 
     const body = {dint: 'dong'}
     return new Response(JSON.stringify(body))

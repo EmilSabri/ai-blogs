@@ -3,6 +3,10 @@ import { S3_BUCKET_ARTICLES } from "$env/static/private";
 import { s3Client } from "$lib/server";
 import { Readable } from "stream";
 
+// Todo - Add functions to grab metadata file and another function to grab markdown file.
+// This will reduce the potential errors around grabbing those files by having a function to grab either one of them.
+
+// Todo add functions to upload metadata and markdown files
 
 // Uploads to private bucket
 async function upload(ContentType, Key, Body, prefix="private") {
