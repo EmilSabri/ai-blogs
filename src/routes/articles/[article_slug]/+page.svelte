@@ -99,11 +99,8 @@
 					tagName: 'productcard'
 				};
 
-				console.log('huh', pCnt);
 				parent.children.splice(index + 1, 0, obj); // Necessary to remove the old paragraph
 			});
-
-			console.log(pCnt);
 		};
 	}
 
@@ -117,21 +114,10 @@
 		.use(rehypeStringify)
 		.process(markdown);
 
-	// onMount(() => {
-	// 	new ProductCard({
-	// 		target: document.body,
-	// 		props: {
-	// 			name: Object.entries(affiliate.product_map)[0][0],
-	// 			amznHtml: Object.entries(affiliate.product_map)[0][1][0]
-	// 		}
-	// 	});
-	// });
-
-	const testProduct = async () => {
+	const insertProducts = async () => {
 		const products = Object.entries(affiliate.product_map);
 		const testElements = document.getElementsByTagName('productcard');
 
-		console.log(products);
 		let i = 0;
 		for (const elem of testElements) {
 			if (i >= 2) {
@@ -141,8 +127,8 @@
 			new ProductCard({
 				target: elem,
 				props: {
-					name: products[i][0],
-					amznHtml: products[i][1][0]
+					name: products[i % 2][0],
+					amznHtml: products[i % 2][1][0]
 				}
 			});
 
@@ -193,7 +179,8 @@
 	</div>
 	<TableContent {headers} />
 	{#await articleHtml then value}
-		<div class="articleContent" use:testProduct>
+		<div class="articleContent">
+			<!-- use:insertProducts> -->
 			{@html value}
 		</div>
 	{/await}
