@@ -10,6 +10,9 @@
 	import { affiliate } from '$lib/data';
 	import ProductCard from '$lib/components/ProductCard.svelte';
 
+	import { visit, SKIP } from 'unist-util-visit';
+	import { onMount } from 'svelte';
+
 	export let data;
 	let markdown = data.markdown;
 	let articleData = data.metadata;
@@ -34,56 +37,73 @@
 		};
 	}
 
-	// Todo - Make this work by using utility functions to rebuild the ast
-
 	function splitParagraphs(options) {
 		return function (tree, file) {
 			testTree = tree;
-			console.log(tree);
-			for (let i = 0; i < tree.children.length; i++) {
-				let node = tree.children[i];
 
-				// Splits the paragraph into multiple paragraphs
-				if (node.type === 'element' && node.tagName === 'p') {
-					console.log('wtf', i, node);
-					const text = node.children[0].value;
-					const splitText = text.split('.').filter((x) => x !== '');
-
-					// Todo - Split the paragraphs by (x + 2) mod 3 to alternate breaking the paragraphs up
-
-					const newChildren = [];
-					for (let j = 0; j < splitText.length; j++) {
-						const newChild = {
-							type: 'element',
-							tagName: 'p',
-							properties: {},
-							children: [
-								{
-									position: {},
-									type: 'text',
-									value: splitText[j] + '.'
-								}
-							]
-						};
-
-						const newLine = {
-							type: 'text',
-							value: '\n'
-						};
-
-						newChildren.push(newChild);
-						newChildren.push(newLine);
-					}
-
-					tree.children.splice(i, 1); // Necessary to remove the old paragraph
-
-					for (const obj of newChildren.reverse()) {
-						tree.children.splice(i + 1, 0, obj);
-					}
-
-					i += newChildren.length;
+			visit(tree, 'element', (node, index, parent) => {
+				if (node.tagName !== 'p') {
+					return;
 				}
-			}
+
+				const text = node.children[0].value;
+				const splitText = text.split('.').filter((x) => x !== '');
+
+				const newChildren = [];
+				for (let j = 0; j < splitText.length; j++) {
+					const newChild = {
+						type: 'element',
+						tagName: 'p',
+						properties: {},
+						children: [
+							{
+								position: {},
+								type: 'text',
+								value: splitText[j] + '.'
+							}
+						]
+					};
+
+					const newLine = {
+						type: 'text',
+						value: '\n'
+					};
+
+					newChildren.push(newChild);
+					newChildren.push(newLine);
+				}
+
+				parent.children.splice(index, 1); // Necessary to remove the old paragraph
+
+				for (const [j, obj] of newChildren.reverse().entries()) {
+					parent.children.splice(index + 1, 0, obj);
+				}
+
+				return [SKIP, index + newChildren.length];
+			});
+		};
+	}
+
+	function addAffiliateLinks(options) {
+		return function (tree, file) {
+			let pCnt = 0;
+
+			visit(tree, 'element', (node, index, parent) => {
+				if (node.tagName !== 'p') return;
+
+				pCnt += 1;
+				// <ProductCard name={key} amznHtml={value[0]} />
+
+				const obj = {
+					type: 'element',
+					tagName: 'productcard'
+				};
+
+				console.log('huh', pCnt);
+				parent.children.splice(index + 1, 0, obj); // Necessary to remove the old paragraph
+			});
+
+			console.log(pCnt);
 		};
 	}
 
@@ -93,10 +113,42 @@
 		.use(remarkRehype)
 		.use(tableOfContents)
 		.use(splitParagraphs)
+		.use(addAffiliateLinks)
 		.use(rehypeStringify)
 		.process(markdown);
 
-	console.log(testTree);
+	// onMount(() => {
+	// 	new ProductCard({
+	// 		target: document.body,
+	// 		props: {
+	// 			name: Object.entries(affiliate.product_map)[0][0],
+	// 			amznHtml: Object.entries(affiliate.product_map)[0][1][0]
+	// 		}
+	// 	});
+	// });
+
+	const testProduct = async () => {
+		const products = Object.entries(affiliate.product_map);
+		const testElements = document.getElementsByTagName('productcard');
+
+		console.log(products);
+		let i = 0;
+		for (const elem of testElements) {
+			if (i >= 2) {
+				break;
+			}
+
+			new ProductCard({
+				target: elem,
+				props: {
+					name: products[i][0],
+					amznHtml: products[i][1][0]
+				}
+			});
+
+			i++;
+		}
+	};
 </script>
 
 <!-- https://www.verywellmind.com/relationships-survey-7104667 -->
@@ -127,21 +179,21 @@
 		<!-- Todo - Suggest products based on keywords in article  -->
 		<!-- Todo - Think about testing having this component versus spacing out the links in the body -->
 		<div>
-			<!-- <div class="productListName">Instant Relief</div>
+			<div class="productListName">Instant Relief</div>
 			<div class="productList">
-				{#each Object.entries(affiliate.product_map) as [key, value]}
+				<!-- {#each Object.entries(affiliate.product_map) as [key, value]}
 					{#if value.length > 0}
 						<div class="productCard">
 							<ProductCard name={key} amznHtml={value[0]} />
 						</div>
 					{/if}
-				{/each}
-			</div> -->
+				{/each} -->
+			</div>
 		</div>
 	</div>
 	<TableContent {headers} />
 	{#await articleHtml then value}
-		<div class="articleContent">
+		<div class="articleContent" use:testProduct>
 			{@html value}
 		</div>
 	{/await}
