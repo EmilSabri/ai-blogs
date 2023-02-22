@@ -1,5 +1,5 @@
 import * as SibApiV3Sdk from 'sib-api-v3-sdk'
-import { apiInstance } from '/src/hooks.server.js'
+import { apiInstance } from '../../../hooks.server.js'
 
 export async function POST( event ) {
     const req = await event.request.json()
