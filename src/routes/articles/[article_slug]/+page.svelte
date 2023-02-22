@@ -18,8 +18,6 @@
 	let testTree;
 	function tableOfContents(options) {
 		return function (tree, file) {
-			testTree = tree;
-
 			for (let i = 0; i < tree.children.length; i++) {
 				let node = tree.children[i];
 				if (node.type === 'element' && node.tagName === 'h2') {
@@ -36,15 +34,69 @@
 		};
 	}
 
+	// Todo - Make this work by using utility functions to rebuild the ast
+
+	function splitParagraphs(options) {
+		return function (tree, file) {
+			testTree = tree;
+			console.log(tree);
+			for (let i = 0; i < tree.children.length; i++) {
+				let node = tree.children[i];
+
+				// Splits the paragraph into multiple paragraphs
+				if (node.type === 'element' && node.tagName === 'p') {
+					console.log('wtf', i, node);
+					const text = node.children[0].value;
+					const splitText = text.split('.').filter((x) => x !== '');
+
+					// Todo - Split the paragraphs by (x + 2) mod 3 to alternate breaking the paragraphs up
+
+					const newChildren = [];
+					for (let j = 0; j < splitText.length; j++) {
+						const newChild = {
+							type: 'element',
+							tagName: 'p',
+							properties: {},
+							children: [
+								{
+									position: {},
+									type: 'text',
+									value: splitText[j] + '.'
+								}
+							]
+						};
+
+						const newLine = {
+							type: 'text',
+							value: '\n'
+						};
+
+						newChildren.push(newChild);
+						newChildren.push(newLine);
+					}
+
+					tree.children.splice(i, 1); // Necessary to remove the old paragraph
+
+					for (const obj of newChildren.reverse()) {
+						tree.children.splice(i + 1, 0, obj);
+					}
+
+					i += newChildren.length;
+				}
+			}
+		};
+	}
+
 	let articleHtml = unified()
 		.use(remarkParse)
 		.use(remarkFrontmatter, ['yaml']) // Parse frontmatter
 		.use(remarkRehype)
 		.use(tableOfContents)
+		.use(splitParagraphs)
 		.use(rehypeStringify)
 		.process(markdown);
 
-	// console.log(testTree);
+	console.log(testTree);
 </script>
 
 <!-- https://www.verywellmind.com/relationships-survey-7104667 -->

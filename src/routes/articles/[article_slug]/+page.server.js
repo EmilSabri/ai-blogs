@@ -22,10 +22,15 @@ const toMarkdown = (markdown) => {
     return markdown.markdown
 }
 
+// FlushDB on redis will cause errors trying to retrieve the articles.
+// Restarting the server fixes the issue by calling s3 to grab the function. 
+// Probably something to do with the cache of the server
+
 /** @type {import('./$types').PageLoad} */
 export async function load({ params }) {
     const key = `${params.article_slug.toLowerCase()}`
 
+    console.log(key)
     // Check redis
     let articleResults = await articleRepository.search().where('contentLink').equals(key).return.all()
     let markdownResults = await markdownRepository.search().where('contentLink').equals(key).return.all()
@@ -44,8 +49,6 @@ export async function load({ params }) {
         markdown = await articles.getArticle(prefix, `${key}/markdown.md`)
         const metadata = await articles.getArticle(prefix, `${key}/metadata.json`)
         metaJson = JSON.parse(metadata)
-
-        // console.log(markdown)
 
         // Save to redis
         articleRepository.createAndSave({
