@@ -122,7 +122,7 @@ export async function GET() {
         }
     }
 
-    test()  // Used to import broker.js which activates the workers
+    // test()  // Used to import broker.js which activates the workers
     // getKeywords(callOAI)     // Get's keywords from csv fileß
 
     
