@@ -75,7 +75,7 @@
 		<!-- Todo - Suggest products based on keywords in article  -->
 		<!-- Todo - Think about testing having this component versus spacing out the links in the body -->
 		<div>
-			<div class="productListName">Instant Relief</div>
+			<!-- <div class="productListName">Instant Relief</div>
 			<div class="productList">
 				{#each Object.entries(affiliate.product_map) as [key, value]}
 					{#if value.length > 0}
@@ -84,7 +84,7 @@
 						</div>
 					{/if}
 				{/each}
-			</div>
+			</div> -->
 		</div>
 	</div>
 	<TableContent {headers} />
