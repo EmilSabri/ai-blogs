@@ -3,16 +3,6 @@
 	export let amznHtml = '';
 </script>
 
-<!-- <div class="productCard">
-	<div>
-		<h1>{name}</h1>
-		<p>Product description that instantly describes what the product does!</p>
-	</div>
-	<div>
-		{@html amznHtml}
-	</div>
-</div> -->
-
 <div class="card">
 	<div class="imgBox">
 		{@html amznHtml}
@@ -31,14 +21,6 @@
 		margin: 0;
 		padding: 0;
 		font-family: 'Istok Web', sans-serif;
-	}
-
-	body {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		min-height: 100vh;
-		background: #212121;
 	}
 
 	.card {

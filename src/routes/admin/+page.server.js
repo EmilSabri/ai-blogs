@@ -22,10 +22,7 @@ export async function load( { url } ) {
         
     // }
 
-    const publicArticles = await articles.getPublicArticles(false, 150)
-
-    console.log(privateArticles.length, publicArticles.length)
-   
+    const publicArticles = await articles.getPublicArticles(false, 150)   
 
     return {
         privateArticles: privateArticles,

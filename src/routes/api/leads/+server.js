@@ -4,12 +4,8 @@ import { apiInstance } from '../../../hooks.server.js'
 export async function POST( event ) {
     const req = await event.request.json()
 
-    console.log("wtf", req)
     let createContact = new SibApiV3Sdk.CreateContact();
     createContact.email = req.email
-
-    console.log("email", createContact.email)
-
 
     apiInstance.createContact(createContact)
     .then((data) => { console.log('API called successfully. Returned data: ' + JSON.stringify(data))}, (error) => {

@@ -10,7 +10,7 @@
 	import { affiliate } from '$lib/data';
 	import ProductCard from '$lib/components/ProductCard.svelte';
 
-	import { visit, SKIP } from 'unist-util-visit';
+	import { visit, SKIP, CONTINUE } from 'unist-util-visit';
 	import { onMount } from 'svelte';
 
 	export let data;
@@ -87,19 +87,17 @@
 	function addAffiliateLinks(options) {
 		return function (tree, file) {
 			let pCnt = 0;
-
 			visit(tree, 'element', (node, index, parent) => {
-				if (node.tagName !== 'p') return;
-
-				pCnt += 1;
-				// <ProductCard name={key} amznHtml={value[0]} />
+				if (node.tagName !== 'h2') return;
 
 				const obj = {
 					type: 'element',
 					tagName: 'productcard'
 				};
 
-				parent.children.splice(index + 1, 0, obj); // Necessary to remove the old paragraph
+				parent.children.splice(index, 0, obj); // Necessary to remove the old paragraph
+				pCnt += 1;
+				return [CONTINUE, index + 2];
 			});
 		};
 	}
@@ -118,21 +116,18 @@
 		const products = Object.entries(affiliate.product_map);
 		const testElements = document.getElementsByTagName('productcard');
 
-		let i = 0;
-		for (const elem of testElements) {
-			if (i >= 2) {
-				break;
-			}
+		console.log(products);
+		for (let i = 0; i < testElements.length; i++) {
+			console.log('i', i);
+			const elem = testElements[i + 1];
 
 			new ProductCard({
 				target: elem,
 				props: {
-					name: products[i % 2][0],
-					amznHtml: products[i % 2][1][0]
+					name: products[i][0],
+					amznHtml: products[i][1][0]
 				}
 			});
-
-			i++;
 		}
 	};
 </script>
@@ -154,8 +149,9 @@
 		<p class="description">{articleData.description}</p>
 		<img src={articleData.image.url} alt={articleData.image.alt} loading="lazy" />
 		<div class="article-meta">
-			<a href="/author/{articleData.author}">{articleData.author || 'Brian R. Foggy'}</a>
-			<span class="I-seperator">|</span>
+			<!-- <a href="/author/{articleData.author}">{articleData.author || 'Brian R. Foggy'}</a> -->
+			<div>{articleData.author || 'Brian R. Foggy'}</div>
+			<!-- <span class="I-seperator">|</span> -->
 			<div>Updated on {new Date(articleData.date).toLocaleString().split(',')[0]}</div>
 		</div>
 	</div>
@@ -163,7 +159,6 @@
 	<div>
 		<!-- Todo - turn into a product's list component -->
 		<!-- Todo - Suggest products based on keywords in article  -->
-		<!-- Todo - Think about testing having this component versus spacing out the links in the body -->
 		<div>
 			<div class="productListName">Instant Relief</div>
 			<div class="productList">
@@ -179,7 +174,7 @@
 	</div>
 	<TableContent {headers} />
 	{#await articleHtml then value}
-		<div class="articleContent">
+		<div class="articleContent" use:insertProducts>
 			{@html value}
 		</div>
 	{/await}
@@ -270,6 +265,7 @@
 	}
 
 	.article-container {
+		padding: 1em;
 	}
 
 	.article-titles {

@@ -30,7 +30,6 @@ const toMarkdown = (markdown) => {
 export async function load({ params }) {
     const key = `${params.article_slug.toLowerCase()}`
 
-    console.log(key)
     // Check redis
     let articleResults = await articleRepository.search().where('contentLink').equals(key).return.all()
     let markdownResults = await markdownRepository.search().where('contentLink').equals(key).return.all()

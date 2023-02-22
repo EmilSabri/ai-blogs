@@ -16,7 +16,6 @@
 	<NavLink tag={data.url} articles={data.articles} />
 {/if}
 
-<!-- Not sure if  -->
 {#if data.url === 'about'}
 	<!-- About Type Component -->
 	<About />
