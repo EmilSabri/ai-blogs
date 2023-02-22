@@ -179,7 +179,7 @@
 	</div>
 	<TableContent {headers} />
 	{#await articleHtml then value}
-		<div class="articleContent" use:insertProducts>
+		<div class="articleContent">
 			{@html value}
 		</div>
 	{/await}
