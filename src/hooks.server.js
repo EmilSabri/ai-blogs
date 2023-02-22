@@ -1,8 +1,16 @@
-import { REDIS_HOST, REDIS_PASSWORD, REDIS_USERNAME, REDIS_PORT} from "$env/static/private"
+import { REDIS_HOST, REDIS_PASSWORD, REDIS_USERNAME, REDIS_PORT, SENDINBLUE_KEY} from "$env/static/private"
 
 import { Client } from "redis-om"
 import Redlock from "redlock"
 import Redis from "ioredis";
+import * as SibApiV3Sdk from 'sib-api-v3-sdk'
+
+
+let defaultClient = SibApiV3Sdk.ApiClient.instance;
+
+let apiKey = defaultClient.authentications['api-key'];
+apiKey.apiKey = SENDINBLUE_KEY;
+export let apiInstance = new SibApiV3Sdk.ContactsApi();
 
 
 const connection = `redis://${REDIS_USERNAME}:${REDIS_PASSWORD}@${REDIS_HOST}:${REDIS_PORT}`

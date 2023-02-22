@@ -9,6 +9,19 @@
 		// { link: 'https://www.linkedin.com', icon: '/linkedin.svg', name: 'LinkedIn' },
 		{ link: 'https://www.tiktok.com', icon: '/tiktok.svg', name: 'TikTok' }
 	];
+
+	let email = '';
+	const submitEmail = () => {
+		fetch('/api/leads', {
+			method: 'POST',
+			headers: {
+				'content-type': 'application/json'
+			},
+			body: JSON.stringify({
+				email: email
+			})
+		});
+	};
 </script>
 
 <div class="footer-container">
@@ -22,9 +35,16 @@
 			<div class="email-form__text">
 				Join 1,000 other mind conscious people getting the latest updates
 			</div>
-			<div class="email-form__wrapper">
-				<input class="email-form__input" type="text" placeholder="Your email address" />
-				<div class="email-form__btn">SIGN UP</div>
+			<div class="">
+				<form class="email-form__wrapper" on:submit|preventDefault={submitEmail}>
+					<input
+						class="email-form__input"
+						type="text"
+						placeholder="Your email address"
+						bind:value={email}
+					/>
+					<div class="email-form__btn" on:click={submitEmail}>SIGN UP</div>
+				</form>
 			</div>
 		</div>
 
