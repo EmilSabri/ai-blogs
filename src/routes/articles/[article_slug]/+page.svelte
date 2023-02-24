@@ -12,8 +12,10 @@
 
 	import { visit, SKIP, CONTINUE } from 'unist-util-visit';
 	import { onMount } from 'svelte';
+	import RelatedArticles from '$lib/components/RelatedArticles.svelte';
 
 	export let data;
+
 	let markdown = data.markdown;
 	let articleData = data.metadata;
 
@@ -178,6 +180,8 @@
 			{@html value}
 		</div>
 	{/await}
+
+	<RelatedArticles articles={data.relatedArticles} />
 </div>
 
 <style>

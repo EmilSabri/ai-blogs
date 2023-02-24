@@ -137,8 +137,7 @@
 		flex-direction: row;
 		justify-content: space-between;
 
-		/* border-bottom: 2px solid #212121; */
-		border-bottom: 1px solid #212121;
+		border-bottom: 1px solid #363333;
 		box-shadow: 0 3px 4px rgba(0, 0, 0, 0.08);
 	}
 

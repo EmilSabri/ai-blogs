@@ -22,6 +22,7 @@ const toMarkdown = (markdown) => {
     return markdown.markdown
 }
 
+// Todo - Fix this
 // FlushDB on redis will cause errors trying to retrieve the articles.
 // Restarting the server fixes the issue by calling s3 to grab the function. 
 // Probably something to do with the cache of the server
@@ -68,8 +69,14 @@ export async function load({ params }) {
         })
     }
 
+    // Internal Links
+    const relatedArticles = await articles.getRelatedArticles(metaJson.contentLink, 6)
+    
+    // Todo - Return markdown, metadata, and relatedArticles as Promises to be resolved in the component
+    // This will allow the component to render the page while the data is being fetched.
   return {
         markdown: markdown,
-        metadata: metaJson
+        metadata: metaJson,
+        relatedArticles: relatedArticles
     };
 }

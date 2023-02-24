@@ -79,7 +79,7 @@
 		<div class="footerCol">
 			<div class="footerPP">
 				{#each siteLinks.footer as links}
-					<a class="footerPP__item" href={links.link}>{links.text}</a>
+					<a class="footerPP__item" href={'/' + links.link}>{links.text}</a>
 				{/each}
 			</div>
 		</div>
@@ -99,10 +99,18 @@
 	}
 	a {
 		text-decoration: none;
-		color: #000;
+		color: white;
 	}
 	.footer-container {
-		background-color: #ab3;
+		background: rgb(78, 134, 131);
+		background: linear-gradient(
+			160deg,
+			rgba(78, 134, 131, 1) 1%,
+			rgba(78, 134, 131, 1) 24%,
+			rgba(6, 38, 37, 1) 86%
+		);
+
+		color: white;
 	}
 	.footer {
 		/* margin-bottom: 3em; */
@@ -193,7 +201,7 @@
 	.footerMenuItem {
 		font-weight: 600;
 		padding: 0.5em;
-
+		color: white;
 		display: flex;
 		flex-direction: row;
 	}

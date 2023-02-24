@@ -120,7 +120,7 @@
 	@media (min-width: 680px) {
 		.content-list {
 			display: grid;
-			grid-template-columns: 2.1fr 0.9fr;
+			/* grid-template-columns: 2.1fr 0.9fr; */
 			gap: 0em 1em;
 			/* gap: 1em 1.25em; */
 			/* justify-content: space-between; */

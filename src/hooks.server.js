@@ -6,8 +6,6 @@ import Redlock from "redlock"
 import Redis from "ioredis";
 import * as SibApiV3Sdk from 'sib-api-v3-sdk'
 
-
-console.log(SibApiV3Sdk)
 let defaultClient = SibApiV3Sdk.default.ApiClient.instance;
 
 let apiKey = defaultClient.authentications['api-key'];

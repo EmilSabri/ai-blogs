@@ -45,13 +45,20 @@ async function getArticle(prefix, key) {
 // Todo - 
 // 1. Add pagination
 // 2. Abliity to get all articles for sitemap.xml
-async function getPublicArticles(getMetaData = false, limit = 50) {
-    const articles = await s3Client.listObjects(getMetaData, limit, 'public/')
+async function getPublicArticles(getMetaData = false, limit = 50, startAfter = undefined) {
+    const prefix = 'public/'
+    const articles = await s3Client.listObjects(getMetaData, limit, prefix, startAfter)
     return articles
 }
 
 async function getPrivateArticles(getMetaData = false, limit = 50) {
     const articles = await s3Client.listObjects(getMetaData, limit, 'private/')
+    return articles
+}
+
+
+async function getRelatedArticles(startAfter, limit) {
+    const articles = await getPublicArticles(true, limit, 'public/' + startAfter)
     return articles
 }
 
@@ -74,6 +81,7 @@ export const articles = {
     getArticle: calcFuncTime(getArticle),
     swapVisibility: calcFuncTime(swapVisibility),
     noMarkdown: calcFuncTime(noMarkdown),
-    deleteObject: deleteObject
+    deleteObject: deleteObject,
+    getRelatedArticles: calcFuncTime(getRelatedArticles),
     
 }
