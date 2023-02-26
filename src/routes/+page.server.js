@@ -19,7 +19,6 @@ export async function load() {
 }
 
 export const config = {
-    runtime: 'edge',
     isr: {
         expiration: 24 * 60 * 60,   // 24 hours as seconds
     }
