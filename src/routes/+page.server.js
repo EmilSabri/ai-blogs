@@ -18,8 +18,3 @@ export async function load() {
     }
 }
 
-// export const config = {
-//     isr: {
-//         expiration: 60
-//     }
-// }
