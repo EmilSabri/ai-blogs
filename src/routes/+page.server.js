@@ -20,6 +20,6 @@ export async function load() {
 
 export const config = {
     isr: {
-        expiration: 24 * 60 * 60,   // 24 hours as seconds
+        expiration: 60
     }
 }
