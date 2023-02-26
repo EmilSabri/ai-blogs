@@ -1,6 +1,13 @@
 // @ts-nocheck
 import { articles } from "$lib/server/articles"
 
+export const prerender = 'auto';
+export const config = {
+    isr: {
+        expiration: 60
+    }
+}
+
 export async function load() {
 
     // Todo - Get list of articles from redis
