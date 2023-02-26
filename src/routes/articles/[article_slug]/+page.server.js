@@ -77,3 +77,9 @@ export async function load({ params }) {
         metadata: metaJson,
     };
 }
+
+// export const config = {
+//     isr: {
+//         expiration: 60,
+//     }
+// }
