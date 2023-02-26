@@ -1,12 +1,20 @@
 <script>
+	// @ts-nocheck
+
 	import Header from '$lib/components/Header.svelte';
-	import { Breadcrumbs } from '$lib/components/index';
+	import { Breadcrumbs, RelatedArticles } from '$lib/components/index';
+
+	export let data;
 </script>
 
-<div class="articles-container">
+<div class="">
 	<!-- Bread crumbs Yum -->
 	<!-- <Breadcrumbs /> -->
-	<slot />
+	<div class="articles-container">
+		<slot />
+	</div>
+	<!-- Internal Links -->
+	<RelatedArticles articles={data.relatedArticles} />
 </div>
 
 <style>

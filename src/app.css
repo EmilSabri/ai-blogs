@@ -1,7 +1,12 @@
 /* Todo - Get a global css file working */
 /* Todo - Implement a CSS reset https://www.reddit.com/r/sveltejs/comments/rknmau/cant_seem_to_get_the_full_width_of_the_page/ */
 
+
 @import url('https://fonts.googleapis.com/css?family=Merriweather+Sans');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 .body { 
     font-display: swap;
     font-family: 'Merriweather Sans', 'sans-serif';   

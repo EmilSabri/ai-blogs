@@ -69,14 +69,11 @@ export async function load({ params }) {
         })
     }
 
-    // Internal Links
-    const relatedArticles = await articles.getRelatedArticles(metaJson.contentLink, 6)
     
     // Todo - Return markdown, metadata, and relatedArticles as Promises to be resolved in the component
     // This will allow the component to render the page while the data is being fetched.
   return {
         markdown: markdown,
         metadata: metaJson,
-        relatedArticles: relatedArticles
     };
 }

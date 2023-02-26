@@ -9,10 +9,7 @@
 	import TableContent from '$lib/components/TableContent.svelte';
 	import { affiliate } from '$lib/data';
 	import ProductCard from '$lib/components/ProductCard.svelte';
-
 	import { visit, SKIP, CONTINUE } from 'unist-util-visit';
-	import { onMount } from 'svelte';
-	import RelatedArticles from '$lib/components/RelatedArticles.svelte';
 
 	export let data;
 
@@ -118,9 +115,7 @@
 		const products = Object.entries(affiliate.product_map);
 		const testElements = document.getElementsByTagName('productcard');
 
-		console.log(products);
 		for (let i = 0; i < testElements.length; i++) {
-			console.log('i', i);
 			const elem = testElements[i + 1];
 
 			new ProductCard({
@@ -180,8 +175,6 @@
 			{@html value}
 		</div>
 	{/await}
-
-	<RelatedArticles articles={data.relatedArticles} />
 </div>
 
 <style>

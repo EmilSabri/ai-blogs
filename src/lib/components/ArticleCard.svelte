@@ -18,7 +18,7 @@
 <style>
 	a {
 		text-decoration: none;
-		color: inherit;
+		color: #062625;
 	}
 
 	.articleCard {
@@ -30,6 +30,8 @@
 		line-height: 1.3571;
 		font-weight: 700;
 		/* margin-bottom: 0.1667em; */
+
+		color: #062625;
 	}
 
 	.articleDescription {
@@ -46,7 +48,7 @@
 		backface-visibility: hidden;
 		max-width: 100%;
 	}
-
+	/* 
 	@screen xs {
 		.articleCard {
 			margin: 0;
@@ -74,5 +76,5 @@
 		.articleCard {
 			padding: 1em 0.625em;
 		}
-	}
+	} */
 </style>

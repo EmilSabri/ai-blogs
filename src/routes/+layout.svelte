@@ -1,4 +1,5 @@
 <script>
+	import '../app.css';
 	import { Breadcrumbs, Header, Footer } from '$lib/components/index';
 	let disableScroll = false;
 </script>
