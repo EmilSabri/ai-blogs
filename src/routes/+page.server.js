@@ -8,12 +8,7 @@ import { articles } from "$lib/server/articles"
 //     }
 // }
 
-export async function load({ url }) {
-
-    const loadParams = url
-
-    console.log("test", loadParams)
-
+export async function load() {
     // Todo - Get list of articles from redis
     let articlesMeta = await articles.getPublicArticles(true, 20)
 
@@ -25,7 +20,6 @@ export async function load({ url }) {
     const test = Object.values(seentIt)
     
     return {
-        url: url,
         articles: test.slice(0, 10)
     }
 }

@@ -3,8 +3,6 @@
 	import { Homepage } from '$lib/components';
 
 	export let data;
-
-	console.log(data.url);
 </script>
 
 <div class="home-wrapper">
