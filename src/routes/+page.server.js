@@ -1,12 +1,12 @@
 // @ts-nocheck
 import { articles } from "$lib/server/articles"
 
-export const prerender = 'auto';
-export const config = {
-    isr: {
-        expiration: 24 * 60 * 60,
-    }
-}
+// export const prerender = 'auto';
+// export const config = {
+//     isr: {
+//         expiration: 24 * 60 * 60,
+//     }
+// }
 
 export async function load({ url }) {
 
