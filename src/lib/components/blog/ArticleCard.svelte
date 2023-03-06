@@ -1,5 +1,5 @@
 <script lang="ts">
-	// import '../../../app.css';
+	// import '../../../../app.css';
 	import type { Article } from '$lib/mock/mock';
 	export let article: Article;
 </script>

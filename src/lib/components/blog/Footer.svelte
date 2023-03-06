@@ -10,6 +10,8 @@
 		{ link: 'https://www.tiktok.com', icon: '/tiktok.svg', name: 'TikTok' }
 	];
 
+	export let data;
+
 	let email = '';
 	const submitEmail = () => {
 		fetch('/api/leads', {
@@ -27,7 +29,7 @@
 <div class="footer-container">
 	<div class="footer">
 		<!-- Icon -->
-		<div class="footer-icon">BrianFog 🧠</div>
+		<div class="footer-icon">{data.siteData.name}</div>
 
 		<!-- Email Capture -->
 		<!-- Todo - Capture emails into a list -->

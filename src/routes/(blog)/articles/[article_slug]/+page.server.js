@@ -28,12 +28,12 @@ const toMarkdown = (markdown) => {
 // Probably something to do with the cache of the server
 
 /** @type {import('./$types').PageLoad} */
-export async function load({ params }) {
+export async function load({ params, url }) {
     const key = `${params.article_slug.toLowerCase()}`
 
     // Check redis
-    let articleResults = await articleRepository.search().where('contentLink').equals(key).return.all()
-    let markdownResults = await markdownRepository.search().where('contentLink').equals(key).return.all()
+    let articleResults = [] //await articleRepository.search().where('contentLink').equals(key).return.all()
+    let markdownResults = [] //await markdownRepository.search().where('contentLink').equals(key).return.all()
     
     let markdown =  ''
     let metaJson =  {}
@@ -46,8 +46,9 @@ export async function load({ params }) {
     // Pull from S3 if not in redis
     if (articleResults.length === 0 || markdownResults.length === 0) {
         const prefix = 'public'
-        markdown = await articles.getArticle(prefix, `${key}/markdown.md`)
-        const metadata = await articles.getArticle(prefix, `${key}/metadata.json`)
+        const host = 'brianfog.com' // url.host
+        markdown = await articles.getArticle(host, prefix, `${key}/markdown.md`)
+        const metadata = await articles.getArticle(host, prefix, `${key}/metadata.json`)
         metaJson = JSON.parse(metadata)
 
         // Save to redis

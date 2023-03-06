@@ -1,5 +1,5 @@
 <script>
-	import '../app.css';
+	import '../../app.css';
 	import { Breadcrumbs, Header, Footer } from '$lib/components/index';
 	let disableScroll = false;
 </script>
@@ -9,9 +9,7 @@
 	<title>BrianFog</title>
 	<meta name="description" content="Home page of BrianFog.com" />
 	<!-- Todo - Facebook Open Graph Tags -->
-
 	<!-- Todo - Twitter Cards -->
-
 	<!-- Todo - Pinterest Pins -->
 </svelte:head>
 

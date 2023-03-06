@@ -6,6 +6,7 @@
 	import { tick } from 'svelte';
 	import { debounce } from 'throttle-debounce';
 
+	export let data;
 	export let displayMenu = false;
 	let headerHeight;
 
@@ -60,7 +61,7 @@
 				if (displayMenu) {
 					linkClick();
 				}
-			}}>BrianFog 🧠</a
+			}}>{data.siteData.name}</a
 		>
 	</div>
 
@@ -70,7 +71,7 @@
 		class="search-icon {displayMenu ? 'disableSearch' : ''}"
 		src="/svg/search-icon.svg"
 		width="25px"
-		alt="Search www.BrianFog.com icon"
+		alt="Search www.{data.siteData.name}.com icon"
 		on:click={() => {
 			displayMenu = !displayMenu;
 			tickTock();
@@ -87,7 +88,7 @@
 				class="search-input-icon"
 				src="/svg/search-icon.svg"
 				width="20px"
-				alt="Search www.BrainFog.com icon"
+				alt="Search www.{data.siteData.name}.com icon"
 				loading="lazy"
 			/>
 			<input

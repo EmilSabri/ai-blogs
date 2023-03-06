@@ -1,8 +1,6 @@
 <script>
 	// @ts-nocheck
-
-	import Header from '$lib/components/Header.svelte';
-	import { Breadcrumbs, RelatedArticles } from '$lib/components/index';
+	import { Breadcrumbs, RelatedArticles, Header } from '$lib/components/blog';
 
 	export let data;
 </script>

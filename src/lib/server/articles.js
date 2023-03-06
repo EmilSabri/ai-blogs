@@ -38,15 +38,18 @@ async function noMarkdown(ContentType, Key, Body, prefix) {
     await deleteObject(Key, prefix)
 }
 
-async function getArticle(prefix, key) {
-    return s3Client.getObject(S3_BUCKET_ARTICLES, prefix + "/" + key)
+async function getArticle(domain, prefix, key) {
+    const fullKey = `${domain}/${prefix}/${key}`
+    console.log(fullKey)
+    return s3Client.getObject(S3_BUCKET_ARTICLES, fullKey)
 }
 
 // Todo - 
 // 1. Add pagination
 // 2. Abliity to get all articles for sitemap.xml
-async function getPublicArticles(getMetaData = false, limit = 50, startAfter = undefined) {
-    const prefix = 'public/'
+async function getPublicArticles(domain, getMetaData = false, limit = 50, startAfter = undefined) {
+    const prefix = `${domain}/public/`
+    console.log(prefix)
     const articles = await s3Client.listObjects(getMetaData, limit, prefix, startAfter)
     return articles
 }
@@ -57,8 +60,8 @@ async function getPrivateArticles(getMetaData = false, limit = 50) {
 }
 
 
-async function getRelatedArticles(startAfter, limit) {
-    const articles = await getPublicArticles(true, limit, 'public/' + startAfter)
+async function getRelatedArticles(domain, startAfter, limit) {
+    const articles = await getPublicArticles(domain, true, limit, `${domain}/public/${startAfter}`)
     return articles
 }
 
@@ -83,5 +86,4 @@ export const articles = {
     noMarkdown: calcFuncTime(noMarkdown),
     deleteObject: deleteObject,
     getRelatedArticles: calcFuncTime(getRelatedArticles),
-    
 }

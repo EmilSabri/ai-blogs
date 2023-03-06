@@ -6,9 +6,8 @@
 	import remarkFrontmatter from 'remark-frontmatter';
 	import remarkRehype from 'remark-rehype';
 	import rehypeStringify from 'rehype-stringify';
-	import TableContent from '$lib/components/TableContent.svelte';
 	import { affiliate } from '$lib/data';
-	import ProductCard from '$lib/components/ProductCard.svelte';
+	import { ProductCard, TableContent } from '$lib/components/blog';
 	import { visit, SKIP, CONTINUE } from 'unist-util-visit';
 
 	export let data;

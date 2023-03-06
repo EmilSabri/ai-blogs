@@ -29,6 +29,7 @@ const client = new S3Client({
 
 function getObject(Bucket: string, Key: string) {
     // eslint-disable-next-line no-async-promise-executor
+    console.log('s3.getObject() - ', Bucket, Key)
     return new Promise(async (resolve, reject) => {
         const getObjectCommand = new GetObjectCommand({ Bucket, Key })
 
