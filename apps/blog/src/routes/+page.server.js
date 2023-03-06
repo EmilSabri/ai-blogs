@@ -13,7 +13,7 @@ export async function load({ url }) {
     let { host } = url
 
     // If data.host !== SAAS page then grab site meta data
-    host =  'brianfog.com' // url.host
+    // host =  'brianfog.com' // url.host
     let siteData = {}
     let articlesMeta = []
     if (!equalsSaasHome(host)) {

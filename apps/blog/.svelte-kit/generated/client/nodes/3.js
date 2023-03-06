@@ -1,0 +1,1 @@
+export { default as component } from "../../../../src/routes/(blog)/[nav_links]/+layout.svelte";

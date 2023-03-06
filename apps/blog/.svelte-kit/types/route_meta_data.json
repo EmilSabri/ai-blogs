@@ -1,0 +1,49 @@
+{
+	"/": [
+		"src/routes/+page.server.js"
+	],
+	"/(blog)/ToDelete": [
+		"src/routes/(blog)/ToDelete/+page.server.js"
+	],
+	"/(blog)/admin": [
+		"src/routes/(blog)/admin/+page.server.js"
+	],
+	"/(blog)/admin/upload/[visible]/[article_slug]": [
+		"src/routes/(blog)/admin/upload/[visible]/[article_slug]/+page.server.js"
+	],
+	"/api/articles": [
+		"src/routes/api/articles/+server.js"
+	],
+	"/api/article": [
+		"src/routes/api/article/+server.js"
+	],
+	"/api/keywords": [
+		"src/routes/api/keywords/+server.js"
+	],
+	"/api/leads": [
+		"src/routes/api/leads/+server.js"
+	],
+	"/api/openai": [
+		"src/routes/api/openai/+server.js"
+	],
+	"/api/saas": [
+		"src/routes/api/saas/+server.js"
+	],
+	"/api/test": [
+		"src/routes/api/test/+server.js"
+	],
+	"/(blog)/articles/[article_slug]": [
+		"src/routes/(blog)/articles/[article_slug]/+page.server.js",
+		"src/routes/(blog)/articles/[article_slug]/+layout.server.js",
+		"src/routes/(blog)/articles/[article_slug]/+layout.server.js"
+	],
+	"/(blog)/search": [
+		"src/routes/(blog)/search/+page.server.js"
+	],
+	"/(blog)/sitemap.xml": [
+		"src/routes/(blog)/sitemap.xml/+server.js"
+	],
+	"/(blog)/[nav_links]": [
+		"src/routes/(blog)/[nav_links]/+page.server.js"
+	]
+}
