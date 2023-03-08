@@ -1,6 +1,6 @@
 // @ts-nocheck
 // @ts-nocheck
-import { articles   } from "$lib/server/articles";
+import { articles } from "@aiblogs/db";
 import { Markdown, articleRepository, markdownRepository } from "$lib/server/redis"
 
 
@@ -53,6 +53,7 @@ export async function load({ params, url }) {
         metaJson = JSON.parse(metadata)
 
         // Save to redis
+        console.log("Saving to redis", key)
         articleRepository.createAndSave({
             title: metaJson.title,
             description: metaJson.description,

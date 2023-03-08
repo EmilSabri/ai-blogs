@@ -1,9 +1,7 @@
 <script lang="ts">
 	import '../app.css';
 
-	import type { NewSite } from '$lib/mock/NewSite';
-	import { NewSiteForm } from '$lib/components/saas';
-	import { Homepage, Header, Footer } from '$lib/components/blog';
+	import { Homepage, Header, Footer } from '$lib/components';
 
 	export let data;
 	const siteData = data.siteData;
@@ -12,46 +10,29 @@
 		return host === '127.0.0.1:5173' || host === 'localhost:5173';
 	}
 
-	async function PostS3(formData: NewSite) {
-		const response = await fetch('/api/saas', {
-			method: 'POST',
-			headers: {
-				'content-type': 'application/json'
-			},
-			body: JSON.stringify(formData) // Stringify json object to s3
-		});
-	}
-
 	let disableScroll = false;
 </script>
 
 <svelte:head>
-	{#if !equalsSaasHome(data.host)}
-		<link rel="icon" href={siteData.logo} />
+	<link rel="icon" href={siteData.logo} />
 
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>{data.siteData.name}</title>
-		<meta name="description" content="Home page of {siteData.name}.com" />
-		<!-- Todo - Facebook Open Graph Tags -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>{siteData.name}</title>
+	<meta name="description" content="Home page of {siteData.name}.com" />
+	<!-- Todo - Facebook Open Graph Tags -->
 
-		<!-- Todo - Twitter Cards -->
+	<!-- Todo - Twitter Cards -->
 
-		<!-- Todo - Pinterest Pins -->
-	{/if}
+	<!-- Todo - Pinterest Pins -->
 </svelte:head>
 
-<!-- Render SaaS product home page or the niche articles -->
-{#if equalsSaasHome(data.host)}
-	<NewSiteForm {PostS3} />
-{:else}
-	<div class="body-container" class:disableScroll>
-		<div id="slot-thot" class="slot-container">
-			<Header bind:displayMenu={disableScroll} {data} />
-			<Homepage {data} />
-		</div>
-		<Footer {data} />
+<div class="body-container" class:disableScroll>
+	<div id="slot-thot" class="slot-container">
+		<Header bind:displayMenu={disableScroll} {data} />
+		<Homepage {data} />
 	</div>
-{/if}
+	<Footer {data} />
+</div>
 
 <style>
 	@import url('https://fonts.googleapis.com/css?family=Merriweather+Sans');

@@ -1,0 +1,11 @@
+{
+    "name": "@aiblogs/db",
+    "version": "0.0.1",
+    "main": "index.ts",
+    "type": "module",
+    "description": "Shared data types and interfaces for the project",
+    "dependencies": {
+        "typescript": "^4.9.3",
+        "@aws-sdk/client-s3": "^3.262.0"
+    }
+}

@@ -1,11 +1,19 @@
 {
-  "name": "ai-blogs",
+  "name": "aiblogs",
   "version": "1.0.0",
   "workspaces": [
     "apps/*",
     "packages/*"
   ],
+  "scripts": {
+    "dev": "FORCE_COLOR=1 dotenv -- turbo run dev",
+    "dev-blog": "FORCE_COLOR=1 dotenv -- turbo run dev --filter blog",
+    "dev-saas": "FORCE_COLOR=1 dotenv -- turbo run dev --filter saas"
+  },
   "dependencies": {
     "turbo": "^1.8.3"
+  },
+  "devDependencies": {
+    "dotenv-cli": "^7.0.0"
   }
 }

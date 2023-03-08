@@ -26,7 +26,6 @@
  * ```
  */
 declare module '$env/static/private' {
-	export const DOMAIN: string;
 	export const S3_ACCESS_KEY: string;
 	export const S3_SECERET_KEY: string;
 	export const S3_REGION: string;
@@ -44,8 +43,8 @@ declare module '$env/static/private' {
 	export const MANPATH: string;
 	export const TERM_PROGRAM: string;
 	export const NODE: string;
-	export const INIT_CWD: string;
 	export const TURBO_INVOCATION_DIR: string;
+	export const INIT_CWD: string;
 	export const TERM: string;
 	export const SHELL: string;
 	export const FIGTERM_SESSION_ID: string;
@@ -89,6 +88,7 @@ declare module '$env/static/private' {
 	export const TURBO_HASH: string;
 	export const XPC_FLAGS: string;
 	export const VSCODE_GIT_ASKPASS_EXTRA_ARGS: string;
+	export const FORCE_COLOR: string;
 	export const npm_config_node_gyp: string;
 	export const npm_package_version: string;
 	export const XPC_SERVICE_NAME: string;
@@ -142,7 +142,6 @@ declare module '$env/static/public' {
  */
 declare module '$env/dynamic/private' {
 	export const env: {
-		DOMAIN: string;
 		S3_ACCESS_KEY: string;
 		S3_SECERET_KEY: string;
 		S3_REGION: string;
@@ -160,8 +159,8 @@ declare module '$env/dynamic/private' {
 		MANPATH: string;
 		TERM_PROGRAM: string;
 		NODE: string;
-		INIT_CWD: string;
 		TURBO_INVOCATION_DIR: string;
+		INIT_CWD: string;
 		TERM: string;
 		SHELL: string;
 		FIGTERM_SESSION_ID: string;
@@ -205,6 +204,7 @@ declare module '$env/dynamic/private' {
 		TURBO_HASH: string;
 		XPC_FLAGS: string;
 		VSCODE_GIT_ASKPASS_EXTRA_ARGS: string;
+		FORCE_COLOR: string;
 		npm_config_node_gyp: string;
 		npm_package_version: string;
 		XPC_SERVICE_NAME: string;

@@ -17,6 +17,9 @@ const toArticle = (article) => {
     }
 }
 
+// TODO - Fix bug that duplicates articles to redis when hovering over them or clicking them.
+// The fix will either be here or in /articles/[article_slug] since that updates redis
+
 export async function load({ url }) {
     const query = url.searchParams.get('q')
 
@@ -33,8 +36,8 @@ export async function load({ url }) {
         didFind = false
         console.log('No results found, returning all articles')
         articles = await articleRepository.search().return.all()
-
     }
+    
     const results = articles.map((article) => toArticle(article))
 
     return {

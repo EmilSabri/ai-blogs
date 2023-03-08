@@ -21,11 +21,11 @@ export const server_loads = [5];
 export const dictionary = {
 		"/": [~6],
 		"/(blog)/ToDelete": [~7,[2]],
-		"/(blog)/admin": [~9],
-		"/(blog)/admin/upload/[visible]/[article_slug]": [~10],
+		"/(blog)/ToDelete/admin": [~8,[2]],
+		"/(blog)/ToDelete/admin/upload/[visible]/[article_slug]": [~9,[2]],
 		"/(blog)/articles/[article_slug]": [~11,[,5],[4]],
 		"/(blog)/search": [~12],
-		"/(blog)/[nav_links]": [~8,[3]]
+		"/(blog)/[nav_links]": [~10,[3]]
 	};
 
 export const hooks = {

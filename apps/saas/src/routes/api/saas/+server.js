@@ -1,11 +1,10 @@
 // @ts-nocheck
-import { s3Client } from "$lib/server"
+import { s3Client } from "@aiblogs/db"
 import { S3_BUCKET_ARTICLES } from "$env/static/private"
 
 export async function POST( event ) {
+  
     const req = await event.request.json()
-
-    console.log(req)
 
     const body = JSON.stringify(req)
     const key = req.domain.toLowerCase() + "/newsite.json"

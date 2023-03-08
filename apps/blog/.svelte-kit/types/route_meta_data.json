@@ -5,29 +5,26 @@
 	"/(blog)/ToDelete": [
 		"src/routes/(blog)/ToDelete/+page.server.js"
 	],
-	"/(blog)/admin": [
-		"src/routes/(blog)/admin/+page.server.js"
+	"/(blog)/ToDelete/admin": [
+		"src/routes/(blog)/ToDelete/admin/+page.server.js"
 	],
-	"/(blog)/admin/upload/[visible]/[article_slug]": [
-		"src/routes/(blog)/admin/upload/[visible]/[article_slug]/+page.server.js"
+	"/(blog)/ToDelete/admin/upload/[visible]/[article_slug]": [
+		"src/routes/(blog)/ToDelete/admin/upload/[visible]/[article_slug]/+page.server.js"
 	],
-	"/api/articles": [
-		"src/routes/api/articles/+server.js"
+	"/(blog)/ToDelete/articles": [
+		"src/routes/(blog)/ToDelete/articles/+server.js"
 	],
-	"/api/article": [
-		"src/routes/api/article/+server.js"
+	"/(blog)/ToDelete/article": [
+		"src/routes/(blog)/ToDelete/article/+server.js"
 	],
-	"/api/keywords": [
-		"src/routes/api/keywords/+server.js"
+	"/(blog)/ToDelete/openai": [
+		"src/routes/(blog)/ToDelete/openai/+server.js"
+	],
+	"/(blog)/ToDelete/saas": [
+		"src/routes/(blog)/ToDelete/saas/+server.js"
 	],
 	"/api/leads": [
 		"src/routes/api/leads/+server.js"
-	],
-	"/api/openai": [
-		"src/routes/api/openai/+server.js"
-	],
-	"/api/saas": [
-		"src/routes/api/saas/+server.js"
 	],
 	"/api/test": [
 		"src/routes/api/test/+server.js"

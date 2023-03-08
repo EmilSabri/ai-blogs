@@ -1,53 +1,6 @@
 // @ts-nocheck
 import { Entity, Schema} from 'redis-om'
 import { redisOm } from "../../hooks.server"
-import { Queue, Worker } from 'bullmq'
-import { REDIS_HOST, REDIS_PORT, REDIS_USERNAME, REDIS_PASSWORD } from '$env/static/private'
-import { ArticleTypes } from './openai/prompts'
-
-export const KEYWORD_QUEUE = 'NEW_KEYWORD_QUEUE-619'
-export const BROKER_QUEUE = 'BROKER_QUEUE'
-
-const connection = {
-    host: REDIS_HOST, 
-    port: REDIS_PORT,
-    username: REDIS_USERNAME,
-    password: REDIS_PASSWORD
-}
-
-export const queue = new Queue(KEYWORD_QUEUE, { connection: connection })
-
-
-const retryOpts = {
-    attempts: 3,
-    backoff: {
-        type: 'exponential',
-        delay: 500
-    }
-}
-
-const testQueue = new Queue(BROKER_QUEUE , { connection: connection })
-
-const promptFlow = async (job) => {
-    const keyword = job.data.keyword
-    const jobData = {
-        step: 0,
-        articleType: ArticleTypes.EXPLAINER,
-        body: {
-            keyword: keyword,
-        },
-        retries: 0
-    }
-    testQueue.add('testJob', jobData, retryOpts)
-
-    
-    // console.log(`Start promptFlow - ${keyword}`)
-}
-
-// Workers
-new Worker(KEYWORD_QUEUE, promptFlow, {connection: connection})
-
-// ----------------------------------------------
 
 // https://github.com/redis/redis-om-node
 // Read up on redis-om ^^^

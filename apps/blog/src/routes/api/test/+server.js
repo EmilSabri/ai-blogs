@@ -1,4 +1,4 @@
-import { articles } from '$lib/server/articles';
+import { articles } from "@aiblogs/db";
 
 export async function GET() {
     // Get all private articles

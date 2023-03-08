@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { articles } from "$lib/server/articles"
+import { articles } from "./articles"
 
 // export const prerender = 'auto';
 // export const config = {

@@ -1,7 +1,6 @@
 <script lang="ts">
-	// import type NewSite from /mock
-	import '/src/app.css';
-	import type { Content, NewSite, Social, Author, Gtag } from '$lib/mock/NewSite';
+	// import '/src/app.css';
+	import type { Content, NewSite, Social, Author, Gtag } from 'data';
 
 	export let PostS3: (formData: NewSite) => void;
 	const formData = {} as NewSite;

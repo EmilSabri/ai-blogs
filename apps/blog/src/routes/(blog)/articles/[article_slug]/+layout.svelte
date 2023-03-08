@@ -1,6 +1,6 @@
 <script>
 	// @ts-nocheck
-	import { Breadcrumbs, RelatedArticles, Header } from '$lib/components/blog';
+	import { Breadcrumbs, RelatedArticles, Header } from '$lib/components';
 
 	export let data;
 </script>

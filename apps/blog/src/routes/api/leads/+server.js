@@ -1,6 +1,7 @@
 import * as SibApiV3Sdk from 'sib-api-v3-sdk'
 import { apiInstance } from '../../../hooks.server.js'
 
+// Todo - Save email to specific list based on domain name
 export async function POST( event ) {
     const req = await event.request.json()
 

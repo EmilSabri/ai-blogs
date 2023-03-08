@@ -7,7 +7,7 @@
 	import remarkRehype from 'remark-rehype';
 	import rehypeStringify from 'rehype-stringify';
 	import { affiliate } from '$lib/data';
-	import { ProductCard, TableContent } from '$lib/components/blog';
+	import { ProductCard, TableContent } from '$lib/components';
 	import { visit, SKIP, CONTINUE } from 'unist-util-visit';
 
 	export let data;
