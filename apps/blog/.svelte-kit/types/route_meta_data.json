@@ -2,27 +2,6 @@
 	"/": [
 		"src/routes/+page.server.js"
 	],
-	"/(blog)/ToDelete": [
-		"src/routes/(blog)/ToDelete/+page.server.js"
-	],
-	"/(blog)/ToDelete/admin": [
-		"src/routes/(blog)/ToDelete/admin/+page.server.js"
-	],
-	"/(blog)/ToDelete/admin/upload/[visible]/[article_slug]": [
-		"src/routes/(blog)/ToDelete/admin/upload/[visible]/[article_slug]/+page.server.js"
-	],
-	"/(blog)/ToDelete/articles": [
-		"src/routes/(blog)/ToDelete/articles/+server.js"
-	],
-	"/(blog)/ToDelete/article": [
-		"src/routes/(blog)/ToDelete/article/+server.js"
-	],
-	"/(blog)/ToDelete/openai": [
-		"src/routes/(blog)/ToDelete/openai/+server.js"
-	],
-	"/(blog)/ToDelete/saas": [
-		"src/routes/(blog)/ToDelete/saas/+server.js"
-	],
 	"/api/leads": [
 		"src/routes/api/leads/+server.js"
 	],

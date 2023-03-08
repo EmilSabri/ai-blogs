@@ -9,23 +9,16 @@ export const nodes = [
 	() => import('./nodes/5'),
 	() => import('./nodes/6'),
 	() => import('./nodes/7'),
-	() => import('./nodes/8'),
-	() => import('./nodes/9'),
-	() => import('./nodes/10'),
-	() => import('./nodes/11'),
-	() => import('./nodes/12')
+	() => import('./nodes/8')
 ];
 
-export const server_loads = [5];
+export const server_loads = [4];
 
 export const dictionary = {
-		"/": [~6],
-		"/(blog)/ToDelete": [~7,[2]],
-		"/(blog)/ToDelete/admin": [~8,[2]],
-		"/(blog)/ToDelete/admin/upload/[visible]/[article_slug]": [~9,[2]],
-		"/(blog)/articles/[article_slug]": [~11,[,5],[4]],
-		"/(blog)/search": [~12],
-		"/(blog)/[nav_links]": [~10,[3]]
+		"/": [~5],
+		"/(blog)/articles/[article_slug]": [~7,[,4],[3]],
+		"/(blog)/search": [~8],
+		"/(blog)/[nav_links]": [~6,[2]]
 	};
 
 export const hooks = {

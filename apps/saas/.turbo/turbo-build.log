@@ -1,0 +1,62 @@
+npm WARN ignoring workspace config at /Users/esabri/ai-blogs/apps/saas/.npmrc 
+
+> saas@0.0.1 build
+> vite build
+
+
+[36mvite v4.1.4 [32mbuilding SSR bundle for production...[36m[39m
+transforming...
+[33m4:53:19 PM [vite-plugin-svelte] /src/lib/components/EditArticle.svelte:110:2 A11y: visible, non-interactive elements with an on:click event must be accompanied by an on:keydown, on:keyup, or on:keypress event.[39m
+108:   <h1>Upload/Update Article</h1>
+109:   <div>
+110:     <btn class="uploadS3" on:click={uploadS3}>Save Article</btn>
+         ^
+111:   </div>
+112:   <div class="swap">
+[33m4:53:19 PM [vite-plugin-svelte] /src/lib/components/EditArticle.svelte:114:2 A11y: visible, non-interactive elements with an on:click event must be accompanied by an on:keydown, on:keyup, or on:keypress event.[39m
+112:   <div class="swap">
+113:     <div>Currently {prefix}</div>
+114:     <btn class="uploadS3" on:click={() => swapVisibility(false)}>
+         ^
+115:       GO {prefix === 'private' ? 'PUBLIC' : 'PRIVATE'}
+116:     </btn>
+[33m4:53:19 PM [vite-plugin-svelte] /src/lib/components/EditArticle.svelte:118:1 A11y: visible, non-interactive elements with an on:click event must be accompanied by an on:keydown, on:keyup, or on:keypress event.[39m
+116:     </btn>
+117:   </div>
+118:   <btn class="uploadS3" on:click={() => swapVisibility(true)}> Move to No-Markdown </btn>
+       ^
+119:   <div>
+120:     <!-- If you wanna edit contentLink you gotta delete the old one -->
+[33m4:53:19 PM [vite-plugin-svelte] /src/lib/components/EditArticle.svelte:127:3 A11y: A form label must be associated with a control.[39m
+125: 
+126:     <div>
+127:       <label class="metadata-label">Title: </label>
+           ^
+128:       <input class="description" type="text" bind:value={articleData.title} />
+129:     </div>
+[33m4:53:19 PM [vite-plugin-svelte] /src/lib/components/EditArticle.svelte:132:3 A11y: A form label must be associated with a control.[39m
+130: 
+131:     <div>
+132:       <label class="metadata-label">Description: </label>
+           ^
+133:       <input class="description" type="text" bind:value={articleData.description} />
+134:     </div>
+[33m4:53:19 PM [vite-plugin-svelte] /src/lib/components/EditArticle.svelte:137:3 A11y: A form label must be associated with a control.[39m
+135: 
+136:     <div>
+137:       <label class="metadata-label">Image: </label>
+           ^
+138:       <div class="flex flex-col">
+139:         <input class="description" type="text" bind:value={articleData.image.url} />
+[32m✓[39m 38 modules transformed.
+[36m4:53:19 PM [vite-plugin-svelte] ssr compile done.[39m
+package      	files	  time	  avg
+saas         	    4	36.3ms	9.1ms
+@sveltejs/kit	    2	15.3ms	7.7ms
+[31m[vite:load-fallback] Could not load /Users/esabri/ai-blogs/apps/saas/src/lib/server/redis (imported by src/routes/api/keywords/+server.js): ENOENT: no such file or directory, open '/Users/esabri/ai-blogs/apps/saas/src/lib/server/redis'[39m
+[31merror during build:
+Error: Could not load /Users/esabri/ai-blogs/apps/saas/src/lib/server/redis (imported by src/routes/api/keywords/+server.js): ENOENT: no such file or directory, open '/Users/esabri/ai-blogs/apps/saas/src/lib/server/redis'[39m
+npm ERR! Lifecycle script `build` failed with error: 
+npm ERR! Error: command failed 
+npm ERR!   in workspace: saas@0.0.1 
+npm ERR!   at location: /Users/esabri/ai-blogs/apps/saas 

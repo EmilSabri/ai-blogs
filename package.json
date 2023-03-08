@@ -8,7 +8,9 @@
   "scripts": {
     "dev": "FORCE_COLOR=1 dotenv -- turbo run dev",
     "dev-blog": "FORCE_COLOR=1 dotenv -- turbo run dev --filter blog",
-    "dev-saas": "FORCE_COLOR=1 dotenv -- turbo run dev --filter saas"
+    "dev-saas": "FORCE_COLOR=1 dotenv -- turbo run dev --filter saas",
+    "build-blog": "FORCE_COLOR=1 dotenv -- turbo run build --filter blog",
+    "build-saas": "FORCE_COLOR=1 dotenv -- turbo run build --filter saas"
   },
   "dependencies": {
     "turbo": "^1.8.3"
