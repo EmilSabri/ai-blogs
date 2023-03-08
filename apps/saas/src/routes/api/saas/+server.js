@@ -10,8 +10,7 @@ export async function POST( event ) {
     const body = JSON.stringify(req)
     const key = req.domain.toLowerCase() + "/newsite.json"
 
-    const a = s3Client.uploadObject(S3_BUCKET_ARTICLES, key, body, "application/json", Buffer.byteLength(body))
-    // console.log(await a)
+    await s3Client.uploadObject(S3_BUCKET_ARTICLES, key, body, "application/json", Buffer.byteLength(body))
 
     return new Response(JSON.stringify({success: true}))
 }
