@@ -6,117 +6,117 @@ npm WARN ignoring workspace config at /Users/esabri/ai-blogs/apps/saas/.npmrc
 
 [36mvite v4.1.4 [32mbuilding SSR bundle for production...[36m[39m
 transforming...
-[33m5:01:47 PM [vite-plugin-svelte] /src/lib/components/EditArticle.svelte:110:2 A11y: visible, non-interactive elements with an on:click event must be accompanied by an on:keydown, on:keyup, or on:keypress event.[39m
+[33m5:14:43 PM [vite-plugin-svelte] /src/lib/components/EditArticle.svelte:110:2 A11y: visible, non-interactive elements with an on:click event must be accompanied by an on:keydown, on:keyup, or on:keypress event.[39m
 108:   <h1>Upload/Update Article</h1>
 109:   <div>
 110:     <btn class="uploadS3" on:click={uploadS3}>Save Article</btn>
          ^
 111:   </div>
 112:   <div class="swap">
-[33m5:01:47 PM [vite-plugin-svelte] /src/lib/components/EditArticle.svelte:114:2 A11y: visible, non-interactive elements with an on:click event must be accompanied by an on:keydown, on:keyup, or on:keypress event.[39m
+[33m5:14:43 PM [vite-plugin-svelte] /src/lib/components/EditArticle.svelte:114:2 A11y: visible, non-interactive elements with an on:click event must be accompanied by an on:keydown, on:keyup, or on:keypress event.[39m
 112:   <div class="swap">
 113:     <div>Currently {prefix}</div>
 114:     <btn class="uploadS3" on:click={() => swapVisibility(false)}>
          ^
 115:       GO {prefix === 'private' ? 'PUBLIC' : 'PRIVATE'}
 116:     </btn>
-[33m5:01:47 PM [vite-plugin-svelte] /src/lib/components/EditArticle.svelte:118:1 A11y: visible, non-interactive elements with an on:click event must be accompanied by an on:keydown, on:keyup, or on:keypress event.[39m
+[33m5:14:43 PM [vite-plugin-svelte] /src/lib/components/EditArticle.svelte:118:1 A11y: visible, non-interactive elements with an on:click event must be accompanied by an on:keydown, on:keyup, or on:keypress event.[39m
 116:     </btn>
 117:   </div>
 118:   <btn class="uploadS3" on:click={() => swapVisibility(true)}> Move to No-Markdown </btn>
        ^
 119:   <div>
 120:     <!-- If you wanna edit contentLink you gotta delete the old one -->
-[33m5:01:47 PM [vite-plugin-svelte] /src/lib/components/EditArticle.svelte:127:3 A11y: A form label must be associated with a control.[39m
+[33m5:14:43 PM [vite-plugin-svelte] /src/lib/components/EditArticle.svelte:127:3 A11y: A form label must be associated with a control.[39m
 125: 
 126:     <div>
 127:       <label class="metadata-label">Title: </label>
            ^
 128:       <input class="description" type="text" bind:value={articleData.title} />
 129:     </div>
-[33m5:01:47 PM [vite-plugin-svelte] /src/lib/components/EditArticle.svelte:132:3 A11y: A form label must be associated with a control.[39m
+[33m5:14:43 PM [vite-plugin-svelte] /src/lib/components/EditArticle.svelte:132:3 A11y: A form label must be associated with a control.[39m
 130: 
 131:     <div>
 132:       <label class="metadata-label">Description: </label>
            ^
 133:       <input class="description" type="text" bind:value={articleData.description} />
 134:     </div>
-[33m5:01:47 PM [vite-plugin-svelte] /src/lib/components/EditArticle.svelte:137:3 A11y: A form label must be associated with a control.[39m
+[33m5:14:43 PM [vite-plugin-svelte] /src/lib/components/EditArticle.svelte:137:3 A11y: A form label must be associated with a control.[39m
 135: 
 136:     <div>
 137:       <label class="metadata-label">Image: </label>
            ^
 138:       <div class="flex flex-col">
 139:         <input class="description" type="text" bind:value={articleData.image.url} />
-[33m5:01:48 PM [vite-plugin-svelte] /src/routes/+page.svelte:2:11 Page has unused export property 'data'. If it is for external reference only, please consider using `export const data`[39m
+[33m5:14:43 PM [vite-plugin-svelte] /src/routes/+page.svelte:2:11 Page has unused export property 'data'. If it is for external reference only, please consider using `export const data`[39m
 1: <script lang="ts">import { NewSiteForm } from "$lib/components";
 2: export let data;
               ^
 3: async function PostS3(formData) {
 4:   const response = await fetch("/api/saas", {
 [32m✓[39m 71 modules transformed.
-[36m5:01:48 PM [vite-plugin-svelte] ssr compile done.[39m
+[36m5:14:43 PM [vite-plugin-svelte] ssr compile done.[39m
 package      	files	  time	  avg
-saas         	    7	65.6ms	9.4ms
-@sveltejs/kit	    2	 5.4ms	2.7ms
+saas         	    7	64.4ms	9.2ms
+@sveltejs/kit	    2	 2.8ms	1.4ms
 Generated an empty chunk: "entries/endpoints/api/test/_server".
 rendering chunks...
 
 [36mvite v4.1.4 [32mbuilding for production...[36m[39m
 transforming...
-[33m5:01:49 PM [vite-plugin-svelte] /src/lib/components/EditArticle.svelte:110:2 A11y: visible, non-interactive elements with an on:click event must be accompanied by an on:keydown, on:keyup, or on:keypress event.[39m
+[33m5:14:44 PM [vite-plugin-svelte] /src/lib/components/EditArticle.svelte:110:2 A11y: visible, non-interactive elements with an on:click event must be accompanied by an on:keydown, on:keyup, or on:keypress event.[39m
 108:   <h1>Upload/Update Article</h1>
 109:   <div>
 110:     <btn class="uploadS3" on:click={uploadS3}>Save Article</btn>
          ^
 111:   </div>
 112:   <div class="swap">
-[33m5:01:49 PM [vite-plugin-svelte] /src/lib/components/EditArticle.svelte:114:2 A11y: visible, non-interactive elements with an on:click event must be accompanied by an on:keydown, on:keyup, or on:keypress event.[39m
+[33m5:14:44 PM [vite-plugin-svelte] /src/lib/components/EditArticle.svelte:114:2 A11y: visible, non-interactive elements with an on:click event must be accompanied by an on:keydown, on:keyup, or on:keypress event.[39m
 112:   <div class="swap">
 113:     <div>Currently {prefix}</div>
 114:     <btn class="uploadS3" on:click={() => swapVisibility(false)}>
          ^
 115:       GO {prefix === 'private' ? 'PUBLIC' : 'PRIVATE'}
 116:     </btn>
-[33m5:01:49 PM [vite-plugin-svelte] /src/lib/components/EditArticle.svelte:118:1 A11y: visible, non-interactive elements with an on:click event must be accompanied by an on:keydown, on:keyup, or on:keypress event.[39m
+[33m5:14:44 PM [vite-plugin-svelte] /src/lib/components/EditArticle.svelte:118:1 A11y: visible, non-interactive elements with an on:click event must be accompanied by an on:keydown, on:keyup, or on:keypress event.[39m
 116:     </btn>
 117:   </div>
 118:   <btn class="uploadS3" on:click={() => swapVisibility(true)}> Move to No-Markdown </btn>
        ^
 119:   <div>
 120:     <!-- If you wanna edit contentLink you gotta delete the old one -->
-[33m5:01:49 PM [vite-plugin-svelte] /src/lib/components/EditArticle.svelte:127:3 A11y: A form label must be associated with a control.[39m
+[33m5:14:44 PM [vite-plugin-svelte] /src/lib/components/EditArticle.svelte:127:3 A11y: A form label must be associated with a control.[39m
 125: 
 126:     <div>
 127:       <label class="metadata-label">Title: </label>
            ^
 128:       <input class="description" type="text" bind:value={articleData.title} />
 129:     </div>
-[33m5:01:49 PM [vite-plugin-svelte] /src/lib/components/EditArticle.svelte:132:3 A11y: A form label must be associated with a control.[39m
+[33m5:14:44 PM [vite-plugin-svelte] /src/lib/components/EditArticle.svelte:132:3 A11y: A form label must be associated with a control.[39m
 130: 
 131:     <div>
 132:       <label class="metadata-label">Description: </label>
            ^
 133:       <input class="description" type="text" bind:value={articleData.description} />
 134:     </div>
-[33m5:01:49 PM [vite-plugin-svelte] /src/lib/components/EditArticle.svelte:137:3 A11y: A form label must be associated with a control.[39m
+[33m5:14:44 PM [vite-plugin-svelte] /src/lib/components/EditArticle.svelte:137:3 A11y: A form label must be associated with a control.[39m
 135: 
 136:     <div>
 137:       <label class="metadata-label">Image: </label>
            ^
 138:       <div class="flex flex-col">
 139:         <input class="description" type="text" bind:value={articleData.image.url} />
-[33m5:01:49 PM [vite-plugin-svelte] /src/routes/+page.svelte:2:11 Page has unused export property 'data'. If it is for external reference only, please consider using `export const data`[39m
+[33m5:14:44 PM [vite-plugin-svelte] /src/routes/+page.svelte:2:11 Page has unused export property 'data'. If it is for external reference only, please consider using `export const data`[39m
 1: <script lang="ts">import { NewSiteForm } from "$lib/components";
 2: export let data;
               ^
 3: async function PostS3(formData) {
 4:   const response = await fetch("/api/saas", {
 [32m✓[39m 223 modules transformed.
-[36m5:01:49 PM [vite-plugin-svelte] dom compile done.[39m
-package      	files	  time	   avg
-saas         	    7	 0.12s	17.1ms
-@sveltejs/kit	    2	15.5ms	 7.7ms
+[36m5:14:44 PM [vite-plugin-svelte] dom compile done.[39m
+package      	files	 time	   avg
+saas         	    7	0.12s	17.4ms
+@sveltejs/kit	    2	7.4ms	 3.7ms
 rendering chunks...
 computing gzip size...
 [2m.svelte-kit/output/client/[22m[32m_app/version.json                                                                   [39m[1m[2m  0.03 kB[22m[1m[22m
@@ -126,18 +126,18 @@ computing gzip size...
 [2m.svelte-kit/output/client/[22m[35m_app/immutable/assets/_page.76512638.css                                            [39m[1m[2m  0.53 kB[22m[1m[22m[2m │ gzip:  0.27 kB[22m
 [2m.svelte-kit/output/client/[22m[35m_app/immutable/assets/MarkdownResult.886acdac.css                                   [39m[1m[2m  1.46 kB[22m[1m[22m[2m │ gzip:  0.50 kB[22m
 [2m.svelte-kit/output/client/[22m[36m_app/immutable/chunks/2.e2440aab.js                                                 [39m[1m[2m  0.08 kB[22m[1m[22m[2m │ gzip:  0.10 kB[22m
-[2m.svelte-kit/output/client/[22m[36m_app/immutable/chunks/1.f79af63a.js                                                 [39m[1m[2m  0.08 kB[22m[1m[22m[2m │ gzip:  0.10 kB[22m
+[2m.svelte-kit/output/client/[22m[36m_app/immutable/chunks/1.28aa24c3.js                                                 [39m[1m[2m  0.08 kB[22m[1m[22m[2m │ gzip:  0.10 kB[22m
 [2m.svelte-kit/output/client/[22m[36m_app/immutable/chunks/0.1c2202c6.js                                                 [39m[1m[2m  0.09 kB[22m[1m[22m[2m │ gzip:  0.10 kB[22m
 [2m.svelte-kit/output/client/[22m[36m_app/immutable/chunks/3.bc033e42.js                                                 [39m[1m[2m  0.09 kB[22m[1m[22m[2m │ gzip:  0.10 kB[22m
 [2m.svelte-kit/output/client/[22m[36m_app/immutable/chunks/4.fc653c60.js                                                 [39m[1m[2m  0.12 kB[22m[1m[22m[2m │ gzip:  0.13 kB[22m
 [2m.svelte-kit/output/client/[22m[36m_app/immutable/entry/layout.svelte.1da2b2ba.js                                      [39m[1m[2m  0.54 kB[22m[1m[22m[2m │ gzip:  0.36 kB[22m
-[2m.svelte-kit/output/client/[22m[36m_app/immutable/entry/error.svelte.61c5b716.js                                       [39m[1m[2m  0.98 kB[22m[1m[22m[2m │ gzip:  0.57 kB[22m
-[2m.svelte-kit/output/client/[22m[36m_app/immutable/chunks/singletons.51b3c7c3.js                                        [39m[1m[2m  2.65 kB[22m[1m[22m[2m │ gzip:  1.38 kB[22m
+[2m.svelte-kit/output/client/[22m[36m_app/immutable/entry/error.svelte.6e7ba107.js                                       [39m[1m[2m  0.98 kB[22m[1m[22m[2m │ gzip:  0.57 kB[22m
+[2m.svelte-kit/output/client/[22m[36m_app/immutable/chunks/singletons.8fdb6a70.js                                        [39m[1m[2m  2.65 kB[22m[1m[22m[2m │ gzip:  1.38 kB[22m
 [2m.svelte-kit/output/client/[22m[36m_app/immutable/entry/admin-page.svelte.4dda8d65.js                                  [39m[1m[2m  2.84 kB[22m[1m[22m[2m │ gzip:  1.12 kB[22m
 [2m.svelte-kit/output/client/[22m[36m_app/immutable/entry/_page.svelte.74064dae.js                                       [39m[1m[2m  3.56 kB[22m[1m[22m[2m │ gzip:  1.56 kB[22m
-[2m.svelte-kit/output/client/[22m[36m_app/immutable/entry/app.72cb478c.js                                                [39m[1m[2m  6.14 kB[22m[1m[22m[2m │ gzip:  2.39 kB[22m
+[2m.svelte-kit/output/client/[22m[36m_app/immutable/entry/app.2682d1c2.js                                                [39m[1m[2m  6.14 kB[22m[1m[22m[2m │ gzip:  2.39 kB[22m
 [2m.svelte-kit/output/client/[22m[36m_app/immutable/chunks/index.6d0671af.js                                             [39m[1m[2m  9.34 kB[22m[1m[22m[2m │ gzip:  3.71 kB[22m
-[2m.svelte-kit/output/client/[22m[36m_app/immutable/entry/start.ba351f6b.js                                              [39m[1m[2m 23.16 kB[22m[1m[22m[2m │ gzip:  9.22 kB[22m
+[2m.svelte-kit/output/client/[22m[36m_app/immutable/entry/start.be770710.js                                              [39m[1m[2m 23.16 kB[22m[1m[22m[2m │ gzip:  9.22 kB[22m
 [2m.svelte-kit/output/client/[22m[36m_app/immutable/entry/admin-upload-_visible_-_article_slug_-page.svelte.b62c054e.js  [39m[1m[2m123.66 kB[22m[1m[22m[2m │ gzip: 39.12 kB[22m
 [2m.svelte-kit/output/server/[22m[32mvite-manifest.json                                                   [39m[1m[2m 4.67 kB[22m[1m[22m
 [2m.svelte-kit/output/server/[22m[35m_app/immutable/assets/_page.77633472.css                             [39m[1m[2m 0.08 kB[22m[1m[22m

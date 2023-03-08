@@ -1,6 +1,7 @@
 // @ts-nocheck
 import { s3Client } from "@aiblogs/db"
-import { S3_BUCKET_ARTICLES } from "$env/static/private"
+
+const S3_BUCKET_ARTICLES = process.env.S3_BUCKET_ARTICLES
 
 export async function POST( event ) {
   
