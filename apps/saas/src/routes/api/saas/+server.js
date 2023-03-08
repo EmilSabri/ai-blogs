@@ -18,3 +18,4 @@ export async function POST( event ) {
 
     return new Response(JSON.stringify({success: true}))
 }
+
