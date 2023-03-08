@@ -1,2 +1,4 @@
-export { s3Client } from './src/s3Client';
-export { articles } from './src/articles';
+import { s3Client } from './src/s3client';
+import { articles } from './src/articles'
+
+export { s3Client, articles }
