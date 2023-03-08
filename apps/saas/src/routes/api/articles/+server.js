@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { s3Client, articles } from "$lib/server";
+import { s3Client, articles } from "@aiblogs/db";
 import { json } from "@sveltejs/kit";
 
 // List the objects in the bucket

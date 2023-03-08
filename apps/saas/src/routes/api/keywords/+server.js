@@ -1,8 +1,4 @@
 // @ts-nocheck
-import { KEYWORD_QUEUE, queue } from '$lib/server/redis'
-import { test } from '$lib/server/openai/broker'
-import { getKeywords } from '$lib/server/keywords/keywords'
-
 const usedKeywords = [
   'brain fog',
   'brain fog meaning',

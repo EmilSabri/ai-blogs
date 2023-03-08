@@ -9,6 +9,7 @@
     "dev": "FORCE_COLOR=1 dotenv -- turbo run dev",
     "dev-blog": "FORCE_COLOR=1 dotenv -- turbo run dev --filter blog",
     "dev-saas": "FORCE_COLOR=1 dotenv -- turbo run dev --filter saas",
+    "build": "FORCE_COLOR=1 dotenv -- turbo run build",
     "build-blog": "FORCE_COLOR=1 dotenv -- turbo run build --filter blog",
     "build-saas": "FORCE_COLOR=1 dotenv -- turbo run build --filter saas"
   },
