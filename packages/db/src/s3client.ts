@@ -117,6 +117,7 @@ function uploadObject(Bucket: string, Key: string, Body: any, ContentType: strin
                 ContentLength: ContentLength
             }
             const putObjectCommand = new PutObjectCommand(params)
+            console.log("s3client.uploadObject() ", "PLEASE FUCKING WORK")
             resolve(client.send(putObjectCommand))
         } catch (err) {
             console.log("s3client.uploadObject()", err)
