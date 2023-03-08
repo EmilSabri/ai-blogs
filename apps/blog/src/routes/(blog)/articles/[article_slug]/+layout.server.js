@@ -8,10 +8,11 @@ export async function load( {params, url} ) {
 
     let { host } = url
     if (host.includes('localhost') || host.includes('127.0.0.1')) {
-        host = 'brianfog.com'
+        host = 'www.brianfog.com'
     }
-
-   
+    host = host.split('.').slice(1).join('.')   // Remove the www. part of the host
+    
+    
     const relatedArticles = await articles.getRelatedArticles(host, key.toLowerCase(), 6)
 
     return {

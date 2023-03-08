@@ -47,7 +47,13 @@ export async function load({ params, url }) {
     // Pull from S3 if not in redis
     if (articleResults.length === 0 || markdownResults.length === 0) {
         const prefix = 'public'
-        const host = 'brianfog.com' // url.host
+
+        let { host } = url
+        if (host.includes('localhost') || host.includes('127.0.0.1')) {
+            host = 'www.brianfog.com'
+        }
+        host = host.split('.').slice(1).join('.')   // Remove the www. part of the host
+
         markdown = await articles.getArticle(host, prefix, `${key}/markdown.md`)
         const metadata = await articles.getArticle(host, prefix, `${key}/metadata.json`)
         metaJson = JSON.parse(metadata)

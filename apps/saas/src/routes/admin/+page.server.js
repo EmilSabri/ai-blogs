@@ -4,7 +4,7 @@ import { articles } from '@aiblogs/db'
 
 export async function load( { url } ) {
 
-    if (url.hostname !== 'localhost') {
+    if (url.hostname !== 'localhost' || !url.hostname.includes('127.0.0.1')) {
         throw new Error('Fuck outta here BOIIIII')
     }
 

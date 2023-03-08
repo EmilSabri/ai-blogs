@@ -6,256 +6,256 @@ npm WARN ignoring workspace config at /Users/esabri/ai-blogs/apps/blog/.npmrc
 
 [36mvite v4.1.4 [32mbuilding SSR bundle for production...[36m[39m
 transforming...
-[33m5:01:48 PM [vite-plugin-svelte] /src/routes/(blog)/articles/[article_slug]/+page.svelte:188:1 Unused CSS selector "a"[39m
+[33m6:52:29 PM [vite-plugin-svelte] /src/routes/(blog)/articles/[article_slug]/+page.svelte:188:1 Unused CSS selector "a"[39m
 186:     box-sizing: border-box;
 187:   }
 188:   a {
        ^
 189:     outline: none;
 190:     text-decoration: underline;
-[33m5:01:48 PM [vite-plugin-svelte] /src/routes/(blog)/articles/[article_slug]/+page.svelte:205:1 Unused CSS selector "h2"[39m
+[33m6:52:29 PM [vite-plugin-svelte] /src/routes/(blog)/articles/[article_slug]/+page.svelte:205:1 Unused CSS selector "h2"[39m
 203:   }
 204: 
 205:   h2 {
        ^
 206:     font-family: Arial, Helvetica, sans-serif;
 207:     font-size: 1.75rem;
-[33m5:01:48 PM [vite-plugin-svelte] /src/routes/(blog)/articles/[article_slug]/+page.svelte:258:1 Unused CSS selector ".productCard"[39m
+[33m6:52:29 PM [vite-plugin-svelte] /src/routes/(blog)/articles/[article_slug]/+page.svelte:258:1 Unused CSS selector ".productCard"[39m
 256:   }
 257: 
 258:   .productCard {
        ^
 259:     width: 100%;
 260:     max-width: 300px;
-[33m5:01:48 PM [vite-plugin-svelte] /src/routes/(blog)/articles/[article_slug]/+page.svelte:289:1 Unused CSS selector ".I-seperator"[39m
+[33m6:52:29 PM [vite-plugin-svelte] /src/routes/(blog)/articles/[article_slug]/+page.svelte:289:1 Unused CSS selector ".I-seperator"[39m
 287:   }
 288: 
 289:   .I-seperator {
        ^
 290:     color: #646464;
 291:   }
-[33m5:01:48 PM [vite-plugin-svelte] /src/routes/(blog)/articles/[article_slug]/+page.svelte:293:1 Unused CSS selector ".article-meta a"[39m
+[33m6:52:29 PM [vite-plugin-svelte] /src/routes/(blog)/articles/[article_slug]/+page.svelte:293:1 Unused CSS selector ".article-meta a"[39m
 291:   }
 292: 
 293:   .article-meta a {
        ^
 294:     color: inherit;
 295:   }
-[33m5:01:48 PM [vite-plugin-svelte] /src/lib/components/Footer.svelte:48:5 A11y: visible, non-interactive elements with an on:click event must be accompanied by an on:keydown, on:keyup, or on:keypress event.[39m
-46:             bind:value={email}
-47:           />
-48:           <div class="email-form__btn" on:click={submitEmail}>SIGN UP</div>
-              ^
-49:         </form>
-50:       </div>
-[33m5:01:48 PM [vite-plugin-svelte] /src/lib/components/Footer.svelte:98:1 Unused CSS selector ".ul"[39m
- 96:   }
- 97: 
- 98:   .ul,
-       ^
- 99:   li {
-100:     list-style: none;
-[33m5:01:48 PM [vite-plugin-svelte] /src/lib/components/NavLink.svelte:2:12 NavLink has unused export property 'data'. If it is for external reference only, please consider using `export const data`[39m
-1: <script>
-2:   export let data;
-                ^
-3:   export let tag = '';
-4: </script>
-[33m5:01:48 PM [vite-plugin-svelte] /src/lib/components/Homepage.svelte:55:1 Unused CSS selector "h4"[39m
+[33m6:52:29 PM [vite-plugin-svelte] /src/lib/components/Homepage.svelte:55:1 Unused CSS selector "h4"[39m
 53: 
 54:   h3,
 55:   h4 {
       ^
 56:     margin: 0;
 57:   }
-[33m5:01:48 PM [vite-plugin-svelte] /src/lib/components/Homepage.svelte:87:1 Unused CSS selector ".products"[39m
+[33m6:52:29 PM [vite-plugin-svelte] /src/lib/components/Homepage.svelte:87:1 Unused CSS selector ".products"[39m
 85:   }
 86: 
 87:   .products {
       ^
 88:     display: flex;
 89:     flex-direction: column;
-[33m5:01:48 PM [vite-plugin-svelte] /src/lib/components/Homepage.svelte:96:1 Unused CSS selector ".products__item"[39m
+[33m6:52:29 PM [vite-plugin-svelte] /src/lib/components/Homepage.svelte:96:1 Unused CSS selector ".products__item"[39m
 94:   }
 95: 
 96:   .products__item {
       ^
 97:     font-size: 1erem;
 98:     /* width: 50%; */
-[33m5:01:48 PM [vite-plugin-svelte] /src/lib/components/Homepage.svelte:107:1 Unused CSS selector ".products__item h4"[39m
+[33m6:52:29 PM [vite-plugin-svelte] /src/lib/components/Homepage.svelte:107:1 Unused CSS selector ".products__item h4"[39m
 105:   }
 106: 
 107:   .products__item h4 {
        ^
 108:     font-size: 1.2rem;
 109:     font-weight: 600;
-[33m5:01:48 PM [vite-plugin-svelte] /src/lib/components/Homepage.svelte:112:1 Unused CSS selector ".products__item h3"[39m
+[33m6:52:29 PM [vite-plugin-svelte] /src/lib/components/Homepage.svelte:112:1 Unused CSS selector ".products__item h3"[39m
 110:   }
 111: 
 112:   .products__item h3 {
        ^
 113:     font-size: 1rem;
 114:   }
-[33m5:01:48 PM [vite-plugin-svelte] /src/lib/components/Homepage.svelte:116:1 Unused CSS selector ".products__item p"[39m
+[33m6:52:29 PM [vite-plugin-svelte] /src/lib/components/Homepage.svelte:116:1 Unused CSS selector ".products__item p"[39m
 114:   }
 115: 
 116:   .products__item p {
        ^
 117:     font-size: 0.8rem;
 118:     /* font-weight: 400; */
-[33m5:01:48 PM [vite-plugin-svelte] /src/lib/components/ProductCard.svelte:13:5 A11y: '#' is not a valid href attribute[39m
+[33m6:52:29 PM [vite-plugin-svelte] /src/lib/components/NavLink.svelte:2:12 NavLink has unused export property 'data'. If it is for external reference only, please consider using `export const data`[39m
+1: <script>
+2:   export let data;
+                ^
+3:   export let tag = '';
+4: </script>
+[33m6:52:29 PM [vite-plugin-svelte] /src/lib/components/ProductCard.svelte:13:5 A11y: '#' is not a valid href attribute[39m
 11:   <div class="contentBox">
 12:     <h3>{name}</h3>
 13:     <a href="#" class="buy">Buy Now</a>
            ^
 14:   </div>
 15: </div>
-[33m5:01:48 PM [vite-plugin-svelte] /src/lib/components/ProductCard.svelte:90:1 Unused CSS selector ".card .contentBox .price"[39m
+[33m6:52:29 PM [vite-plugin-svelte] /src/lib/components/ProductCard.svelte:90:1 Unused CSS selector ".card .contentBox .price"[39m
 88:   }
 89: 
 90:   .card .contentBox .price {
       ^
 91:     font-size: 24px;
 92:     color: white;
-[33m5:01:48 PM [vite-plugin-svelte] /src/lib/components/ProductCard.svelte:117:1 Unused CSS selector ".mouse"[39m
+[33m6:52:29 PM [vite-plugin-svelte] /src/lib/components/ProductCard.svelte:117:1 Unused CSS selector ".mouse"[39m
 115:   }
 116: 
 117:   .mouse {
        ^
 118:     height: 300px;
 119:     width: auto;
+[33m6:52:29 PM [vite-plugin-svelte] /src/lib/components/Footer.svelte:48:5 A11y: visible, non-interactive elements with an on:click event must be accompanied by an on:keydown, on:keyup, or on:keypress event.[39m
+46:             bind:value={email}
+47:           />
+48:           <div class="email-form__btn" on:click={submitEmail}>SIGN UP</div>
+              ^
+49:         </form>
+50:       </div>
+[33m6:52:29 PM [vite-plugin-svelte] /src/lib/components/Footer.svelte:98:1 Unused CSS selector ".ul"[39m
+ 96:   }
+ 97: 
+ 98:   .ul,
+       ^
+ 99:   li {
+100:     list-style: none;
 [32m✓[39m 96 modules transformed.
-[36m5:01:48 PM [vite-plugin-svelte] ssr compile done.[39m
-package      	files	  time	  avg
-blog         	   18	99.8ms	5.5ms
-@sveltejs/kit	    2	15.1ms	7.6ms
+[36m6:52:30 PM [vite-plugin-svelte] ssr compile done.[39m
+package      	files	 time	  avg
+blog         	   18	0.11s	6.2ms
+@sveltejs/kit	    2	1.7ms	0.9ms
 rendering chunks...
 
 [36mvite v4.1.4 [32mbuilding for production...[36m[39m
 transforming...
-[33m5:01:50 PM [vite-plugin-svelte] /src/routes/(blog)/articles/[article_slug]/+page.svelte:188:1 Unused CSS selector "a"[39m
+[33m6:52:31 PM [vite-plugin-svelte] /src/routes/(blog)/articles/[article_slug]/+page.svelte:188:1 Unused CSS selector "a"[39m
 186:     box-sizing: border-box;
 187:   }
 188:   a {
        ^
 189:     outline: none;
 190:     text-decoration: underline;
-[33m5:01:50 PM [vite-plugin-svelte] /src/routes/(blog)/articles/[article_slug]/+page.svelte:205:1 Unused CSS selector "h2"[39m
+[33m6:52:31 PM [vite-plugin-svelte] /src/routes/(blog)/articles/[article_slug]/+page.svelte:205:1 Unused CSS selector "h2"[39m
 203:   }
 204: 
 205:   h2 {
        ^
 206:     font-family: Arial, Helvetica, sans-serif;
 207:     font-size: 1.75rem;
-[33m5:01:50 PM [vite-plugin-svelte] /src/routes/(blog)/articles/[article_slug]/+page.svelte:258:1 Unused CSS selector ".productCard"[39m
+[33m6:52:31 PM [vite-plugin-svelte] /src/routes/(blog)/articles/[article_slug]/+page.svelte:258:1 Unused CSS selector ".productCard"[39m
 256:   }
 257: 
 258:   .productCard {
        ^
 259:     width: 100%;
 260:     max-width: 300px;
-[33m5:01:50 PM [vite-plugin-svelte] /src/routes/(blog)/articles/[article_slug]/+page.svelte:289:1 Unused CSS selector ".I-seperator"[39m
+[33m6:52:31 PM [vite-plugin-svelte] /src/routes/(blog)/articles/[article_slug]/+page.svelte:289:1 Unused CSS selector ".I-seperator"[39m
 287:   }
 288: 
 289:   .I-seperator {
        ^
 290:     color: #646464;
 291:   }
-[33m5:01:50 PM [vite-plugin-svelte] /src/routes/(blog)/articles/[article_slug]/+page.svelte:293:1 Unused CSS selector ".article-meta a"[39m
+[33m6:52:31 PM [vite-plugin-svelte] /src/routes/(blog)/articles/[article_slug]/+page.svelte:293:1 Unused CSS selector ".article-meta a"[39m
 291:   }
 292: 
 293:   .article-meta a {
        ^
 294:     color: inherit;
 295:   }
-[33m5:01:50 PM [vite-plugin-svelte] /src/lib/components/Footer.svelte:48:5 A11y: visible, non-interactive elements with an on:click event must be accompanied by an on:keydown, on:keyup, or on:keypress event.[39m
+[33m6:52:31 PM [vite-plugin-svelte] /src/lib/components/Footer.svelte:48:5 A11y: visible, non-interactive elements with an on:click event must be accompanied by an on:keydown, on:keyup, or on:keypress event.[39m
 46:             bind:value={email}
 47:           />
 48:           <div class="email-form__btn" on:click={submitEmail}>SIGN UP</div>
               ^
 49:         </form>
 50:       </div>
-[33m5:01:50 PM [vite-plugin-svelte] /src/lib/components/Footer.svelte:98:1 Unused CSS selector ".ul"[39m
+[33m6:52:31 PM [vite-plugin-svelte] /src/lib/components/Footer.svelte:98:1 Unused CSS selector ".ul"[39m
  96:   }
  97: 
  98:   .ul,
        ^
  99:   li {
 100:     list-style: none;
-[33m5:01:50 PM [vite-plugin-svelte] /src/lib/components/Homepage.svelte:55:1 Unused CSS selector "h4"[39m
+[33m6:52:31 PM [vite-plugin-svelte] /src/lib/components/Homepage.svelte:55:1 Unused CSS selector "h4"[39m
 53: 
 54:   h3,
 55:   h4 {
       ^
 56:     margin: 0;
 57:   }
-[33m5:01:50 PM [vite-plugin-svelte] /src/lib/components/Homepage.svelte:87:1 Unused CSS selector ".products"[39m
+[33m6:52:31 PM [vite-plugin-svelte] /src/lib/components/Homepage.svelte:87:1 Unused CSS selector ".products"[39m
 85:   }
 86: 
 87:   .products {
       ^
 88:     display: flex;
 89:     flex-direction: column;
-[33m5:01:50 PM [vite-plugin-svelte] /src/lib/components/Homepage.svelte:96:1 Unused CSS selector ".products__item"[39m
+[33m6:52:31 PM [vite-plugin-svelte] /src/lib/components/Homepage.svelte:96:1 Unused CSS selector ".products__item"[39m
 94:   }
 95: 
 96:   .products__item {
       ^
 97:     font-size: 1erem;
 98:     /* width: 50%; */
-[33m5:01:50 PM [vite-plugin-svelte] /src/lib/components/Homepage.svelte:107:1 Unused CSS selector ".products__item h4"[39m
+[33m6:52:31 PM [vite-plugin-svelte] /src/lib/components/Homepage.svelte:107:1 Unused CSS selector ".products__item h4"[39m
 105:   }
 106: 
 107:   .products__item h4 {
        ^
 108:     font-size: 1.2rem;
 109:     font-weight: 600;
-[33m5:01:50 PM [vite-plugin-svelte] /src/lib/components/Homepage.svelte:112:1 Unused CSS selector ".products__item h3"[39m
+[33m6:52:31 PM [vite-plugin-svelte] /src/lib/components/Homepage.svelte:112:1 Unused CSS selector ".products__item h3"[39m
 110:   }
 111: 
 112:   .products__item h3 {
        ^
 113:     font-size: 1rem;
 114:   }
-[33m5:01:50 PM [vite-plugin-svelte] /src/lib/components/Homepage.svelte:116:1 Unused CSS selector ".products__item p"[39m
+[33m6:52:31 PM [vite-plugin-svelte] /src/lib/components/Homepage.svelte:116:1 Unused CSS selector ".products__item p"[39m
 114:   }
 115: 
 116:   .products__item p {
        ^
 117:     font-size: 0.8rem;
 118:     /* font-weight: 400; */
-[33m5:01:50 PM [vite-plugin-svelte] /src/lib/components/NavLink.svelte:2:12 NavLink has unused export property 'data'. If it is for external reference only, please consider using `export const data`[39m
-1: <script>
-2:   export let data;
-                ^
-3:   export let tag = '';
-4: </script>
-[33m5:01:50 PM [vite-plugin-svelte] /src/lib/components/ProductCard.svelte:13:5 A11y: '#' is not a valid href attribute[39m
+[33m6:52:31 PM [vite-plugin-svelte] /src/lib/components/ProductCard.svelte:13:5 A11y: '#' is not a valid href attribute[39m
 11:   <div class="contentBox">
 12:     <h3>{name}</h3>
 13:     <a href="#" class="buy">Buy Now</a>
            ^
 14:   </div>
 15: </div>
-[33m5:01:50 PM [vite-plugin-svelte] /src/lib/components/ProductCard.svelte:90:1 Unused CSS selector ".card .contentBox .price"[39m
+[33m6:52:31 PM [vite-plugin-svelte] /src/lib/components/ProductCard.svelte:90:1 Unused CSS selector ".card .contentBox .price"[39m
 88:   }
 89: 
 90:   .card .contentBox .price {
       ^
 91:     font-size: 24px;
 92:     color: white;
-[33m5:01:50 PM [vite-plugin-svelte] /src/lib/components/ProductCard.svelte:117:1 Unused CSS selector ".mouse"[39m
+[33m6:52:31 PM [vite-plugin-svelte] /src/lib/components/ProductCard.svelte:117:1 Unused CSS selector ".mouse"[39m
 115:   }
 116: 
 117:   .mouse {
        ^
 118:     height: 300px;
 119:     width: auto;
+[33m6:52:31 PM [vite-plugin-svelte] /src/lib/components/NavLink.svelte:2:12 NavLink has unused export property 'data'. If it is for external reference only, please consider using `export const data`[39m
+1: <script>
+2:   export let data;
+                ^
+3:   export let tag = '';
+4: </script>
 [32m✓[39m 261 modules transformed.
-[36m5:01:50 PM [vite-plugin-svelte] dom compile done.[39m
-package      	files	 time	   avg
-blog         	   18	0.21s	11.4ms
-@sveltejs/kit	    2	8.7ms	 4.3ms
+[36m6:52:32 PM [vite-plugin-svelte] dom compile done.[39m
+package      	files	  time	   avg
+blog         	   18	 0.23s	12.6ms
+@sveltejs/kit	    2	13.7ms	 6.9ms
 rendering chunks...
 computing gzip size...
 [2m.svelte-kit/output/client/[22m[32m_app/version.json                                                              [39m[1m[2m  0.03 kB[22m[1m[22m
@@ -264,29 +264,29 @@ computing gzip size...
 [2m.svelte-kit/output/client/[22m[35m_app/immutable/assets/_page.44631c0f.css                                       [39m[1m[2m  0.56 kB[22m[1m[22m[2m │ gzip:  0.27 kB[22m
 [2m.svelte-kit/output/client/[22m[35m_app/immutable/assets/_page.2e4a0b62.css                                       [39m[1m[2m  1.00 kB[22m[1m[22m[2m │ gzip:  0.40 kB[22m
 [2m.svelte-kit/output/client/[22m[35m_app/immutable/assets/TableContent.223d013b.css                                [39m[1m[2m 13.46 kB[22m[1m[22m[2m │ gzip:  3.55 kB[22m
-[2m.svelte-kit/output/client/[22m[36m_app/immutable/chunks/5.c96f1cbc.js                                            [39m[1m[2m  0.08 kB[22m[1m[22m[2m │ gzip:  0.10 kB[22m
-[2m.svelte-kit/output/client/[22m[36m_app/immutable/chunks/1.a4dadccf.js                                            [39m[1m[2m  0.08 kB[22m[1m[22m[2m │ gzip:  0.10 kB[22m
+[2m.svelte-kit/output/client/[22m[36m_app/immutable/chunks/5.da04f375.js                                            [39m[1m[2m  0.08 kB[22m[1m[22m[2m │ gzip:  0.10 kB[22m
+[2m.svelte-kit/output/client/[22m[36m_app/immutable/chunks/1.88ca0c23.js                                            [39m[1m[2m  0.08 kB[22m[1m[22m[2m │ gzip:  0.10 kB[22m
 [2m.svelte-kit/output/client/[22m[36m_app/immutable/chunks/0.aa7a466c.js                                            [39m[1m[2m  0.09 kB[22m[1m[22m[2m │ gzip:  0.10 kB[22m
 [2m.svelte-kit/output/client/[22m[36m_app/immutable/chunks/8.fe927e01.js                                            [39m[1m[2m  0.10 kB[22m[1m[22m[2m │ gzip:  0.11 kB[22m
 [2m.svelte-kit/output/client/[22m[36m_app/immutable/chunks/3.84c00736.js                                            [39m[1m[2m  0.10 kB[22m[1m[22m[2m │ gzip:  0.11 kB[22m
-[2m.svelte-kit/output/client/[22m[36m_app/immutable/chunks/6.c16299a7.js                                            [39m[1m[2m  0.10 kB[22m[1m[22m[2m │ gzip:  0.11 kB[22m
+[2m.svelte-kit/output/client/[22m[36m_app/immutable/chunks/6.aa16e938.js                                            [39m[1m[2m  0.10 kB[22m[1m[22m[2m │ gzip:  0.11 kB[22m
 [2m.svelte-kit/output/client/[22m[36m_app/immutable/chunks/2.90302f48.js                                            [39m[1m[2m  0.10 kB[22m[1m[22m[2m │ gzip:  0.11 kB[22m
-[2m.svelte-kit/output/client/[22m[36m_app/immutable/chunks/7.23925fd5.js                                            [39m[1m[2m  0.11 kB[22m[1m[22m[2m │ gzip:  0.12 kB[22m
-[2m.svelte-kit/output/client/[22m[36m_app/immutable/chunks/4.621ff390.js                                            [39m[1m[2m  0.12 kB[22m[1m[22m[2m │ gzip:  0.12 kB[22m
-[2m.svelte-kit/output/client/[22m[36m_app/immutable/entry/layout.svelte.efa703fd.js                                 [39m[1m[2m  0.54 kB[22m[1m[22m[2m │ gzip:  0.36 kB[22m
+[2m.svelte-kit/output/client/[22m[36m_app/immutable/chunks/7.0e23c13e.js                                            [39m[1m[2m  0.11 kB[22m[1m[22m[2m │ gzip:  0.12 kB[22m
+[2m.svelte-kit/output/client/[22m[36m_app/immutable/chunks/4.40ba0647.js                                            [39m[1m[2m  0.12 kB[22m[1m[22m[2m │ gzip:  0.12 kB[22m
 [2m.svelte-kit/output/client/[22m[36m_app/immutable/entry/(blog)-_nav_links_-layout.svelte.efa703fd.js              [39m[1m[2m  0.54 kB[22m[1m[22m[2m │ gzip:  0.36 kB[22m
+[2m.svelte-kit/output/client/[22m[36m_app/immutable/entry/layout.svelte.efa703fd.js                                 [39m[1m[2m  0.54 kB[22m[1m[22m[2m │ gzip:  0.36 kB[22m
 [2m.svelte-kit/output/client/[22m[36m_app/immutable/entry/(blog)-articles-error.svelte.a41bf885.js                  [39m[1m[2m  0.61 kB[22m[1m[22m[2m │ gzip:  0.38 kB[22m
-[2m.svelte-kit/output/client/[22m[36m_app/immutable/chunks/TableContent.svelte_svelte_type_style_lang.e2cea2a7.js   [39m[1m[2m  0.62 kB[22m[1m[22m[2m │ gzip:  0.35 kB[22m
-[2m.svelte-kit/output/client/[22m[36m_app/immutable/entry/error.svelte.4cca0e7d.js                                  [39m[1m[2m  0.98 kB[22m[1m[22m[2m │ gzip:  0.57 kB[22m
+[2m.svelte-kit/output/client/[22m[36m_app/immutable/chunks/TableContent.svelte_svelte_type_style_lang.5b323a82.js   [39m[1m[2m  0.62 kB[22m[1m[22m[2m │ gzip:  0.35 kB[22m
+[2m.svelte-kit/output/client/[22m[36m_app/immutable/entry/error.svelte.7e498957.js                                  [39m[1m[2m  0.98 kB[22m[1m[22m[2m │ gzip:  0.57 kB[22m
 [2m.svelte-kit/output/client/[22m[36m_app/immutable/entry/(blog)-search-page.svelte.eabba8e0.js                     [39m[1m[2m  1.66 kB[22m[1m[22m[2m │ gzip:  0.85 kB[22m
-[2m.svelte-kit/output/client/[22m[36m_app/immutable/chunks/singletons.9f0b012c.js                                   [39m[1m[2m  2.66 kB[22m[1m[22m[2m │ gzip:  1.39 kB[22m
-[2m.svelte-kit/output/client/[22m[36m_app/immutable/entry/(blog)-_nav_links_-page.svelte.28cea561.js                [39m[1m[2m  3.16 kB[22m[1m[22m[2m │ gzip:  1.34 kB[22m
-[2m.svelte-kit/output/client/[22m[36m_app/immutable/entry/(blog)-articles-_article_slug_-layout.svelte.bd4c0016.js  [39m[1m[2m  4.01 kB[22m[1m[22m[2m │ gzip:  1.69 kB[22m
-[2m.svelte-kit/output/client/[22m[36m_app/immutable/entry/app.63b854dc.js                                           [39m[1m[2m  9.12 kB[22m[1m[22m[2m │ gzip:  2.79 kB[22m
+[2m.svelte-kit/output/client/[22m[36m_app/immutable/chunks/singletons.a39d2ead.js                                   [39m[1m[2m  2.66 kB[22m[1m[22m[2m │ gzip:  1.39 kB[22m
+[2m.svelte-kit/output/client/[22m[36m_app/immutable/entry/(blog)-_nav_links_-page.svelte.d5d32261.js                [39m[1m[2m  3.16 kB[22m[1m[22m[2m │ gzip:  1.34 kB[22m
+[2m.svelte-kit/output/client/[22m[36m_app/immutable/entry/(blog)-articles-_article_slug_-layout.svelte.3d122a43.js  [39m[1m[2m  4.01 kB[22m[1m[22m[2m │ gzip:  1.69 kB[22m
+[2m.svelte-kit/output/client/[22m[36m_app/immutable/entry/app.6799de0e.js                                           [39m[1m[2m  9.12 kB[22m[1m[22m[2m │ gzip:  2.79 kB[22m
 [2m.svelte-kit/output/client/[22m[36m_app/immutable/chunks/index.1b57b644.js                                        [39m[1m[2m  9.58 kB[22m[1m[22m[2m │ gzip:  3.96 kB[22m
-[2m.svelte-kit/output/client/[22m[36m_app/immutable/entry/_page.svelte.59af0e44.js                                  [39m[1m[2m 16.31 kB[22m[1m[22m[2m │ gzip:  5.59 kB[22m
-[2m.svelte-kit/output/client/[22m[36m_app/immutable/entry/start.143330a4.js                                         [39m[1m[2m 23.16 kB[22m[1m[22m[2m │ gzip:  9.22 kB[22m
-[2m.svelte-kit/output/client/[22m[36m_app/immutable/entry/(blog)-articles-_article_slug_-page.svelte.a612649a.js    [39m[1m[2m132.57 kB[22m[1m[22m[2m │ gzip: 41.76 kB[22m
+[2m.svelte-kit/output/client/[22m[36m_app/immutable/entry/_page.svelte.9d999d5d.js                                  [39m[1m[2m 16.31 kB[22m[1m[22m[2m │ gzip:  5.59 kB[22m
+[2m.svelte-kit/output/client/[22m[36m_app/immutable/entry/start.afe83e5f.js                                         [39m[1m[2m 23.16 kB[22m[1m[22m[2m │ gzip:  9.22 kB[22m
+[2m.svelte-kit/output/client/[22m[36m_app/immutable/entry/(blog)-articles-_article_slug_-page.svelte.28b3d729.js    [39m[1m[2m132.57 kB[22m[1m[22m[2m │ gzip: 41.76 kB[22m
 [2m.svelte-kit/output/server/[22m[32mvite-manifest.json                                              [39m[1m[2m 6.77 kB[22m[1m[22m
 [2m.svelte-kit/output/server/[22m[35m_app/immutable/assets/_layout.b0b06c7c.css                      [39m[1m[2m 0.07 kB[22m[1m[22m
 [2m.svelte-kit/output/server/[22m[35m_app/immutable/assets/_page.fb477cbd.css                        [39m[1m[2m 0.58 kB[22m[1m[22m
@@ -298,20 +298,20 @@ computing gzip size...
 [2m.svelte-kit/output/server/[22m[36mentries/fallbacks/layout.svelte.js                              [39m[1m[2m 0.24 kB[22m[1m[22m
 [2m.svelte-kit/output/server/[22m[36mentries/pages/(blog)/_nav_links_/_layout.svelte.js              [39m[1m[2m 0.24 kB[22m[1m[22m
 [2m.svelte-kit/output/server/[22m[36mentries/pages/(blog)/articles/_error.svelte.js                  [39m[1m[2m 0.27 kB[22m[1m[22m
-[2m.svelte-kit/output/server/[22m[36mentries/pages/(blog)/articles/_article_slug_/_layout.server.js  [39m[1m[2m 0.50 kB[22m[1m[22m
+[2m.svelte-kit/output/server/[22m[36mentries/pages/(blog)/articles/_article_slug_/_layout.server.js  [39m[1m[2m 0.55 kB[22m[1m[22m
 [2m.svelte-kit/output/server/[22m[36mentries/endpoints/api/leads/_server.js                          [39m[1m[2m 0.58 kB[22m[1m[22m
 [2m.svelte-kit/output/server/[22m[36mchunks/SiteLinks.js                                             [39m[1m[2m 0.63 kB[22m[1m[22m
 [2m.svelte-kit/output/server/[22m[36mentries/pages/(blog)/search/_page.svelte.js                     [39m[1m[2m 0.64 kB[22m[1m[22m
 [2m.svelte-kit/output/server/[22m[36mchunks/hooks.server.js                                          [39m[1m[2m 0.72 kB[22m[1m[22m
 [2m.svelte-kit/output/server/[22m[36mentries/fallbacks/error.svelte.js                               [39m[1m[2m 0.83 kB[22m[1m[22m
-[2m.svelte-kit/output/server/[22m[36mentries/pages/_page.server.js                                   [39m[1m[2m 0.84 kB[22m[1m[22m
+[2m.svelte-kit/output/server/[22m[36mentries/pages/_page.server.js                                   [39m[1m[2m 0.89 kB[22m[1m[22m
 [2m.svelte-kit/output/server/[22m[36mchunks/redis.js                                                 [39m[1m[2m 0.92 kB[22m[1m[22m
 [2m.svelte-kit/output/server/[22m[36mentries/pages/(blog)/search/_page.server.js                     [39m[1m[2m 0.96 kB[22m[1m[22m
 [2m.svelte-kit/output/server/[22m[36mentries/pages/(blog)/_nav_links_/_page.server.js                [39m[1m[2m 1.11 kB[22m[1m[22m
-[2m.svelte-kit/output/server/[22m[36mentries/endpoints/(blog)/sitemap.xml/_server.js                 [39m[1m[2m 1.38 kB[22m[1m[22m
+[2m.svelte-kit/output/server/[22m[36mentries/endpoints/(blog)/sitemap.xml/_server.js                 [39m[1m[2m 1.43 kB[22m[1m[22m
 [2m.svelte-kit/output/server/[22m[36mentries/pages/(blog)/_nav_links_/_page.svelte.js                [39m[1m[2m 1.49 kB[22m[1m[22m
-[2m.svelte-kit/output/server/[22m[36mentries/pages/(blog)/articles/_article_slug_/_page.server.js    [39m[1m[2m 1.86 kB[22m[1m[22m
 [2m.svelte-kit/output/server/[22m[36mchunks/index.js                                                 [39m[1m[2m 1.95 kB[22m[1m[22m
+[2m.svelte-kit/output/server/[22m[36mentries/pages/(blog)/articles/_article_slug_/_page.server.js    [39m[1m[2m 2.01 kB[22m[1m[22m
 [2m.svelte-kit/output/server/[22m[36mchunks/articles.js                                              [39m[1m[2m 2.21 kB[22m[1m[22m
 [2m.svelte-kit/output/server/[22m[36mchunks/s3client.js                                              [39m[1m[2m 3.07 kB[22m[1m[22m
 [2m.svelte-kit/output/server/[22m[36mentries/pages/(blog)/articles/_article_slug_/_layout.svelte.js  [39m[1m[2m 3.72 kB[22m[1m[22m

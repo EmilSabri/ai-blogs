@@ -7,8 +7,11 @@ export async function load({ url }) {
     let { host } = url
 
     if (host.includes('localhost') || host.includes('127.0.0.1')) {
-        host = 'brianfog.com'
+        host = 'www.brianfog.com'
     }
+
+    host = host.split('.').slice(1).join('.')   // Remove the www. part of the host
+
 
     let siteData = {}
     let articlesMeta = []

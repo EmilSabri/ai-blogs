@@ -38,9 +38,10 @@ export async function GET({url}) {
     // TODO - remove the www. part of url.host. Do this for everywhere that uses url.host
     let {host} = url
     if (host.includes('localhost') || host.includes('127.0.0.1')) {
-        host = 'brianfog.com'
+        host = 'www.brianfog.com'
     }
-    
+  
+    host = host.split('.').slice(1).join('.')   // Remove the www. part of the host
     const metadata = await articles.getPublicArticles(host, true, 999)
 
     let latestDate = new Date(0)

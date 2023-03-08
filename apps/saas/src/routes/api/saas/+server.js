@@ -13,7 +13,7 @@ export async function POST( event ) {
     console.log('------------------')
     console.log(key)
     console.log(body)
-    s3Client.uploadObject(S3_BUCKET_ARTICLES, key, body, "application/json", Buffer.byteLength(body))
+    // s3Client.uploadObject(S3_BUCKET_ARTICLES, key, body, "application/json", Buffer.byteLength(body))
 
 
     return new Response(JSON.stringify({success: true}))
