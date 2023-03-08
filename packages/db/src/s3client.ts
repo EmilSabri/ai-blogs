@@ -105,6 +105,7 @@ function listObjects(getMetaData = false, maxKeys = 50, prefix = "", startAfter 
 function uploadObject(Bucket: string, Key: string, Body: any, ContentType: string, ContentLength: number) {
 
     // eslint-disable-next-line no-async-promise-executor
+    console.log('s3.uploadObject() - ', Bucket, Key, Body, ContentType, ContentLength)
     return new Promise(async (resolve, reject) => {
 
         try {
