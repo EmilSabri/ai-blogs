@@ -1,0 +1,62 @@
+npm WARN ignoring workspace config at /Users/esabri/Desktop/Projects/showcase/ai-blogs/apps/saas/.npmrc 
+
+> saas@0.0.1 dev
+> vite dev
+
+
+Forced re-optimization of dependencies
+
+  [32m[1mVITE[22m v4.1.4[39m  [2mready in [0m[1m517[22m[2m[0m ms[22m
+
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://localhost:[1m5173[22m/[39m
+[2m  [32m➜[39m  [1mNetwork[22m[2m: use [22m[1m--host[22m[2m to expose[22m
+[36m11:31:25 AM [vite-plugin-svelte] /src/routes/+page.svelte:2:11 Page has unused export property 'data'. If it is for external reference only, please consider using `export const data`[39m
+[36m11:31:25 AM [vite-plugin-svelte] /src/routes/+page.svelte:18:1 No scopable elements found in template. If you're using global styles in the style tag, you should move it into an external stylesheet file and import it in JS. See https://github.com/sveltejs/vite-plugin-svelte/blob/main/docs/faq.md#where-should-i-put-my-global-styles.[39m
+[ioredis] Unhandled error event: Error: getaddrinfo ENOTFOUND undefined
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:107:26)
+[ioredis] Unhandled error event: Error: getaddrinfo ENOTFOUND undefined
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:107:26)
+[ioredis] Unhandled error event: Error: getaddrinfo ENOTFOUND undefined
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:107:26)
+[ioredis] Unhandled error event: Error: getaddrinfo ENOTFOUND undefined
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:107:26)
+[36m11:31:25 AM [vite-plugin-svelte] ssr compile done.[39m
+package      	files	  time	   avg
+saas         	    4	55.1ms	13.8ms
+@sveltejs/kit	    1	 1.6ms	 1.6ms
+[ioredis] Unhandled error event: Error: getaddrinfo ENOTFOUND undefined
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:107:26)
+[36m11:31:26 AM [vite-plugin-svelte] /src/routes/+page.svelte:2:11 Page has unused export property 'data'. If it is for external reference only, please consider using `export const data`[39m
+[36m11:31:26 AM [vite-plugin-svelte] /src/routes/+page.svelte:18:1 No scopable elements found in template. If you're using global styles in the style tag, you should move it into an external stylesheet file and import it in JS. See https://github.com/sveltejs/vite-plugin-svelte/blob/main/docs/faq.md#where-should-i-put-my-global-styles.[39m
+[ioredis] Unhandled error event: Error: getaddrinfo ENOTFOUND undefined
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:107:26)
+[ioredis] Unhandled error event: Error: getaddrinfo ENOTFOUND undefined
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:107:26)
+[ioredis] Unhandled error event: Error: getaddrinfo ENOTFOUND undefined
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:107:26)
+[ioredis] Unhandled error event: Error: getaddrinfo ENOTFOUND undefined
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:107:26)
+[ioredis] Unhandled error event: Error: getaddrinfo ENOTFOUND undefined
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:107:26)
+[ioredis] Unhandled error event: Error: getaddrinfo ENOTFOUND undefined
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:107:26)
+[ioredis] Unhandled error event: Error: getaddrinfo ENOTFOUND undefined
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:107:26)
+[ioredis] Unhandled error event: Error: getaddrinfo ENOTFOUND undefined
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:107:26)
+[ioredis] Unhandled error event: Error: getaddrinfo ENOTFOUND undefined
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:107:26)
+[ioredis] Unhandled error event: Error: getaddrinfo ENOTFOUND undefined
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:107:26)
+[ioredis] Unhandled error event: Error: getaddrinfo ENOTFOUND undefined
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:107:26)
+[ioredis] Unhandled error event: Error: getaddrinfo ENOTFOUND undefined
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:107:26)
+[ioredis] Unhandled error event: Error: getaddrinfo ENOTFOUND undefined
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:107:26)
+[ioredis] Unhandled error event: Error: getaddrinfo ENOTFOUND undefined
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:107:26)
+[ioredis] Unhandled error event: Error: getaddrinfo ENOTFOUND undefined
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:107:26)
+[ioredis] Unhandled error event: Error: getaddrinfo ENOTFOUND undefined
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:107:26)

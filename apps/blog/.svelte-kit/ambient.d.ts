@@ -26,22 +26,11 @@
  * ```
  */
 declare module '$env/static/private' {
-	export const S3_ACCESS_KEY: string;
-	export const S3_SECERET_KEY: string;
-	export const S3_REGION: string;
-	export const S3_BUCKET_ARTICLES: string;
-	export const OPENAI_KEY: string;
-	export const OPENAI_MAX_BILL: string;
-	export const OPENAI_BILL_BUFFER: string;
-	export const REDIS_HOST: string;
-	export const REDIS_PORT: string;
-	export const REDIS_USERNAME: string;
-	export const REDIS_PASSWORD: string;
-	export const SENDINBLUE_KEY: string;
 	export const LC_FIG_SET_PARENT: string;
 	export const FIG_PID: string;
 	export const MANPATH: string;
 	export const TERM_PROGRAM: string;
+	export const S3_ACCESS_KEY: string;
 	export const NODE: string;
 	export const TURBO_INVOCATION_DIR: string;
 	export const INIT_CWD: string;
@@ -52,7 +41,9 @@ declare module '$env/static/private' {
 	export const TMPDIR: string;
 	export const HOMEBREW_REPOSITORY: string;
 	export const npm_config_global_prefix: string;
+	export const S3_REGION: string;
 	export const TERM_PROGRAM_VERSION: string;
+	export const OPENAI_BILL_BUFFER: string;
 	export const ZDOTDIR: string;
 	export const ORIGINAL_XDG_CURRENT_DESKTOP: string;
 	export const OH_MY_ZSH: string;
@@ -64,16 +55,22 @@ declare module '$env/static/private' {
 	export const PNPM_HOME: string;
 	export const FIG_SET_PARENT_CHECK: string;
 	export const USER: string;
+	export const LS_COLORS: string;
 	export const COMMAND_MODE: string;
 	export const npm_config_globalconfig: string;
+	export const REDIS_USERNAME: string;
 	export const SSH_AUTH_SOCK: string;
+	export const OPENAI_KEY: string;
 	export const __CF_USER_TEXT_ENCODING: string;
 	export const npm_execpath: string;
 	export const PAGER: string;
+	export const REDIS_HOST: string;
+	export const OPENAI_MAX_BILL: string;
 	export const LSCOLORS: string;
 	export const PATH: string;
 	export const npm_package_json: string;
 	export const _: string;
+	export const REDIS_PASSWORD: string;
 	export const npm_config_userconfig: string;
 	export const npm_config_init_module: string;
 	export const __CFBundleIdentifier: string;
@@ -85,15 +82,19 @@ declare module '$env/static/private' {
 	export const EDITOR: string;
 	export const npm_package_name: string;
 	export const LANG: string;
+	export const GOOGLE_ADS_TOKEN: string;
 	export const TURBO_HASH: string;
 	export const XPC_FLAGS: string;
 	export const VSCODE_GIT_ASKPASS_EXTRA_ARGS: string;
 	export const FORCE_COLOR: string;
 	export const npm_config_node_gyp: string;
+	export const S3_SECERET_KEY: string;
 	export const npm_package_version: string;
 	export const XPC_SERVICE_NAME: string;
+	export const S3_BUCKET_ARTICLES: string;
 	export const VSCODE_INJECTION: string;
 	export const SHLVL: string;
+	export const REDIS_PORT: string;
 	export const HOME: string;
 	export const VSCODE_GIT_ASKPASS_MAIN: string;
 	export const HOMEBREW_PREFIX: string;
@@ -102,6 +103,7 @@ declare module '$env/static/private' {
 	export const LOGNAME: string;
 	export const LESS: string;
 	export const npm_lifecycle_script: string;
+	export const GOOGLE_CLIENT_SECRET: string;
 	export const VSCODE_GIT_IPC_HANDLE: string;
 	export const npm_config_user_agent: string;
 	export const VSCODE_GIT_ASKPASS_NODE: string;
@@ -110,6 +112,7 @@ declare module '$env/static/private' {
 	export const GIT_ASKPASS: string;
 	export const npm_node_execpath: string;
 	export const npm_config_prefix: string;
+	export const GOOGLE_CLIENT_ID: string;
 	export const FIG_TERM: string;
 	export const COLORTERM: string;
 	export const NODE_ENV: string;
@@ -142,22 +145,11 @@ declare module '$env/static/public' {
  */
 declare module '$env/dynamic/private' {
 	export const env: {
-		S3_ACCESS_KEY: string;
-		S3_SECERET_KEY: string;
-		S3_REGION: string;
-		S3_BUCKET_ARTICLES: string;
-		OPENAI_KEY: string;
-		OPENAI_MAX_BILL: string;
-		OPENAI_BILL_BUFFER: string;
-		REDIS_HOST: string;
-		REDIS_PORT: string;
-		REDIS_USERNAME: string;
-		REDIS_PASSWORD: string;
-		SENDINBLUE_KEY: string;
 		LC_FIG_SET_PARENT: string;
 		FIG_PID: string;
 		MANPATH: string;
 		TERM_PROGRAM: string;
+		S3_ACCESS_KEY: string;
 		NODE: string;
 		TURBO_INVOCATION_DIR: string;
 		INIT_CWD: string;
@@ -168,7 +160,9 @@ declare module '$env/dynamic/private' {
 		TMPDIR: string;
 		HOMEBREW_REPOSITORY: string;
 		npm_config_global_prefix: string;
+		S3_REGION: string;
 		TERM_PROGRAM_VERSION: string;
+		OPENAI_BILL_BUFFER: string;
 		ZDOTDIR: string;
 		ORIGINAL_XDG_CURRENT_DESKTOP: string;
 		OH_MY_ZSH: string;
@@ -180,16 +174,22 @@ declare module '$env/dynamic/private' {
 		PNPM_HOME: string;
 		FIG_SET_PARENT_CHECK: string;
 		USER: string;
+		LS_COLORS: string;
 		COMMAND_MODE: string;
 		npm_config_globalconfig: string;
+		REDIS_USERNAME: string;
 		SSH_AUTH_SOCK: string;
+		OPENAI_KEY: string;
 		__CF_USER_TEXT_ENCODING: string;
 		npm_execpath: string;
 		PAGER: string;
+		REDIS_HOST: string;
+		OPENAI_MAX_BILL: string;
 		LSCOLORS: string;
 		PATH: string;
 		npm_package_json: string;
 		_: string;
+		REDIS_PASSWORD: string;
 		npm_config_userconfig: string;
 		npm_config_init_module: string;
 		__CFBundleIdentifier: string;
@@ -201,15 +201,19 @@ declare module '$env/dynamic/private' {
 		EDITOR: string;
 		npm_package_name: string;
 		LANG: string;
+		GOOGLE_ADS_TOKEN: string;
 		TURBO_HASH: string;
 		XPC_FLAGS: string;
 		VSCODE_GIT_ASKPASS_EXTRA_ARGS: string;
 		FORCE_COLOR: string;
 		npm_config_node_gyp: string;
+		S3_SECERET_KEY: string;
 		npm_package_version: string;
 		XPC_SERVICE_NAME: string;
+		S3_BUCKET_ARTICLES: string;
 		VSCODE_INJECTION: string;
 		SHLVL: string;
+		REDIS_PORT: string;
 		HOME: string;
 		VSCODE_GIT_ASKPASS_MAIN: string;
 		HOMEBREW_PREFIX: string;
@@ -218,6 +222,7 @@ declare module '$env/dynamic/private' {
 		LOGNAME: string;
 		LESS: string;
 		npm_lifecycle_script: string;
+		GOOGLE_CLIENT_SECRET: string;
 		VSCODE_GIT_IPC_HANDLE: string;
 		npm_config_user_agent: string;
 		VSCODE_GIT_ASKPASS_NODE: string;
@@ -226,6 +231,7 @@ declare module '$env/dynamic/private' {
 		GIT_ASKPASS: string;
 		npm_node_execpath: string;
 		npm_config_prefix: string;
+		GOOGLE_CLIENT_ID: string;
 		FIG_TERM: string;
 		COLORTERM: string;
 		NODE_ENV: string;

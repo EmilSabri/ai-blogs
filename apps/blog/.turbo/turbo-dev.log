@@ -1,0 +1,112 @@
+npm WARN ignoring workspace config at /Users/esabri/Desktop/Projects/showcase/ai-blogs/apps/blog/.npmrc 
+
+> blog@0.0.1 dev
+> vite dev
+
+
+
+  [32m[1mVITE[22m v4.1.4[39m  [2mready in [0m[1m555[22m[2m[0m ms[22m
+
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://localhost:[1m5173[22m/[39m
+[2m  [32m➜[39m  [1mNetwork[22m[2m: use [22m[1m--host[22m[2m to expose[22m
+69 brianfog.com/newsite.json ayo brianfog.com
+[36m11:33:28 AM [vite-plugin-svelte] ssr compile in progress ...[39m
+[36m11:33:28 AM [vite-plugin-svelte] /src/lib/components/Homepage.svelte:55:1 Unused CSS selector "h4"[39m
+[36m11:33:28 AM [vite-plugin-svelte] /src/lib/components/Homepage.svelte:87:1 Unused CSS selector ".products"[39m
+[36m11:33:28 AM [vite-plugin-svelte] /src/lib/components/Homepage.svelte:96:1 Unused CSS selector ".products__item"[39m
+[36m11:33:28 AM [vite-plugin-svelte] /src/lib/components/Homepage.svelte:107:1 Unused CSS selector ".products__item h4"[39m
+[36m11:33:28 AM [vite-plugin-svelte] /src/lib/components/Homepage.svelte:112:1 Unused CSS selector ".products__item h3"[39m
+[36m11:33:28 AM [vite-plugin-svelte] /src/lib/components/Homepage.svelte:116:1 Unused CSS selector ".products__item p"[39m
+[36m11:33:28 AM [vite-plugin-svelte] /src/lib/components/NavLink.svelte:2:12 NavLink has unused export property 'data'. If it is for external reference only, please consider using `export const data`[39m
+[36m11:33:28 AM [vite-plugin-svelte] /src/lib/components/Footer.svelte:48:5 A11y: visible, non-interactive elements with an on:click event must be accompanied by an on:keydown, on:keyup, or on:keypress event.[39m
+[36m11:33:28 AM [vite-plugin-svelte] /src/lib/components/Footer.svelte:98:1 Unused CSS selector ".ul"[39m
+[36m11:33:28 AM [vite-plugin-svelte] /src/lib/components/ProductCard.svelte:13:5 A11y: '#' is not a valid href attribute[39m
+[36m11:33:28 AM [vite-plugin-svelte] /src/lib/components/ProductCard.svelte:90:1 Unused CSS selector ".card .contentBox .price"[39m
+[36m11:33:28 AM [vite-plugin-svelte] /src/lib/components/ProductCard.svelte:117:1 Unused CSS selector ".mouse"[39m
+[36m11:33:29 AM [vite-plugin-svelte] ssr compile done.[39m
+package      	files	  time	  avg
+blog         	   12	84.5ms	7.0ms
+@sveltejs/kit	    1	 6.8ms	6.8ms
+[36m11:33:29 AM [vite-plugin-svelte] /src/lib/components/Footer.svelte:48:5 A11y: visible, non-interactive elements with an on:click event must be accompanied by an on:keydown, on:keyup, or on:keypress event.[39m
+[36m11:33:29 AM [vite-plugin-svelte] /src/lib/components/Footer.svelte:98:1 Unused CSS selector ".ul"[39m
+[36m11:33:29 AM [vite-plugin-svelte] /src/lib/components/Homepage.svelte:55:1 Unused CSS selector "h4"[39m
+[36m11:33:29 AM [vite-plugin-svelte] /src/lib/components/Homepage.svelte:87:1 Unused CSS selector ".products"[39m
+[36m11:33:29 AM [vite-plugin-svelte] /src/lib/components/Homepage.svelte:96:1 Unused CSS selector ".products__item"[39m
+[36m11:33:29 AM [vite-plugin-svelte] /src/lib/components/Homepage.svelte:107:1 Unused CSS selector ".products__item h4"[39m
+[36m11:33:29 AM [vite-plugin-svelte] /src/lib/components/Homepage.svelte:112:1 Unused CSS selector ".products__item h3"[39m
+[36m11:33:29 AM [vite-plugin-svelte] /src/lib/components/Homepage.svelte:116:1 Unused CSS selector ".products__item p"[39m
+[36m11:33:29 AM [vite-plugin-svelte] /src/lib/components/ProductCard.svelte:13:5 A11y: '#' is not a valid href attribute[39m
+[36m11:33:29 AM [vite-plugin-svelte] /src/lib/components/ProductCard.svelte:90:1 Unused CSS selector ".card .contentBox .price"[39m
+[36m11:33:29 AM [vite-plugin-svelte] /src/lib/components/ProductCard.svelte:117:1 Unused CSS selector ".mouse"[39m
+[36m11:33:29 AM [vite-plugin-svelte] /src/lib/components/NavLink.svelte:2:12 NavLink has unused export property 'data'. If it is for external reference only, please consider using `export const data`[39m
+[36m11:33:32 AM [vite-plugin-svelte] /src/routes/(blog)/articles/[article_slug]/+page.svelte:188:1 Unused CSS selector "a"[39m
+[36m11:33:32 AM [vite-plugin-svelte] /src/routes/(blog)/articles/[article_slug]/+page.svelte:205:1 Unused CSS selector "h2"[39m
+[36m11:33:32 AM [vite-plugin-svelte] /src/routes/(blog)/articles/[article_slug]/+page.svelte:258:1 Unused CSS selector ".productCard"[39m
+[36m11:33:32 AM [vite-plugin-svelte] /src/routes/(blog)/articles/[article_slug]/+page.svelte:289:1 Unused CSS selector ".I-seperator"[39m
+[36m11:33:32 AM [vite-plugin-svelte] /src/routes/(blog)/articles/[article_slug]/+page.svelte:293:1 Unused CSS selector ".article-meta a"[39m
+host URL {
+  href: 'http://localhost:5173/articles/ankylosing-spondylitis-and-brain-fog',
+  origin: 'http://localhost:5173',
+  protocol: 'http:',
+  username: '',
+  password: '',
+  host: 'localhost:5173',
+  hostname: 'localhost',
+  port: '5173',
+  pathname: '/articles/ankylosing-spondylitis-and-brain-fog',
+  search: '',
+  searchParams: URLSearchParams {},
+  hash: ''
+}
+brianfog.com/public/ankylosing-spondylitis-and-brain-fog/markdown.md
+brianfog.com/public/ankylosing-spondylitis-and-brain-fog/metadata.json
+[2m11:33:32 AM[22m [36m[1m[vite][22m[39m [32m✨ new dependencies optimized: [33munified, remark-parse, remark-frontmatter, remark-rehype, rehype-stringify, ...and 1 more[32m[39m
+[2m11:33:32 AM[22m [36m[1m[vite][22m[39m [32m✨ optimized dependencies changed. reloading[39m
+Saving to redis ankylosing-spondylitis-and-brain-fog
+host URL {
+  href: 'http://localhost:5173/articles/antidepressants-and-brain-fog-what-you-need-to-know',
+  origin: 'http://localhost:5173',
+  protocol: 'http:',
+  username: '',
+  password: '',
+  host: 'localhost:5173',
+  hostname: 'localhost',
+  port: '5173',
+  pathname: '/articles/antidepressants-and-brain-fog-what-you-need-to-know',
+  search: '',
+  searchParams: URLSearchParams {},
+  hash: ''
+}
+69 brianfog.com/newsite.json ayo brianfog.com
+brianfog.com/public/antidepressants-and-brain-fog-what-you-need-to-know/markdown.md
+brianfog.com/public/antidepressants-and-brain-fog-what-you-need-to-know/metadata.json
+Saving to redis antidepressants-and-brain-fog-what-you-need-to-know
+host URL {
+  href: 'http://localhost:5173/articles/allergies-as-a-cause-of-brain-fog',
+  origin: 'http://localhost:5173',
+  protocol: 'http:',
+  username: '',
+  password: '',
+  host: 'localhost:5173',
+  hostname: 'localhost',
+  port: '5173',
+  pathname: '/articles/allergies-as-a-cause-of-brain-fog',
+  search: '',
+  searchParams: URLSearchParams {},
+  hash: ''
+}
+brianfog.com/public/allergies-as-a-cause-of-brain-fog/markdown.md
+brianfog.com/public/allergies-as-a-cause-of-brain-fog/metadata.json
+[36m11:33:34 AM [vite-plugin-svelte] ssr compile in progress ...[39m
+Saving to redis allergies-as-a-cause-of-brain-fog
+[36m11:33:34 AM [vite-plugin-svelte] /src/lib/components/Footer.svelte:48:5 A11y: visible, non-interactive elements with an on:click event must be accompanied by an on:keydown, on:keyup, or on:keypress event.[39m
+[36m11:33:34 AM [vite-plugin-svelte] /src/lib/components/Footer.svelte:98:1 Unused CSS selector ".ul"[39m
+[36m11:33:34 AM [vite-plugin-svelte] /src/lib/components/NavLink.svelte:2:12 NavLink has unused export property 'data'. If it is for external reference only, please consider using `export const data`[39m
+[36m11:33:34 AM [vite-plugin-svelte] /src/lib/components/ProductCard.svelte:13:5 A11y: '#' is not a valid href attribute[39m
+[36m11:33:34 AM [vite-plugin-svelte] /src/lib/components/ProductCard.svelte:90:1 Unused CSS selector ".card .contentBox .price"[39m
+[36m11:33:34 AM [vite-plugin-svelte] /src/lib/components/ProductCard.svelte:117:1 Unused CSS selector ".mouse"[39m
+[36m11:33:34 AM [vite-plugin-svelte] /src/lib/components/Homepage.svelte:55:1 Unused CSS selector "h4"[39m
+[36m11:33:34 AM [vite-plugin-svelte] /src/lib/components/Homepage.svelte:87:1 Unused CSS selector ".products"[39m
+[36m11:33:34 AM [vite-plugin-svelte] /src/lib/components/Homepage.svelte:96:1 Unused CSS selector ".products__item"[39m
+[36m11:33:34 AM [vite-plugin-svelte] /src/lib/components/Homepage.svelte:107:1 Unused CSS selector ".products__item h4"[39m
+[36m11:33:34 AM [vite-plugin-svelte] /src/lib/comp
